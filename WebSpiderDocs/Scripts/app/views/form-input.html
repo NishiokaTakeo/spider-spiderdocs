@@ -1,0 +1,20 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">{{$ctrl.title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+	<div class="modal-message">{{$ctrl.message}}</div>
+	<div class="modal-error-message">{{$ctrl.error}}</div>
+
+	<div class="form-field" ng-show="$ctrl.needsInput">
+		<label for="lead-filter-id" class="form-field__label"> Length check : <span ng-show="!$ctrl.checklength()">At least {{$ctrl.reasonMinumLen - $ctrl.input.length }} characters.</span> <span class="modal-ok" ng-show="$ctrl.checklength()">OK</span></label>
+
+		<input type="{{$ctrl.inputType}}" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.input" autocomplete="off"
+		class="" ng-change="$ctrl.validateTogo()" ng-init="$ctrl.validateTogo()" ng-enter="$ctrl.canGo && $ctrl.ok()"/>
+
+	</div>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()" ng-disabled="! $ctrl.canGo">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

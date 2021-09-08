@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>C:\Dev\SpiderDocs\WebSpiderDocs\Test\index.htm</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Dev\SpiderDocs\WebSpiderDocs\Test\Scripts\spiderdocs-conf.js</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Dev\SpiderDocs\WebSpiderDocs\Test\Scripts\q.min.js</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Dev\SpiderDocs\WebSpiderDocs\Test\Scripts\spiderdocsweb.js</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Dev\SpiderDocs\WebSpiderDocs\Web.config</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Dev\SpiderDocs\WebSpiderDocs\Controllers\Api\ExternalController.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Dev\SpiderDocs\WebSpiderDocs\Controllers\ExternalController.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Dev\SpiderDocs\SpiderDocsCommon\SpiderDocsModule\Database\PermissionController.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Dev\SpiderDocs\SpiderDocs\Forms\frmScan.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>C:\Dev\SpiderDocs\WebSpiderDocs\Test\Scripts\spiderdocs-client.js</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>

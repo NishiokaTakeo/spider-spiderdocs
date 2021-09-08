@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <Compiler Value="D:\Lazarus\fpc\2.2.0\bin\i386-win32\fpc.exe" Date="930002333"/>
+  <Params Value=" -S2cgi -OG1 -gl -vewnhi -l -Fu. -oNSISList.dll NSISList.lpr"/>
+</CONFIG>

@@ -1,0 +1,125 @@
+<div ng-controller="incCheckinNewCtrl as $newCtrl">
+<div class="container--checkin container--edge container--full" >
+
+	<div class="checkin-table  panel--white panel--border">
+
+		<div class="checkin-table__header">
+			<!-- <div class="checkin-table__col lead-col--id js--pre-contract-code">
+				<button type="button"
+						class="btn-sort" ng-click="sort('id')">
+					<span>ID</span>
+				</button>
+			</div> -->
+			<div class="checkin-table__col checkin-col--currentname">
+				<button type="button"
+						class="btn-sort" ng-click="sort('id_version')">
+					<span>Current File Name</span>
+				</button>
+			</div>
+			<!-- btn-sort--desc -->
+			<div class="checkin-table__col checkin-col--newname">
+				<button type="button" class="btn-sort" ng-click="sort('filename');">
+					<span>
+						New Document Name
+					</span>
+				</button>
+			</div>
+
+		</div>
+
+		<div context-menu menu-items="menus" id="{{'item_'+$index}}" class="checkin-table__row {{doc.selected ? 'checkin-table__row--checked':''}}" ng-repeat="doc in $newCtrl.docs">
+
+			<div class="form-field form-field--shadow form-field--checkbox row-hover hidden">
+				<label>
+					<input type="checkbox" ng-model="doc.selected" class="">
+					<span class="form-field__label">
+						<span class="hidden">Select Row</span>
+					</span>
+				</label>
+			</div>
+
+			<!-- <div class="checkin-table__col lead-col--id">
+				<div class="checkin-table__col-header ">ID</div>
+				{{doc.id}}
+			</div> -->
+			<div class="checkin-table__col checkin-col--currentname margin-top--5">
+				<div class="checkin-table__col-header ">Current File Name</div>
+				<div class="checkin-table__trim">
+					<a href="" target="blank">{{doc.title}}</a>
+				</div>
+			</div>
+			<div class="checkin-table__col checkin-col--newname">
+				<!-- <div class="checkin-table__col-header">New Document Name</div> -->
+				<!-- <div class="checkin-table__trim">
+					<a href="" target="blank">{{doc.filename}}</a>
+				</div> -->
+
+				<div class="form-field ">
+					<label for="lead-filter-id" class="checkin-table__col-header">New Document Name</label>
+					<input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="doc.title_withoutExt" ng-init="doc.title_withoutExt = doc.title.split('.').slice(0, -1).join('.')" autocomplete="off" class="checkin-table__trim" >
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+		<div class="checkin-table-zero" ng-show="docs.length == 0">
+			You do not have any local files.
+		</div>
+	</div>
+
+	<div class='attribute-panel--checkin'>
+
+		<div class="form-field ">
+			<label for="lead-filter-id" class="form-field__label">Folder</label>
+			<!-- <input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$newCtrl.name_folder" ng-init="" autocomplete="off" readonly onclick="$newCtrl.folderclicked()"> -->
+
+			<input type="button" name="lead-filter-id" id="lead-filter-id" ng-model="$newCtrl.name_folder" ng-init="" autocomplete="off" ng-click="$newCtrl.folderclicked()" value="{{$newCtrl.name_folder || 'Please Select'}}" >
+
+		</div>
+
+		<attribute tk-types="$newCtrl.docTypes" tk-model="$newCtrl.type" tk-selected-attr="$newCtrl.selectedAttr"/>
+
+	</div>
+
+
+</div>
+
+<div class="checkin-option">
+	<div class="checkin-option__save-as-pdf" ng-show="$newCtrl.canOCRable">
+		<div class="form-field form-field--shadow form-field--checkbox row-hover">
+			<label>
+				<input type="checkbox" ng-model="$newCtrl.options.saveAsPDF" class="">
+				<span class="form-field__label">
+					<span>Save as PDF file</span>
+				</span>
+			</label>
+		</div>
+	</div>
+
+
+	<ng-multi-combo tk-title="Notification Groups" ng-model="$newCtrl.notificationgroups"></ng-multi-combo>
+
+
+	<!-- <div class="form-field form-field--shadow form-field--checkbox row-hover">
+		<label>
+			<input type="checkbox" ng-model="$newCtrl.options.saveAsPDF" class="">
+			<span class="form-field__label">
+				<span>Save as PDF file</span>
+			</span>
+		</label>
+	</div> -->
+
+
+
+
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="$newCtrl.ok()" ng-disabled="! $newCtrl.canGo">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="$newCtrl.cancel()">Cancel</button>
+</div>
+
+</div>

@@ -1,0 +1,21 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">{{$ctrl.title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+	<div class="modal-message">{{$ctrl.message}}</div>
+	<div class="modal-error-message">{{$ctrl.error}}</div>
+
+	<div class="form-field" ng-show="$ctrl.needReason">
+		<label for="lead-filter-id" class="form-field__label">Reason : <span ng-show="!$ctrl.checklength()">At least {{$ctrl.reasonMinumLen - $ctrl.reason.length }} characters.</span> <span class="modal-ok" ng-show="$ctrl.checklength()">OK</span></label>
+
+		<textarea type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.reason" autocomplete="off"
+		class="" ng-change="$ctrl.validateTogo()">
+
+		</textarea>
+	</div>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()" ng-disabled="! $ctrl.canGo">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

@@ -1,0 +1,44 @@
+
+// Brand Colors
+// --------------------------------------------------
+$b:                 #000;
+$f:                 #fff;
+
+$dark:              #171A25;
+$navy:              #333E4D;
+
+$blue:              #2666B9;
+$blue-muted:        #808390;
+
+$yellow:            #F8E282;
+$teal:              #4AC5D6;
+$purple:            #724AD6;
+
+$grey:              #4E5661;
+$grey-2:            #838F9D;
+
+$light:             #E8ECEF;
+$light-2:           #DADFE3;
+$light-trans:       rgba($light, 0.3);
+
+$red:               #E54B4B;
+$green:             #2BBA60;
+
+$error:				$red;
+$text-color:        $grey;
+
+
+
+$br:                3px;
+
+
+// Timing & Easing
+// --------------------------------------------------
+$timing:			.15s;
+$timing-long:		($timing * 2);
+
+$ease-io: cubic-bezier(0.645, 0.045, 0.355, 1);
+$ease-io-2: cubic-bezier(0.86, 0, 0.07, 1);
+$ease-io-slow: cubic-bezier(0.215, 0.61, 0.355, 1);
+$ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+$ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);

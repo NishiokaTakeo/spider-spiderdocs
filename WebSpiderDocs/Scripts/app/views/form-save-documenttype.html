@@ -1,0 +1,22 @@
+
+<div class="modal-header">
+		<h3 class="modal-title" id="modal-title">{{title}}<span ng-show="checkout" class="notice"></span></h3>
+	</div>
+
+	<div class="modal-body" id="modal-body">
+
+		<form action="" method="post" name="myform" novalidate>
+			<div class="form-field ">
+				<label for="doctype_name" class="form-field__label">Document Type</label>
+				<input type="text" name="doctype_name" id="doctype_name" ng-model="model.doctype.type" autocomplete="off" required>
+				<p ng-show="myform.doctype_name.$dirty && myform.doctype_name.$error.required " class="help-block error-box">Name is mandatory.</p>
+
+			</div>
+
+		</form>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="ok()" >OK</button>
+		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+	</div>

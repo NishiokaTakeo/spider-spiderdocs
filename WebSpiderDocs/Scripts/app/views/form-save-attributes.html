@@ -1,0 +1,64 @@
+<div class="modal-header">
+		<h3 class="modal-title" id="modal-title">{{title}}<span ng-show="checkout" class="notice"></span></h3>
+	</div>
+
+	<div class="modal-body" id="modal-body">
+
+		<form action="" method="post" name="myform" novalidate>
+			<div class="form-field ">
+				<label for="attribute_name" class="form-field__label">Name</label>
+				<input type="text" name="attribute_name" id="attribute_name" ng-model="model.name" autocomplete="off" required>
+				<p ng-show="myform.attribute_name.$dirty && myform.attribute_name.$error.required " class="help-block error-box">Name is mandatory.</p>
+				<!-- <p ng-show="!checkName()" class="help-block error-box">Name must have at least 4 characters.</p> -->
+
+			</div>
+			<div class="form-field">
+				<label for="attribute_types" class="form-field__label">Field Type</label>
+				<div class="form-field__select">
+					<select name="attribute_types" title="Field Type" ng-model="model.type" ng-options="opt.type for opt in data.types track by opt.id"></select>
+				</div>
+			</div>
+
+			<!-- Folder -->
+			<div class="form-field ">
+				<label for="attribute_folder" class="form-field__label">Folder</label>
+
+				<input type="button" name="attribute_folder" id="attribute_folder" ng-model="model.name_folder" value="{{model.name_folder || '--- Default ---'}}" autocomplete="off" ng-click="openFolderTree()">
+			</div>
+
+
+			<div class="form-field ">
+				<label for="attribute_lengh" class="form-field__label">Max Lengh</label>
+				<input type="number" name="attribute_lengh" id="attribute_lengh" ng-model="model.max_lengh" autocomplete="off" min="1" max="100" required>
+				<p ng-show="myform.attribute_lengh.$dirty && myform.attribute_lengh.$error.required" class="help-block error-box">Max Lengh is mandatory.</p>
+				<p ng-show="myform.attribute_lengh.$dirty && ( myform.attribute_lengh.$error.min || myform.attribute_lengh.$error.max)" class="help-block error-box">Max Lengh must be between 1 to 100.</p>
+
+			</div>
+
+
+			<div class="form-field form-field--shadow form-field--checkbox row-hover">
+				<label>
+					<input type="checkbox" ng-model="model.only_numbers" class="">
+					<span class="form-field__label">
+						<span class="">Only Numbers</span>
+					</span>
+				</label>
+			</div>
+
+			<div class="form-field form-field--shadow form-field--checkbox row-hover">
+				<label>
+					<input type="checkbox" ng-model="model.required" class="" ng-change="updateRequire()">
+					<span class="form-field__label">
+						<span class="">Mandatory</span>
+					</span>
+				</label>
+			</div>
+		</form>
+
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="ok()" >OK</button>
+		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+	</div>
+

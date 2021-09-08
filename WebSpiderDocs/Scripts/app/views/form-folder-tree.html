@@ -1,0 +1,27 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">{{$ctrl.title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+
+	<div class="container--tree container--edge container--full">
+
+		<div class="span5 article-tree">
+			<div ng-style="{'overflow': 'auto'}" >
+
+				<div class="tree well">
+				<ul>
+					<node-tree ng-model="$ctrl.folders" ng-click="$ctrl.validateTogo(node);" tk-permission="permission"  tk-menu="$ctrl.menu.items" tk-menu-fnc="$ctrl.menu.func" ></node-tree>
+				</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="modal-footer"> 
+	<button class="btn btn-primary float--left" type="button" ng-click="$ctrl.createAtRoot()" ng-show="$ctrl.canCreate">Create a folder at root</button>	
+	<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()" ng-disabled="! $ctrl.canGo">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Close</button>
+</div>

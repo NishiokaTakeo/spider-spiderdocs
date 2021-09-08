@@ -1,0 +1,147 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">{{title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+
+	<!-- Basic info-->
+	<div class="modal-body-properties">
+		<ul>
+			<li><b>ID:</b>  {{property.id_doc}}</li>
+			<li><b>Size:</b>  {{property.sizeText}}</li>
+			<li><b>Extension:</b>  {{property.extension}}</li>
+			<li><b>Review Deadline:</b>  <span class="{{property.isReviewDeadLineOverDue ? 'text--red':''}}">{{property.reviewDeadLineText}}</span></li>
+		</ul>
+		<ul>
+			<li><b>Updated:</b>  {{property.dateText}}</li>
+			<li><b>Current Version:</b>  V{{property.version}}</li>
+			<li></li>
+			<li><b>Reviewer:</b>  {{property.reviewersText}}</li>
+		</ul>
+	</div>
+
+	<ul class="tab">
+		<li class="{{ tab == 1 ? 'active' : '' }}"><a ng-click="tab = 1">Versions</a></li>
+		<li class="{{ tab == 2 ? 'active' : '' }}"><a ng-click="tab = 2">Histories</a></li>
+	</ul>
+
+	<div class="modal-body-versions" ng-show="tab==1">
+
+
+		<!-- <div class="modal-body-versions__header">
+			<div class="modal-body-versions__col version-col--version">
+				<button type="button">
+					<span>Verision</span>
+				</button>
+			</div>
+
+			<div class="modal-body-versions__col version-col--user">
+				<button type="button">
+					<span>User</span>
+				</button>
+			</div>
+			<div class="modal-body-versions__col version-col--date">
+				<button type="button" >
+					<span>
+						Date
+					</span>
+				</button>
+			</div>
+
+			<div class="modal-body-versions__col version-col--event">
+				<button type="button" >
+					<span>
+						Event
+					</span>
+				</button>
+			</div>
+
+			<div class="modal-body-versions__col version-col--reason">
+				<button type="button" >
+					<span>
+						Reason
+					</span>
+				</button>
+			</div>
+		</div> -->
+		<table class="modal-body-table">
+			<tr>
+				<th>Verision</th>
+				<th>User</th>
+				<th>Date</th>
+				<th>Event</th>
+				<th>Reason</th>
+			</tr>
+			<tr ng-repeat="ver in versions">
+				<td class="td--centre">V{{ver.version}}</td>
+				<td>{{ver.name}}</td>
+				<td>{{ver.date}}</td>
+				<td>{{ver.event_name}}</td>
+				<td>{{ver.reason}}</td>
+			</tr>
+		</table>
+		<!-- <div class="modal-body-versions__row {{doc.selected ? 'modal-body-versions__row--checked':''}}" ng-repeat="ver in versions">
+
+
+			<div class="modal-body-versions__col version-col--version">
+				<div class="modal-body-versions__col-header ">Version</div>
+				{{ver.version}}
+			</div>
+
+			<div class="modal-body-versions__col version-col--user margin-top--5">
+				<div class="modal-body-versions__col-header ">User</div>
+				<div class="modal-body-versions__trim">
+					<a href="" target="blank">{{ver.name}}</a>
+				</div>
+			</div>
+
+			<div class="modal-body-versions__col version-col--date">
+				<div class="modal-body-versions__col-header ">Date</div>
+				<div class="modal-body-versions__trim">
+					<a href="" target="blank">{{ver.date}}</a>
+				</div>
+			</div>
+
+			<div class="modal-body-versions__col version-col--event">
+				<div class="modal-body-versions__col-header ">Event</div>
+				<div class="modal-body-versions__trim">
+					<a href="" target="blank">{{ver.event_name}}</a>
+				</div>
+			</div>
+
+			<div class="modal-body-versions__col version-col--reason">
+				<div class="modal-body-versions__col-header ">reason</div>
+				<div class="modal-body-versions__trim">
+					<a href="" target="blank">{{ver.reason}}</a>
+				</div>
+			</div>
+
+		</div> -->
+
+
+	</div>
+
+	<div  ng-show="tab==2">
+
+		<table class="modal-body-table">
+			<tr>
+				<th>Verision</th>
+				<th>User</th>
+				<th>Date</th>
+				<th>Event</th>
+				<!-- <th>Reason</th> -->
+			</tr>
+			<tr ng-repeat="evt in events">
+				<td class="td--centre">V{{evt.version}}</td>
+				<td>{{evt.name}}</td>
+				<td>{{evt.date}}</td>
+				<td>{{evt.event_name}} {{evt.comments}}</td>
+				<!-- <td>{{evt.reason}}</td> -->
+			</tr>
+		</table>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="! canGo">OK</button>
+	<!-- <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button> -->
+</div>

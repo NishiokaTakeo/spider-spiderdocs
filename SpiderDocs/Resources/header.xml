@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<header>
+  <column>
+    <index>1</index>
+    <value>Id1</value>
+    <shortvalue>Id1</shortvalue>
+  </column>
+  <column>
+    <index>2</index>
+    <value>Keyword2</value>
+    <shortvalue>Keyword2</shortvalue>
+  </column>
+  <column>
+    <index>3</index>
+    <value>Name3</value>
+    <shortvalue>Name3</shortvalue>
+  </column>
+  <column>
+    <index>4</index>
+    <value>Folder4</value>
+    <shortvalue>Folder4</shortvalue>
+  </column>
+  <column>
+    <index>5</index>
+    <value>Created Date5</value>
+    <shortvalue>Date5</shortvalue>
+  </column>
+  <column>
+    <index>6</index>
+    <value>Author6</value>
+    <shortvalue>Author6</shortvalue>
+  </column>
+  <column>
+    <index>7</index>
+    <value>Extension7</value>
+    <shortvalue>Extension7</shortvalue>
+  </column>
+  <column>
+    <index>8</index>
+    <value>Document Type8</value>
+    <shortvalue>Doc. Type8</shortvalue>
+  </column>
+  <column>
+    <index>9</index>
+    <value>Review9</value>
+    <shortvalue>Review9</shortvalue>
+  </column>
+</header>

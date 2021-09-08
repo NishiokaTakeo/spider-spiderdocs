@@ -1,0 +1,24 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title"><span ng-show="$ctrl.doc.id">[{{$ctrl.doc.id}}] </span>{{$ctrl.doc.title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+	<h3>Please upload with extension ({{$ctrl.doc.extension}}): <span class="modal-ok" ng-show="$ctrl.file">OK</span></h3>
+	<div class="modal-error-message">{{$ctrl.error}}</div>
+	<div class="modal-upload-container">
+		<upload id="upload1" to="webservices/spidereating/fileUpload" ng-model="$ctrl.fileupload" class="uploader" ng-on-drop="$ctrl.onDrop($event)" ng-click="$ctrl.deletePic($event)"></upload>
+	</div>
+
+	<div class="form-field" ng-show="$ctrl.needReason">
+		<label for="lead-filter-id" class="form-field__label">Reason : <span ng-show="!$ctrl.checklength()">At least {{10 - $ctrl.reason.length }} characters.</span> <span class="modal-ok" ng-show="$ctrl.checklength()">OK</span></label>
+
+		<textarea type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.reason" autocomplete="off"
+		class="ng-pristine ng-valid ng-empty ng-touched" ng-change="$ctrl.validateTogo()">
+
+		</textarea>
+	</div>
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()" ng-disabled="! $ctrl.canGo">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

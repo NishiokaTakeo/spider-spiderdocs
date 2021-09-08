@@ -1,0 +1,179 @@
+﻿
+@{
+	ViewBag.Title = "Document Type - Registration";
+	Layout = "~/Views/Shared/_LayoutWebApp.cshtml";
+}
+
+@section JavaScript
+{
+	@Scripts.Render("~/bundles/js/webapp/registration-documenttype")
+
+}
+
+<div ng-controller="registrationDocumentTypeController">
+
+
+	<div class="main-container">
+
+		<div class="page-header page-header--flat panel--navy">
+			<div class="page-header__title-full">
+				<h1>Registration - Document Type</h1>
+				<i class="glyphicon glyphicon-menu-hamburger size--2r spider-colour" sidebarjs-toggle="menuSidebarJS"></i>
+
+				<div class="form-field form-field--small">
+					<label for="" class="form-field__label">&nbsp;</label>
+					<div class="form-field__select--blue">
+						<button type="button" class="btn btn--secondary btn--yellow" ng-click="new()">New</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container container--edge container--underlap container--full flex">
+
+			<div class="registration-type-table panel--white panel--border flex--grow" style="margin:0 1rem;" >
+
+				<div class="registration-type-table__header">
+					<div class="registration-type-table__col registration-type-col--type-name">
+						<button type="button"
+								class="btn-sort">
+							<span>Type</span>
+						</button>
+					</div>
+				</div>
+
+				<div id="{{'item_'+$index}}" class="registration-type-table__row {{selected.type === type.id ? 'selected':''}}"  ng-repeat="type in view.data.types" ng-click="typeChange(type)">
+
+
+					<div class="registration-type-table__col registration-type-col--type-name">
+						<div class="registration-type-table__col-header">Type</div>
+
+						<button type="button"><span>{{type.type}}</span></button>
+					</div>
+
+					<a href="" class="btn btn--small btn--shadow row-hover margin-top--15 registration-type-col--edit" target="_self" ng-click="edit(type)" >Edit</a>
+
+					<a href="" class="btn btn--small btn--shadow row-hover margin-top--15 registration-type-col--delete" target="_self" ng-click="delete(type)" >Delete</a>
+				</div>
+
+				<div class="registration-type-table-zero" ng-show="data.types.length == 0">
+					No type is found!
+				</div>
+			</div>
+
+			<div class="registration-type-attr-table panel--white panel--border flex--grow" style="margin:0 1rem;">
+
+				<div class="registration-type-attr-table__header">
+
+					<div class="registration-type-attr-table__col registration-type-attr-col--checkbox">
+						<button type="button"
+								class="btn-sort">
+							<span>Select</span>
+						</button>
+					</div>
+
+					<div class="registration-type-attr-table__col registration-type-attr-col--attr-name">
+						<button type="button"
+								class="btn-sort">
+							<span>Attributes</span>
+						</button>
+					</div>
+					<div class="registration-type-attr-table__col registration-type-attr-col--attr-type">
+						<button type="button"
+								class="btn-sort">
+							<span>Field Type</span>
+						</button>
+					</div>
+					<div class="registration-type-attr-table__col registration-type-attr-col--checkbox">
+						<button type="button"
+								class="btn-sort">
+							<span>No Duplication</span>
+						</button>
+					</div>
+				</div>
+
+				<div id="{{'item_'+$index}}" class="registration-type-attr-table__row " ng-repeat="attr in view.data.attrs">
+
+					<div class="registration-type-attr-table__col registration-type-attr-col--checkbox">
+
+						<div class="form-field form-field--shadow form-field--checkbox" >
+							<label>
+								<input type="checkbox" ng-model="attr.checked"  ng-change="toggleSelected(attr, {{attr.checked}})">
+								<span class="form-field__label">
+									<span class="hidden">Select</span>
+								</span>
+							</label>
+						</div>
+
+					</div>
+
+					<div class="registration-type-attr-table__col registration-type-attr-col--attr-name">
+						<div class="registration-type-attr-table__col-header ">Attributes</div>
+						{{attr.name}}
+					</div>
+
+					<div class="registration-type-attr-table__col registration-type-attr-col--attr-type">
+						<div class="registration-type-attr-table__col-header ">Field Type</div>
+						{{ name_fieldType(attr.id_type) }}
+					</div>
+
+					<div class="registration-type-attr-table__col registration-type-attr-col--checkbox">
+
+						<div class="form-field form-field--shadow form-field--checkbox" >
+							<label>
+								<input type="checkbox" ng-model="attr.duplicate_chk" ng-change="toggleDupSelected(attr,{{attr.duplicate_chk}})">
+								<span class="form-field__label">
+									<span class="hidden">No Duplication</span>
+								</span>
+							</label>
+						</div>
+
+					</div>
+
+
+				</div>
+
+				<div class="registration-type-attr-table-zero" ng-show="data.attrs.length == 0">
+					No attr is found!
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+
+	</div>
+
+		<sidebarjs sidebarjs-name="menuSidebarJS"  sidebarjs-config="{position: 'left'}">
+
+			<div class="main-header--sidebar">
+				<nav class="main-nav" aria-label="Primary Nav">
+					<ul>
+					<li class="dropdown dropdown-1 main-nav__mob-menu">
+						<div>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Index", "WorkSpace")" target="_self"  href="">Local Workspace</a>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Local", "WorkSpace")" target="_self"  href="">User Workspace</a>
+						</div>
+					</li>
+
+					</ul>
+				</nav>
+			</div>
+
+		</sidebarjs>
+
+</div>
+

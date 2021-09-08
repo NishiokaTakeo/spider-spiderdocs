@@ -1,0 +1,14 @@
+#login_fader
+{
+	background: black;
+	opacity: .5;
+	-moz-opacity: .5;
+	-filter: alpha(opacity=50);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 5;
+	display: block;
+}

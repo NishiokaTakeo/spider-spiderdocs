@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9A48EA8C-727B-4CC3-961A-E49445749654}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpiderDocsForms</RootNamespace>
+    <AssemblyName>SpiderDocsForms</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\SpiderDocs\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Unit Test|AnyCPU'">
+    <OutputPath>bin\Unit Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpiderCommonModules\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.1.1.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\SpiderCommonModules\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.PowerPoint, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\SpiderCommonModules\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\SpiderDocs\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\..\SpiderDocs\packages\NLog.4.5.9\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\SpiderCommonModules\Office15\Office.dll</HintPath>
+    </Reference>
+    <Reference Include="Saraff.Twain">
+      <HintPath>..\..\SpiderCommonModules\Saraff.Twain.dll</HintPath>
+    </Reference>
+    <Reference Include="Spider.FormUtilities">
+      <HintPath>..\..\SpiderCommonModules\Spider.FormUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\DocumentDataObject.cs" />
+    <Compile Include="Classes\FormUserControlTimer.cs" />
+    <Compile Include="Classes\ReviewExtension.cs" />
+    <Compile Include="Database\DocumentController.cs" />
+    <Compile Include="Forms\frmBusy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBusy.Designer.cs">
+      <DependentUpon>frmBusy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEnterText.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEnterText.Designer.cs">
+      <DependentUpon>frmEnterText.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmScannerController.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmScannerController.Designer.cs">
+      <DependentUpon>frmScannerController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmFolderExplorer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFolderExplorer.Designer.cs">
+      <DependentUpon>frmFolderExplorer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmScannerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmScannerList.Designer.cs">
+      <DependentUpon>frmScannerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FolderExploere.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\FolderExploere.Designer.cs">
+      <DependentUpon>FolderExploere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MultiSelectTreeview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\SearchBox.Designer.cs">
+      <DependentUpon>SearchBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PropertyPanel\AttributeComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PropertyPanel\AttributeComboBox.designer.cs">
+      <DependentUpon>AttributeComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\FolderComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UserControls\FolderComboBox.Designer.cs">
+      <DependentUpon>FolderComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PropertyPanel\PropertyPanelNext.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PropertyPanel\PropertyPanelNext.designer.cs">
+      <DependentUpon>PropertyPanelNext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlBase.cs" />
+    <Compile Include="UserControls\PropertyPanel\PropertyPanelBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PropertyPanel\PropertyPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PropertyPanel\PropertyPanel.designer.cs">
+      <DependentUpon>PropertyPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CheckBoxHeaderCell.cs" />
+    <Compile Include="UserControls\SpiderOpenFileDialog.cs" />
+    <Compile Include="Utilities\DmsFile.cs" />
+    <Compile Include="Classes\Document\Document.cs" />
+    <Compile Include="Inherited.cs" />
+    <Compile Include="Classes\Footer.cs" />
+    <Compile Include="Utilities\FileFolder.cs" />
+    <Compile Include="Utilities\ImageUtilities.cs" />
+    <Compile Include="Utilities\ImgPDFSaver.cs" />
+    <Compile Include="Utilities\SharedMMF.cs" />
+    <Compile Include="Utilities\PDFConverter.cs" />
+    <Compile Include="Utilities\Utilities.cs" />
+    <Compile Include="Utilities\WaterMark.cs" />
+    <Compile Include="UserControls\DocumentDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAttributeComboItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAttributeComboItem.designer.cs">
+      <DependentUpon>frmAttributeComboItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMessageBox.Designer.cs">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmReasonNewVersion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReasonNewVersion.designer.cs">
+      <DependentUpon>frmReasonNewVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSaveDocExternal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSaveDocExternal.designer.cs">
+      <DependentUpon>frmSaveDocExternal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DocumentSaveDialog\DocumentListInsert.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DocumentSaveDialog\DocumentListInsert.Designer.cs">
+      <DependentUpon>DocumentListInsert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DocumentSaveDialog\DocumentListCommon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DocumentSaveDialog\DocumentListUpdate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DocumentSaveDialog\DocumentListUpdate.Designer.cs">
+      <DependentUpon>DocumentListUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DocumentSaveDialog\DocumentSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DocumentSaveDialog\DocumentSearch.designer.cs">
+      <DependentUpon>DocumentSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DocumentSaveDialog\DocumentSaveButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DocumentSaveDialog\DocumentSaveButtons.designer.cs">
+      <DependentUpon>DocumentSaveButtons.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PropertyPanel\AttributeSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PropertyPanel\AttributeSearch.designer.cs">
+      <DependentUpon>AttributeSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Document\DocumentCondition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\frmBusy.resx">
+      <DependentUpon>frmBusy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEnterText.resx">
+      <DependentUpon>frmEnterText.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmScannerController.resx">
+      <DependentUpon>frmScannerController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFolderExplorer.resx">
+      <DependentUpon>frmFolderExplorer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmScannerList.resx">
+      <DependentUpon>frmScannerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\FolderExploere.resx">
+      <DependentUpon>FolderExploere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\SearchBox.resx">
+      <DependentUpon>SearchBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PropertyPanel\AttributeComboBox.resx">
+      <DependentUpon>AttributeComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PropertyPanel\AttributeSearch.resx">
+      <DependentUpon>AttributeSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PropertyPanel\PropertyPanel.resx">
+      <DependentUpon>PropertyPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAttributeComboItem.resx">
+      <DependentUpon>frmAttributeComboItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMessageBox.resx">
+      <DependentUpon>frmMessageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReasonNewVersion.resx">
+      <DependentUpon>frmReasonNewVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSaveDocExternal.resx">
+      <DependentUpon>frmSaveDocExternal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DocumentSaveDialog\DocumentListInsert.resx">
+      <DependentUpon>DocumentListInsert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DocumentSaveDialog\DocumentListUpdate.resx">
+      <DependentUpon>DocumentListUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DocumentSaveDialog\DocumentSearch.resx">
+      <DependentUpon>DocumentSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\DocumentSaveDialog\DocumentSaveButtons.resx">
+      <DependentUpon>DocumentSaveButtons.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PropertyPanel\PropertyPanelNext.resx">
+      <DependentUpon>PropertyPanelNext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PropertyPanel\PropertyPanelBase.resx">
+      <DependentUpon>PropertyPanelBase.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Spider Docs - Components\Spider Docs - CheckComboBox\CheckComboBox.csproj">
+      <Project>{092968d1-9ac4-45c8-9d7b-9af4a241052c}</Project>
+      <Name>CheckComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DatabaseUtilities\DatabaseUtilities.csproj">
+      <Project>{016bc79b-1506-4122-a401-9110e5722806}</Project>
+      <Name>DatabaseUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpiderDocsModule\SpiderDocsModule.csproj">
+      <Project>{b084bda0-2a1f-4d1a-a968-8eb0f8d60a96}</Project>
+      <Name>SpiderDocsModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{83c6eeac-8fd6-4a70-bc6f-88b2d8c253db}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\DocumentFormat.OpenXml.dll" />
+    <Content Include="Lib\DocumentFormat.OpenXml.Extensions.dll" />
+    <Content Include="Lib\office.dll" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\arrow_r.png" />
+    <None Include="Resources\icon3d.ico" />
+    <None Include="Resources\scan_colour_depth.jpg" />
+    <None Include="Resources\file_lock.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\signtool" sign /f "$(SolutionDir)\SpiderCertificate.pfx" /p "*Aspider#" "$(TargetPath)"
+"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\signtool" sign /f "$(SolutionDir)\SpiderCertificate.pfx" /p "*Aspider#" "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"</PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\..\SpiderDocs\packages\StyleCop.MSBuild.6.1.0\build\StyleCop.MSBuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\SpiderDocs\packages\StyleCop.MSBuild.6.1.0\build\StyleCop.MSBuild.targets'))" />
+  </Target>
+  <Import Project="..\..\SpiderDocs\packages\StyleCop.MSBuild.6.1.0\build\StyleCop.MSBuild.targets" Condition="Exists('..\..\SpiderDocs\packages\StyleCop.MSBuild.6.1.0\build\StyleCop.MSBuild.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

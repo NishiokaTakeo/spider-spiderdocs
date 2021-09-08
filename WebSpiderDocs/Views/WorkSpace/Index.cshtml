@@ -1,0 +1,327 @@
+﻿
+@{
+	ViewBag.Title = "Local Database - SpiderDocs";
+	Layout = "~/Views/Shared/_LayoutWebApp.cshtml";
+}
+
+@section JavaScript
+{
+	@Scripts.Render("~/bundles/js/webapp/workspace-index.js")
+}
+<div ng-controller="workspaceController">
+
+	<div class="main-container">
+
+		<div class="page-header page-header--flat panel--navy">
+			<div class="page-header__title-full">
+				@* <h1>Local Database</h1> *@
+				<h1>{{view.pagetitle}}</h1>
+				@* <span class="text--yellow hidden">{{total}} Total Leads</span> *@
+				<i class="glyphicon glyphicon-menu-hamburger size--2r spider-colour" sidebarjs-toggle="menuSidebarJS"></i>
+			</div>
+
+			<div ng-include="'scripts/app/views/includes/inc-database-menus.html'"></div>
+
+			<div class="quick-filters filters-bar">
+				<div class="form-field form-field--flex form-field--small form-field--shadow">
+					<label for="leads-showing" class="form-field__label">Showing</label>
+					<div class="form-field__select form-field__select--blue">
+						<select name="leads-showing" id="leads-showing" ng-model="per_item" ng-options="opt.name for opt in data.per_items track by opt.id" ng-change="change_per_item()">
+						</select>
+					</div>
+				</div>
+
+				<div class="form-field form-field--flex form-field--small form-field--shadow">
+					<div class="form-button">
+						<button type="button" class="btn btn--secondary btn--yellow" sidebarjs-toggle="folderSidebarJS">Show folders</button>
+					</div>
+				</div>
+
+			</div>
+
+
+			<button type="button" class="leads-filters-toggle hidden" ng-click="toggle_filters()">
+				<span class="js--filter-toggle-state">Filter</span>&nbsp;Leads
+			</button>
+		</div>
+
+		<div class="container container--edge container--underlap container--full">
+
+
+			<div class="leads-filters panel--dark">
+
+				<div class="leads-filters__inner" ng-enter="searchby()">
+					<div class="leads-filters__contents filters-bar">
+
+						<div class="form-field">
+							<label for="lead-filter-rep" class="form-field__label">Id</label>
+							<div class="">
+								<input type="number" name="lead-filter-id" id="lead-filter-id" ng-model="search.id" ng-init="search.id=''" autocomplete="off" ui-keypress="{13:'searchby()'}">
+
+								@* <select name="lead-filter-rep" id="lead-filter-rep" ng-model="search.id" ng-options="rep.userName for rep in data.reps track by rep.userId"></select> *@
+							</div>
+						</div>
+						<div class="form-field ">
+							<label for="lead-filter-id" class="form-field__label">Keyword</label>
+							<input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="search.keyword" ng-init="search.keyword=''" autocomplete="off" ui-keypress="{13:'searchby()'}">
+						</div>
+						<div class="form-field ">
+							<label for="lead-filter-id" class="form-field__label">Name</label>
+							<input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="search.title" ng-init="search.title=''" autocomplete="off" ui-keypress="{13:'searchby()'}" >
+						</div>
+
+						<div class="form-field">
+							<label for="lead-filter-id" class="form-field__label">Folder</label>
+							<input type="button" name="lead-filter-id" id="lead-filter-id" ng-model="search.name_folder" ng-click="openSearchFolderForm()" value="{{search.name_folder || 'Please Select'}}" autocomplete="off">
+						</div>
+
+						<ng-multi-combo tk-title="Database Views" ng-model="search.database_views" tk-show-all="true"></ng-multi-combo>
+
+						<div class="form-field hidden">
+							<label for="lead-filter-rep" class="form-field__label">Document Type</label>
+							<div class="form-field__select form-field__select--blue">
+								@* <input type="number" name="lead-filter-id" id="lead-filter-id" ng-model="search.documenttype" ng-init="search.documenttype=''" autocomplete="off" ui-keypress="{13:'searchby()'}"> *@
+
+								@* <select name="lead-filter-rep" id="lead-filter-rep" ng-model="search.id" ng-options="opt.type for opt in data.docTypes track by opt.id"></select> *@
+							</div>
+						</div>
+						<div class="form-field  ">
+							<p class="form-field__label">Created Date</p>
+							<div class="form-field__input-stack">
+								<div class="form-field__input-stack__item">
+									<label for="lead-filter-created-from">From:</label>
+									<input type="date" name="lead-filter-created-from" id="lead-filter-created-from" ng-model="search.created_from">
+								</div>
+								<div class="form-field__input-stack__item">
+									<label for="lead-filter-created-to">To:</label>
+									<input type="date" name="lead-filter-created-to" id="lead-filter-created-to" ng-model="search.created_to">
+								</div>
+							</div>
+						</div>
+
+						<ng-multi-combo tk-title="Document Type" ng-model="data.docTypes" on-changed="populateAttrs();" tk-show-all=""></ng-multi-combo>
+
+
+						<div class="form-field form-field--small">
+							<label for="" class="form-field__label">&nbsp;</label>
+							<div class="form-field__select--blue">
+								<button type="button" class="btn btn--secondary btn--yellow" ng-click="searchby()">Search</button>
+							</div>
+						</div>
+
+						<div class="form-field form-field--small">
+							<label for="" class="form-field__label">&nbsp;</label>
+							<div class="form-field__select--blue">
+								<button type="button" class="btn btn--secondary btn--yellow" ng-click="clearSearchCriteria()">Clear</button>
+							</div>
+						</div>
+
+						<div class="form-field form-field--small">
+							<label for="" class="form-field__label">&nbsp;</label>
+							<div class="form-field__select--blue">
+								<button type="button" class="btn btn--secondary btn--yellow" ng-click="searchByDMS()">Search by DMS</button>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+				<div class="leads-filters__inner" ng-enter="searchby()">
+
+					<div class="leads-filters__contents filters-bar js-attribute-section">
+
+
+
+					</div>
+
+
+				</div>
+			</div>
+			<div class="docs-table panel--white panel--border">
+
+				<div class="docs-table__header">
+					<div class="docs-table__col docs-col--id js--header__id {{sortby.key == 'id' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}" >
+						<button type="button"
+								class="btn-sort" ng-click="sort('id')">
+							<span>ID</span>
+						</button>
+					</div>
+					<!-- btn-sort--desc -->
+					<div class="docs-table__col lead-col--client js--header__title {{sortby.key == 'title' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}">
+						<button type="button" class="btn-sort" ng-click="sort('title')">
+							<span>
+								Name
+								1
+							</span>
+						</button>
+					</div>
+					<div class="docs-table__col lead-col--phone js--header__author {{sortby.key == 'author' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}">
+						<button type="button"
+								class="btn-sort" ng-click="sort('author')">
+							<span>Author</span>
+						</button>
+					</div>
+					<div class="docs-table__col lead-col--rep js--header__name_folder {{sortby.key == 'name_folder' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}" >
+						<button type="button" class="btn-sort" ng-click="sort('name_folder')"><span>Folder</span></button>
+					</div>
+					<div class="docs-table__col lead-col--status js--header__version {{sortby.key == 'version' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}">
+						<button type="button"
+								class="btn-sort" ng-click="sort('version')">
+							<span>Version</span>
+						</button>
+					</div>
+					<div class="docs-table__col lead-col--status js--header__name_docType {{sortby.key == 'name_docType' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}">
+						<button type="button"
+								class="btn-sort" ng-click="sort('name_docType')">
+							<span>Doc.Type</span>
+						</button>
+					</div>
+					<div class="docs-table__col lead-col--created js--header__date {{sortby.key == 'date' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}">
+						<button type="button"
+								class="btn-sort" ng-click="sort('date')">
+							<span>Date<br>Created</span>
+						</button>
+					</div>
+
+				</div>
+
+				<div context-menu menu-items="menus" id="{{'item_'+$index}}" class="docs-table__row {{doc.selected ? 'docs-table__row--checked':''}} {{ statusColour(doc)}} " ng-repeat="doc in data.docs" ng-dblclick="dblclickOnDoc(doc)">
+					{{asc=true;""}}
+					<div class="form-field form-field--shadow form-field--checkbox row-hover hidden">
+						<label>
+							<input type="checkbox" ng-model="doc.selected" class="">
+							<span class="form-field__label">
+								<span class="hidden">Select Row</span>
+							</span>
+						</label>
+					</div>
+
+					<div class="docs-table__col docs-col--id">
+						<div class="docs-table__col-header " >ID</div>
+						{{doc.id}}
+					</div>
+					<div class="docs-table__col lead-col--client ">
+						<div class="docs-table__col-header">Name</div>
+						<div class="docs-table__trim">
+							<a href="" target="blank">{{doc.title}}</a>
+						</div>
+					</div>
+					<div class="docs-table__col lead-col--phone ">
+						<div class="docs-table__col-header">Author</div>
+						<div class="lead-item-phone">
+							<span>{{doc.author}}</span>
+						</div>
+					</div>
+					<div class="docs-table__col lead-col--phone ">
+						<div class="docs-table__col-header">Folder</div>
+						<div class="lead-item-phone">
+							<span>{{doc.name_folder}}</span>
+						</div>
+					</div>
+					<div class="docs-table__col lead-col--phone ">
+						<div class="docs-table__col-header">Version</div>
+						<div class="lead-item-phone">
+							<span>{{doc.version}}</span>
+						</div>
+					</div>
+					<div class="docs-table__col lead-col--phone ">
+						<div class="docs-table__col-header">Version</div>
+						<div class="lead-item-phone">
+							<span>{{doc.name_docType}}</span>
+						</div>
+					</div>
+					<div class="docs-table__col lead-col--created ">
+						<div class="docs-table__col-header">Date Created</div>
+						{{doc.date | toDate | date:'dd/MM/yyyy' | dispNA}}
+					</div>
+
+
+
+
+					<a href="" class="btn btn--small btn--shadow cta-edit-lead row-hover hidden" target="_self" ng-click="download(doc)">Download</a>
+					<a href="" class="btn btn--small btn--shadow cta-email-lead row-hover hidden" target="_self" ng-click="property(doc)" >Property</a>
+
+
+
+					<div ng-if="$index == leads.length -1">
+						<!-- <script type="text/javascript" src="Scripts/app/build.js"></script> -->
+					</div>
+
+				</div>
+
+			</div>
+			<style>
+				.pagination li {
+					display: inline
+				}
+			</style>
+			<ul class="pagination">
+				<li><a href="" ng-click="prev();" class="pagination__action pagination__action--prev"><span class="hidden">Previous Page</span></a></li>
+
+				<li ng-repeat="page in pages">
+					<span ng-if="cur_page == page" class="pagination__active">{{page}}</span>
+					<a href="" ng-click="page_at(page);" ng-if="cur_page != page" class="pagination__active">{{page}}</a>
+				</li>
+
+				<li class="hidden"><span>…</span></li>
+				<li><a href="" ng-click="next();" class="pagination__action pagination__action--next"><span class="hidden">Next Page</span></a></li>
+			</ul>
+
+		</div>
+
+		<sidebarjs sidebarjs-config="{position: 'right'}" sidebarjs-name="folderSidebarJS">
+			<button class="close" sidebarjs-toggle="folderSidebarJS">&#10148;</button>
+
+			<div class="tree well">
+				<node-tree ng-model="explorer.folders" tk-permission="1" tk-click="folderClick(node);" tk-default="{{explorer.folder_default}}"></node-tree></ul>
+			</div>
+		</sidebarjs>
+
+		<sidebarjs sidebarjs-name="menuSidebarJS"  sidebarjs-config="{position: 'left'}">
+
+			<div class="main-header--sidebar">
+				<nav class="main-nav" aria-label="Primary Nav">
+					<ul>
+					<li class="dropdown dropdown-1 main-nav__mob-menu">
+
+						<div>
+							<a href="@Url.Action("Local", "WorkSpace")" class="" target="_self" id="localspace" href="" >User Workspace</a>
+
+							<a class="" target="_self" sidebarjs-toggle="folderSidebarJS" ng-click="folderOpened();" href="">Folder Explorer</a>
+						</div>
+					</li>
+
+
+					</ul>
+				</nav>
+			</div>
+
+		</sidebarjs>
+	</div>
+</div>
+
+<upload id="upload1" to="webservices/spidereating/fileUpload" ng-model="fileupload" class="uploader hidden"></upload>
+
+
+ <script type="text/ng-template" id="delete-form.html">
+	<div class="modal-header">
+		<h3 class="modal-title" id="modal-title">[ID:{{$propCtrl.doc.id}}] - {{$propCtrl.doc.title}}</h3>
+	</div>
+	<div class="modal-body" id="modal-body">
+		<h3>Are you sure to delete this?</h3>
+		<div class="form-field ">
+			<label for="lead-filter-id" class="form-field__label">Reason</label>
+
+			<textarea type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$propCtrl.reason" autocomplete="off" ui-keypress="{13:'searchby()'}"
+			class="ng-pristine ng-valid ng-empty ng-touched">
+
+			</textarea>
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="$propCtrl.ok()">Delete</button>
+		<button class="btn btn-warning" type="button" ng-click="$propCtrl.cancel()">Cancel</button>
+	</div>
+</script>

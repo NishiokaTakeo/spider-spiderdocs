@@ -1,0 +1,163 @@
+// Type Scale
+// --------------------------------------------------
+
+html {
+	font-size: 62.5%;
+	text-size-adjust: 100%;
+}
+
+html, body {
+	text-rendering: geometricPrecision;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@font-face { font-family: 'Inter'; font-style:  normal; font-weight: 400; font-display: swap;
+	src: url("resources/webfont/Inter-Regular.woff2") format("woff2"), url("resources/webfont/Inter-Regular.woff") format("woff");
+}
+@font-face { font-family: 'Inter'; font-style:  normal; font-weight: 500; font-display: swap;
+	src: url("resources/webfont/Inter-Medium.woff2") format("woff2"), url("resources/webfont/Inter-Medium.woff") format("woff");
+}
+@font-face { font-family: 'Inter'; font-style:  normal; font-weight: 600; font-display: swap;
+	src: url("resources/webfont/Inter-SemiBold.woff2") format("woff2"), url("resources/webfont/Inter-SemiBold.woff") format("woff");
+}
+@font-face { font-family: 'Inter'; font-style:  normal; font-weight: 700; font-display: swap;
+	src: url("resources/webfont/Inter-Bold.woff2") format("woff2"), url("resources/webfont/Inter-Bold.woff") format("woff");
+}
+
+$font-stack: 'Inter', 'Helvetica', 'Arial', sans-serif;
+
+@mixin fw-reg { font-weight: 400; }
+@mixin fw-med { font-weight: 500; }
+@mixin fw-semi { font-weight: 600; }
+@mixin fw-bold { font-weight: 700; }
+
+// General type
+// -------------------------------------------------
+
+p {
+	margin: 0;
+	+ p {
+		margin: 25px 0 0;
+	}
+}
+
+h1, h2, h3, h4, h5 {
+	line-height: 1;
+}
+
+
+// Text
+// --------------------------------------------------
+.text {
+	// Alignment
+	&--left 		{ text-align: left; }
+	&--right 		{ text-align: right; }
+	&--center 		{ text-align: center; }
+
+	// Weights
+	&--bold			{ @include fw-bold; }
+	&--semi			{ @include fw-semi; }
+	&--med			{ @include fw-med; }
+	&--reg			{ @include fw-reg; }
+
+	// Sizes
+	&--24 			{ @include font-size(24); }
+	&--22 			{ @include font-size(22); }
+	&--20 			{ @include font-size(20); }
+	&--18 			{ @include font-size(18); }
+	&--16 			{ @include font-size(16); }
+	&--15 			{ @include font-size(15); }
+	&--14 			{ @include font-size(14); }
+	&--13 			{ @include font-size(13); }
+	&--12 			{ @include font-size(12); }
+
+	// Colours
+	&--white		{ color: $f; }
+	&--light		{ color: $light; }
+	&--dark			{ color: $dark; }
+	&--blue			{ color: $blue; }
+	&--navy			{ color: $navy; }
+	&--grey			{ color: $grey; }
+	&--red			{ color: $red; }
+	&--yellow		{ color: $yellow; }
+	&--teal			{ color: $teal; }
+
+}
+
+.link {
+	&--blue {
+		color: $blue;
+		transition: color $timing linear;
+		@at-root #{selector-append("a, button", &)}  {
+			@include hover() {
+				color: $dark;
+			}
+		}
+	}
+	&--green {
+		color: $green;
+		transition: color $timing linear;
+		@at-root #{selector-append("a, button", &)}  {
+			@include hover() {
+				color: $dark;
+			}
+		}
+	}
+	&--red {
+		color: $red;
+		transition: color $timing linear;
+		@at-root #{selector-append("a, button", &)}  {
+			@include hover() {
+				color: $dark;
+			}
+		}
+	}
+	&--grey {
+		color: $grey;
+		transition: color $timing linear;
+		@at-root #{selector-append("a, button", &)}  {
+			@include hover() {
+				color: $dark;
+			}
+		}
+	}
+	&--grey-cancel {
+		color: $grey;
+		transition: color $timing linear;
+		@at-root #{selector-append("a, button", &)}  {
+			@include hover() {
+				color: $red;
+			}
+		}
+	}
+	&--cancel {
+		color: $blue-muted;
+		transition: color $timing linear;
+		@at-root #{selector-append("a, button", &)}  {
+			@include hover() {
+				color: $red;
+			}
+		}
+	}
+}
+
+
+
+// Links
+// --------------------------------------------------
+
+a {
+	color: $blue;
+	text-decoration: none;
+	outline: 0;
+	transition: color $timing linear;
+}
+
+.js-focus-visible :focus:not(.focus-visible):not(select) {
+	outline: none;
+}
+.focus-visible {
+	outline: 2px dotted rgba(#ccc, 0.5);
+	//outline: 5px auto -webkit-focus-ring-color;
+}

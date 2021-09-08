@@ -1,0 +1,53 @@
+	<div class="modal-header">
+		<h3 class="modal-title" id="modal-title">Email Form - {{$ctrl.title}} </h3>
+	</div>
+	<div class="modal-body" id="modal-body">
+
+			<div class="modal-error-message">
+				<div ng-repeat="error in $ctrl.errors">
+					{{error}}
+				</div>
+
+			</div>
+
+			<div class="form-field form-field--66">
+				<label for="el-address" class="form-field__label">Subject</label>
+				<input type="text" name="el-address" id="el-address" value="" ng-model="$ctrl.email.subject" ng-change="$ctrl.validateTogo();">
+			</div>
+
+			<div class="form-field form-field--66">
+				<label for="el-address" class="form-field__label">To</label>
+				<input type="text" name="el-address" id="el-address" value="" ng-model="$ctrl.email.to" ng-change="$ctrl.validateTogo();">
+			</div>
+
+			<div class="form-field form-field--66" ng-show="$ctrl.show.cc">
+				<label for="el-address" class="form-field__label">CC</label>
+				<input type="text" name="el-address" id="el-address" value="" ng-model="$ctrl.email.cc" ng-change="$ctrl.validateTogo();">
+			</div>
+
+			<div class="form-field form-field--66" ng-show="$ctrl.show.bcc">
+				<label for="el-address" class="form-field__label">BCC</label>
+				<input type="text" name="el-address" id="el-address" value="" ng-model="$ctrl.email.bcc" ng-change="$ctrl.validateTogo();">
+			</div>
+
+			<div class="attachments" ng-show="$ctrl.email.attachments.length > 0">
+					<span data-url="will be filled" class="url">
+						<a ng-repeat="img in $ctrl.email.attachments">
+							<img ng-src="content/images/email-attachment-icon/{{img.extension}}.svg">
+						</a>
+					</span>
+
+			</div>
+
+			<div class="form-field form-field--66">
+				<label for="el-address" class="form-field__label">Body</label>
+
+				<ng-ckeditor ng-model="$ctrl.email.body" skin="moono-lisa" remove-buttons="Image" remove-plugins="iframe,flash,smiley" msn-count="
+				Number of typed characters:" ng-change="$ctrl.validateTogo();"></ng-ckeditor>
+			</div>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()" ng-disabled="! $ctrl.canGo">Send</button>
+		<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+	</div>

@@ -1,0 +1,90 @@
+[ng-controller="workspaceController"]
+{
+	.docs
+	{
+
+		&-table
+		{
+			// margin:0 1rem;
+
+			// &--with-scroll
+			// {
+			// 	margin:0 1rem;
+			// 	height: 400px;
+			// 	overflow: scroll;
+			// 	overflow-x: hidden;
+			// }
+
+			@extend .leads-table;
+
+			&__header
+			{
+				@extend .leads-table__header;
+				// top:0;
+			}
+			&__col-header
+			{
+				@extend .leads-table__col-header;
+			}
+
+			&__col
+			{
+				@extend .leads-table__col;
+
+				// padding-bottom:5px;
+
+				/*Indivisual columns*/
+
+			}
+
+			&__row
+			{
+				@extend .leads-table__row;
+
+				// .form-field--checkbox
+				// {
+				// 	position: relative;
+				// 	top: 0px;
+				// 	left: 0px;
+				// 	width: auto;
+				// }
+
+				// &--zero
+				// {
+				// 	// @extend
+				// 	min-height:340px;
+				// }
+
+			}
+
+			&__row--checked
+			{
+				@extend .leads-table__row--checked;
+			}
+
+			&-zero
+			{
+				@extend .leads-table-zero;
+			}
+
+		}
+
+		&-col--id
+		{
+			padding-left:40px;
+			width:60px;
+			flex:0.2;
+		}
+
+	}
+
+	& .section-header
+	{
+
+	}
+	& .form-field
+	{
+		//@extend .form-field;
+
+	}
+}

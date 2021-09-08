@@ -1,0 +1,27 @@
+
+<div class="modal-header">
+		<h3 class="modal-title" id="modal-title">New Group<span ng-show="checkout" class="notice"></span></h3>
+	</div>
+
+	<div class="modal-body" id="modal-body">
+
+		<form action="" method="post" name="myform" novalidate>
+			<div class="form-field ">
+				<label for="group_name" class="form-field__label">Group\Departments</label>
+				<input type="text" name="group_name" id="group_name" ng-model="model.group_name" autocomplete="off" required>
+				<p ng-show="myform.group_name.$dirty && myform.group_name.$error.required " class="help-block error-box">Group\Departments is mandatory.</p>
+
+			</div>
+			<div class="form-field ">
+				<label for="group_obs" class="form-field__label">Comment</label>
+				<input type="text" name="group_obs" id="group_obs" ng-model="model.obs" autocomplete="off" required>
+				<p ng-show="myform.group_obs.$dirty && myform.group_obs.$error.required" class="help-block error-box">Comment is mandatory.</p>
+			</div>
+
+		</form>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="ok()" >OK</button>
+		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+	</div>

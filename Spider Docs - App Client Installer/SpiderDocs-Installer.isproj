@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project ToolsVersion="3.5" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<!-- Select a Product Configuration -->
+		<InstallShieldProductConfiguration>Express</InstallShieldProductConfiguration>
+		<!-- Select a Visual Studio Configuration / InstallShield Release -->
+		<Configuration>Debug</Configuration>
+		<InstallShieldRelease>$(Configuration)</InstallShieldRelease>
+	</PropertyGroup>
+	<ItemGroup>
+		<!-- The InstallShieldProject item selects the project to build -->
+		<InstallShieldProject Include="$(MSBuildProjectDirectory)\$(MSBuildProjectName).isl"/>
+		<!-- The InstallShieldReleaseFlags sets Release Flags -->
+		<!--<InstallShieldReleaseFlags Include=""/>-->
+		<!-- The InstallShieldMergeModulePath specifies what directories are
+		searched for Merge Modules -->
+		<!--<InstallShieldMergeModulePath Include=""/>-->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The ProjectReference items refer to any Visual Studio solutions you want to automatically probe for Project Output Groups.  -->
+	</ItemGroup>
+	<ItemGroup>
+		<!-- The TaggedOutputs items allow you to explicitly add extra files to output groups. Each item must include both Name and OutputGroup, as well as TargetPath metadata values. -->
+		<!--<TaggedOutputs Include="C:\My Test Exe.exe">
+			<Name>My Test Project</Name>
+			<OutputGroup>Primary output</OutputGroup>
+			<TargetPath>My Test Exe.exe</TargetPath>
+		</TaggedOutputs> -->
+	</ItemGroup>
+	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2013Limited\InstallShield.targets"/>
+	<ItemGroup>
+		<ProjectReference Include="..\Spider Docs - AddInsOffice\Excel\AddInExcel2013.csproj">
+			<Name>AddInExcel2013</Name>
+			<Project>{4DFD8BD0-8F27-4272-BFB0-77C45DD8B73A}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Spider Docs - AddInsOffice\Outlook\AddInOutlook2013.csproj">
+			<Name>AddInOutlook2013</Name>
+			<Project>{6890B894-6D11-4EFD-89B4-2F60DCC9AFE2}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Spider Docs - AddInsOffice\OutlookAttachment\AddInOutlookAttachment2013.csproj">
+			<Name>AddInOutlookAttachment2013</Name>
+			<Project>{6CC6EE40-8B56-4EF2-B051-37B7ED51435D}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Spider Docs - AddInsOffice\PowerPoint\AddInPowerPoint2013.csproj">
+			<Name>AddInPowerPoint2013</Name>
+			<Project>{E96D76E3-7C0F-432A-903D-D243EA7E3FAF}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Spider Docs - AddInsOffice\Word\AddInWord2013.csproj">
+			<Name>AddInWord2013</Name>
+			<Project>{9F28271F-B5B8-4D14-A20B-53767EFD64AE}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\AutoUpdateService\AutoUpdateService.csproj">
+			<Name>AutoUpdateService</Name>
+			<Project>{9827EA79-8E27-4A66-9A03-EE8AA4FF2013}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Spider Docs - Components\Spider Docs - CheckBoxComboBox\CheckBoxComboBox.csproj">
+			<Name>CheckBoxComboBox</Name>
+			<Project>{70A25201-8EA4-48F8-A4A6-ED13ADF8823C}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Spider Docs - Components\Spider Docs - CheckComboBox\CheckComboBox.csproj">
+			<Name>CheckComboBox</Name>
+			<Project>{092968D1-9AC4-45C8-9D7B-9AF4A241052C}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\EPocalipse.IFilter\EPocalipse.IFilter.csproj">
+			<Name>EPocalipse.IFilter</Name>
+			<Project>{400462CE-40B3-498F-B95A-B1D2AE679359}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\SpiderDocs\Spider Docs.csproj">
+			<Name>Spider Docs</Name>
+			<Project>{7EF452C6-FA1C-4547-9F71-18096C796A5B}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\SpiderDocsCommon\SpiderDocsForm\SpiderDocsForms.csproj">
+			<Name>SpiderDocsForms</Name>
+			<Project>{9A48EA8C-727B-4CC3-961A-E49445749654}</Project>
+		</ProjectReference>
+		<ProjectReference Include=".\SpiderDocsInstaller\SpiderDocsInstaller.csproj">
+			<Name>SpiderDocsInstaller</Name>
+			<Project>{86B476DE-6D51-4E01-8A0F-C7E883EADF17}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\SpiderDocsCommon\SpiderDocsModels\SpiderDocsModels.csproj">
+			<Name>SpiderDocsModels</Name>
+			<Project>{2AE3FC14-31BD-4EDF-A629-46E019E89A20}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\SpiderDocsCommon\SpiderDocsModule\SpiderDocsModule.csproj">
+			<Name>SpiderDocsModule</Name>
+			<Project>{B084BDA0-2A1F-4D1A-A968-8EB0F8D60A96}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\UpdateWaitDialog\UpdateWaitDialog.csproj">
+			<Name>UpdateWaitDialog</Name>
+			<Project>{C797C51E-33AC-4729-8FCC-2E594A248EC5}</Project>
+		</ProjectReference>
+		<ProjectReference Include="..\Updater\Updater.csproj">
+			<Name>Updater</Name>
+			<Project>{EF13D397-4BE3-429B-B6C3-8E4F7A0B402D}</Project>
+		</ProjectReference>
+	</ItemGroup>
+</Project>

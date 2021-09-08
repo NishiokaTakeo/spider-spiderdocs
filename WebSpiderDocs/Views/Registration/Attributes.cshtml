@@ -1,0 +1,164 @@
+﻿
+@{
+	ViewBag.Title = "Attributes - Registration";
+	Layout = "~/Views/Shared/_LayoutWebApp.cshtml";
+}
+
+@section JavaScript
+{
+	@Scripts.Render("~/bundles/js/webapp/registration-attributes")
+
+}
+<div ng-controller="registrationAttributesController">
+
+
+	<div class="main-container">
+
+		<div class="page-header page-header--flat panel--navy">
+			<div class="page-header__title-full">
+				<h1>Registration - Attribute</h1>
+				<i class="glyphicon glyphicon-menu-hamburger size--2r spider-colour" sidebarjs-toggle="menuSidebarJS"></i>
+
+				<div class="form-field form-field--small">
+					<label for="" class="form-field__label">&nbsp;</label>
+					<div class="form-field__select--blue">
+						<button type="button" class="btn btn--secondary btn--yellow" ng-click="new()">New</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container container--edge container--underlap container--full">
+
+			<div class="reg-attribute-table panel--white panel--border">
+
+				<div class="reg-attribute-table__header">
+					<div class="reg-attribute-table__col reg-attribute-col--name">
+						<button type="button"
+								class="btn-sort">
+							<span>Name</span>
+						</button>
+					</div>
+					<div class="reg-attribute-table__col reg-attribute-col--type">
+						<button type="button"
+								class="btn-sort" >
+							<span>Type</span>
+						</button>
+					</div>
+					<!-- btn-sort--desc -->
+					<div class="reg-attribute-table__col reg-attribute-col--period">
+						<button type="button" class="btn-sort">
+							<span>
+								Default Period
+							</span>
+						</button>
+					</div>
+					<div class="reg-attribute-table__col reg-attribute-col--length">
+						<button type="button" class="btn-sort" >
+							<span>
+								Length
+							</span>
+						</button>
+					</div>
+					<div class="reg-attribute-table__col reg-attribute-col--mandatory">
+						<button type="button"
+								class="btn-sort">
+							<span>Mandatory</span>
+						</button>
+					</div>
+
+					<div class="reg-attribute-table__col reg-attribute-col--only-number">
+						<button type="button"
+								class="btn-sort">
+							<span>Only Number</span>
+						</button>
+					</div>
+					<div class="reg-attribute-table__col reg-attribute-col--edit hidden">
+						<button type="button"
+								class="btn-sort">
+							<span>Edit</span>
+						</button>
+					</div>
+
+				</div>
+
+				<div id="{{'item_'+$index}}" class="reg-attribute-table__row "  ng-repeat="attribute in data.attributes">
+
+
+					<div class="reg-attribute-table__col reg-attribute-col--name">
+						<div class="reg-attribute-table__col-header ">Name</div>
+						{{attribute.name}}
+					</div>
+					<div class="reg-attribute-table__col reg-attribute-col--type">
+						<div class="reg-attribute-table__col-header">Type</div>
+						{{find(data.types,attribute.id_type).type}}
+					</div>
+
+
+					 <div class="reg-attribute-table__col reg-attribute-col--period">
+						<div class="reg-attribute-table__col-header">Default Period</div>
+						<div class="reg-attribute-table__trim">
+							{{attribute.period_research}}
+						</div>
+					</div>
+					<div class="reg-attribute-table__col reg-attribute-col--length">
+						<div class="reg-attribute-table__col-header">Length</div>
+						<div class="reg-attribute-table__trim">
+							{{attribute.max_lengh}}
+						</div>
+					</div>
+
+
+					<div class="reg-attribute-table__col reg-attribute-col--mandatory">
+
+						<div class="reg-attribute-table__col-header">Mandatory</div>
+						<div class="reg-attribute-table__trim">
+							<div ng-repeat="item in attribute.mandatoryList">
+								{{item.name_folder}}
+							</div>
+						</div>
+
+					</div>
+
+					<div class="reg-attribute-table__col reg-attribute-col--only-number form-field form-field--shadow form-field--checkbox row-hover">
+						<label>
+							<input type="checkbox" ng-model="attribute.only_numbers_bool" class="" ng-disabled="true">
+							<span class="form-field__label">
+								<span class="hidden">Only Numbers</span>
+							</span>
+						</label>
+					</div>
+
+					<a href="" class="btn btn--small btn--shadow row-hover margin-top--15 reg-attribute-col--edit" ng-click="edit(attribute)">Edit</a>
+				</div>
+
+				<div class="reg-attribute-table-zero" ng-show="data.docs.length == 0">
+					No user is found!
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+		<sidebarjs sidebarjs-name="menuSidebarJS"  sidebarjs-config="{position: 'left'}">
+
+			<div class="main-header--sidebar">
+				<nav class="main-nav" aria-label="Primary Nav">
+					<ul>
+					<li class="dropdown dropdown-1 main-nav__mob-menu">
+						<div>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Index", "WorkSpace")" target="_self"  href="">Local Workspace</a>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Local", "WorkSpace")" target="_self"  href="">User Workspace</a>
+						</div>
+					</li>
+
+					</ul>
+				</nav>
+			</div>
+
+		</sidebarjs>
+
+</div>
+

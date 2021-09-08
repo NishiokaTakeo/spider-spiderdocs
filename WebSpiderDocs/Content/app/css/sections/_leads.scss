@@ -1,0 +1,608 @@
+// Leads
+// --------------------------------------------------
+
+.edit-lead {
+    margin: 0 0 60px;
+}
+.lead-edit-title {
+    strong {
+        color: #C1C4CE;
+        @include fw-reg;
+        margin-left: 5px;
+    }
+}
+
+.leads-table {
+    color: $navy;
+    line-height: 1.2;
+    @include font-size(12);
+    @include breakpoint(1550px, 0) {
+        @include font-size(13);
+    }
+    @include breakpoint(0, 1200px) {
+        background: transparent;
+        border: none;
+        padding: 10px;
+    }
+
+    $self: &;
+
+    a {
+        color: $blue;
+        @include hover() {
+            color: $dark;
+            text-decoration: underline;
+        }
+    }
+	&-zero
+	{
+		padding:3rem;
+	}
+
+    &__header {
+        display: none;
+
+        @include breakpoint(1400px, 0) {
+            display: flex;
+            align-items: flex-end;
+            width: 100%;
+            background: lighten($light, 5%);
+            border-bottom: 1px solid $light;
+
+            #{ $self }__col {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+
+            button {
+                padding: 0;
+                color: $grey-2;
+                @include fw-med;
+                text-align: left;
+                transition: color $timing linear;
+
+                span {
+                    display: flex;
+                    align-items: flex-end;
+                    padding-bottom: 14px;
+                    height: 58px;
+                }
+
+                @include hover() {
+                    color: $dark;
+                }
+            }
+        }
+
+        @media (min-width: 1400px) and (min-height: 850px) {
+            z-index: 20;
+            position: sticky;
+            top: 60px;
+        }
+    }
+
+    &__row {
+        position: relative;
+        border-bottom: 1px solid $light;
+        display: flex;
+        width: 100%;
+        transition: background $timing linear;
+        &:last-child {
+            border-bottom: none;
+        }
+		&--checked
+		{
+			opacity:1!important
+		}
+        @include breakpoint(0, 1399px) {
+            flex-wrap: wrap;
+        }
+        @include breakpoint(0, 1200px) {
+            background: $f;
+            border: 1px solid rgba($b, 0.1);
+            + #{ $self }__row {
+                margin-top: 10px;
+            }
+        }
+
+        @include breakpoint(1201px, 0) {
+            // Hover state for desktop
+            &:hover {
+                z-index: 5;
+                background: rgba($light, 0.3);
+                .row-hover {
+                    opacity: 1 !important;
+                }
+                .form-field {
+                    select {
+                        box-shadow: 0 0 0 1px rgba($b, 0.09), 0 2px 3px 0 rgba($b, 0.07);
+                    }
+                    &__select {
+                        &:after {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        .form-field--checkbox {
+            position: absolute;
+            top: 11px;
+            left: -10px;
+            width: auto;
+            @include breakpoint(0, 1399px) {
+                left: -5px;
+            }
+        }
+        .cta-edit-lead {
+            position: absolute;
+
+            @include breakpoint(1400px, 0) {
+                top: 11px;
+                right: -10px;
+            }
+            @include breakpoint(0, 1399px) {
+                bottom: 20px;
+                right: -5px;
+            }
+        }
+        .form-field {
+            @include breakpoint(1201px, 0) {
+                select {
+                    transition: box-shadow $timing linear;
+                    box-shadow: 0 0 0 1px rgba($b, 0), 0 2px 3px 0 rgba($b, 0);
+                    @include font-size(12);
+                    @include breakpoint(1550px, 0) {
+                        @include font-size(13);
+                    }
+                }
+                &__select {
+                    &:after {
+                        opacity: 0;
+                        transition: opacity $timing linear;
+                    }
+                }
+            }
+        }
+    }
+
+    &__col {
+        flex: 0.5;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        @include breakpoint(0, 1399px) {
+            flex: none;
+        }
+        @include breakpoint(981px, 1399px) {
+            &:nth-child(n+8) {
+                padding-top: 0;
+            }
+        }
+        @include breakpoint(0, 980px) {
+            padding-bottom: 15px;
+            &:nth-child(n+4) {
+                padding-top: 0;
+            }
+        }
+
+        // $col-zi: 15;
+        // @for $i from 1 to $col-zi {
+        //     &:nth-child( #{$i} ) {
+        //         z-index: #{ $col-zi - $i  };
+        //     }
+        // }
+
+        &-header {
+            display: none;
+            color: $grey-2;
+            @include fw-med;
+            margin: 0 0 7px;
+            position: relative;
+            z-index: 2;
+            @include breakpoint(0, 1399px) {
+                display: block;
+            }
+        }
+
+        .form-field {
+            @include breakpoint(1201px, 0) {
+                .lead-action--cross {
+                    top: 6px;
+                    margin-left: -9px;
+                }
+                &:not(.form-field--checkbox) {
+                    transform: translateY(-8px);
+                    margin-left: -10px;
+                }
+            }
+            @include breakpoint(0, 1200px) {
+                .lead-action--cross {
+                    top: 3px;
+                    margin-left: -30px;
+                }
+            }
+        }
+    }
+
+    &__trim {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+
+    @include breakpoint(1400px, 0) {
+        html:not(.is-touch) & {
+            .row-hover {
+                opacity: 0;
+                transition: opacity $timing linear;
+            }
+        }
+    }
+
+}
+
+.btn-sort {
+    span {
+        padding-right: 14px;
+    }
+
+    &--asc,
+    &--desc {
+        color: $blue !important;
+        span {
+            position: relative;
+            &:after {
+                bottom: 15px;
+                right: 0;
+                border: solid transparent;
+                content: " ";
+                height: 0;
+                width: 0;
+                position: absolute;
+                pointer-events: none;
+                border-color: rgba($blue, 0);
+                border-top-color: $blue;
+                border-width: 4px;
+                margin-left: -4px;
+            }
+        }
+    }
+    &--asc {
+        span {
+            &:after {
+                bottom: 19px;
+                border-top-color: transparent;
+                border-bottom-color: $blue;
+            }
+        }
+    }
+}
+
+// Individual Cols
+.lead-col {
+
+    &--id {
+        padding-left: 40px;
+        width: 120px;
+        @include breakpoint(0, 1800px) {
+            flex: none;
+        }
+        @include breakpoint(0, 1499px) {
+            width: 110px;
+        }
+        @include breakpoint(0, 1399px) {
+            width: 15%;
+        }
+        @include breakpoint(0, 980px) {
+            width: 50%;
+            padding-left: 45px;
+        }
+    }
+    &--addr {
+        //width: 136px;
+        @include breakpoint(0, 1399px) {
+            width: 250px;
+        }
+        @include breakpoint(0, 1399px) {
+            width: 20%;
+        }
+        @include breakpoint(0, 1200px) {
+            width: 15%;
+        }
+        @include breakpoint(0, 980px) {
+            width: 50%;
+        }
+    }
+    &--client {
+        padding-right: 25px;
+        @include breakpoint(0, 1800px) {
+            padding-right: 10px;
+        }
+        @include breakpoint(0, 1399px) {
+            width: 250px;
+        }
+        @include breakpoint(0, 1399px) {
+            width: 20%;
+            padding-right: 35px;
+        }
+        @include breakpoint(0, 1200px) {
+            width: 25%;
+        }
+        @include breakpoint(0, 980px) {
+            width: 50%;
+            padding-left: 45px;
+        }
+    }
+
+    &--phone {
+        position: relative;
+        .lead-item-phone {
+            position: relative;
+        }
+        .lead-action {
+            position: absolute;
+            top: -2px;
+            right: 100%;
+            margin: 0 4px 0 0;
+        }
+        @include breakpoint(0, 1800px) {
+            flex: none;
+            width: 120px;
+        }
+        @include breakpoint(0, 1399px) {
+            width: 15%;
+            padding-right: 35px;
+        }
+        @include breakpoint(0, 1200px) {
+            .lead-action {
+                top: -4px;
+                margin-right: 10px;
+            }
+        }
+        @include breakpoint(0, 980px) {
+            width: 50%;
+        }
+    }
+
+    &--rep {
+        @include breakpoint(1201px, 0) {
+            .form-field {
+                margin-left: -17px;
+            }
+        }
+        @include breakpoint(0, 1200px) {
+            .form-field {
+                position: relative;
+            }
+        }
+        @include breakpoint(0, 980px) {
+            padding-left: 45px;
+        }
+    }
+    &--rep,
+    &--status {
+        padding-right: 10px;
+        @include breakpoint(0, 1800px) {
+            flex: none;
+            padding-right: 5px;
+            width: 140px;
+        }
+        @include breakpoint(0, 1399px) {
+            width: 15%;
+        }
+        @include breakpoint(0, 980px) {
+            width: 50%;
+            padding-right: 15px;
+        }
+    }
+
+    &--created {
+        @include breakpoint(0, 1800px) {
+            flex: none;
+            width: 90px;
+        }
+        @include breakpoint(0, 1399px) {
+            padding-left: 40px;
+            width: 15%;
+        }
+        @include breakpoint(0, 980px) {
+            width: 50%;
+            padding-left: 45px;
+        }
+    }
+    &--contact {
+        flex: 0.75;
+        @include breakpoint(0, 1399px) {
+            width: 20%;
+        }
+        @include breakpoint(0, 980px) {
+            width: 50%;
+        }
+    }
+
+    &--firstapp {
+        flex: none;
+        width: 150px;
+        padding-right: 40px;
+        @include breakpoint(0, 1800px) {
+            width: 120px;
+        }
+        @include breakpoint(0, 1399px) {
+            width: 20%;
+        }
+        @include breakpoint(0, 980px) {
+            width: 50%;
+            padding-left: 45px;
+        }
+        @include breakpoint(0, 600px) {
+            width: 100%;
+        }
+    }
+
+    &--notes {
+        position: relative;
+        padding-right: 55px;
+        flex: 1.25;
+
+        .note-quick-add {
+            position: absolute;
+            right: 100%;
+            margin: -5px 10px 0 0;
+            @include breakpoint(0, 600px) {
+                left: 15px;
+                margin: 0;
+                top: -4px;
+            }
+        }
+        @include breakpoint(0, 1800px) {
+            flex: 1.15;
+        }
+        @include breakpoint(0, 1399px) {
+            flex: 1;
+        }
+        @include breakpoint(0, 600px) {
+            width: 100%;
+            flex: none;
+            padding-left: 45px;
+            margin-top: 10px;
+        }
+    }
+
+}
+
+.lead-contact-status {
+    display: flex;
+    align-items: flex-start;
+
+    svg {
+        display: block;
+        width: 21px;
+        height: 18px;
+        margin: -2px 11px 0 12px;
+        fill: $purple;
+    }
+
+    &.lead-contact--in {
+        svg {
+            fill: $teal;
+        }
+    }
+    &.lead-contact--out {
+        svg {
+            fill: $purple;
+        }
+        .lead-contact-arrow {
+            transform: rotate(180deg) translate(-26px, -18px);
+        }
+    }
+}
+
+
+// Listing for note
+.lead-notes-listing {
+
+    &__item {
+        border-top: 1px solid $light;
+        padding: 20px 0;
+        display: flex;
+
+        svg {
+            margin: 0 20px 0 0;
+            display: block;
+            flex: none;
+            width: 24px;
+            height: 22px;
+            fill: $blue;
+        }
+
+        &-meta {
+            display: flex;
+            margin: 0 0 5px;
+            @include font-size(12);
+            @include fw-semi;
+            span {
+                margin: 0 18px 0 0;
+            }
+            em {
+                color: $dark;
+            }
+            @include breakpoint(0, 767px) {
+                @include font-size(11);
+            }
+        }
+        &-body {
+            @include font-size(15);
+            @include breakpoint(0, 767px) {
+                @include font-size(13);
+            }
+        }
+
+        a {
+            color: $blue;
+            @include hover() {
+                color: $purple;
+            }
+        }
+    }
+
+    h2, h3 {
+        margin: 0 0 17px;
+    }
+
+    h3 {
+        color: $blue;
+        @include font-size(16);
+        @include fw-med;
+    }
+
+}
+
+
+// Attachments
+
+.lead-attachments {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 0 0 -20px;
+
+    &__item {
+        display: block;
+        flex: none;
+        width: calc(20% - 20px);
+        margin: 0 0 20px 20px;
+        color: $dark;
+        @include font-size(15);
+
+        &-img {
+            display: block;
+            width: 100%;
+            box-shadow: 0 0 5px $f, 0 0 0 1px rgba($b, 0.15);
+            padding: 6px;
+            border-radius: 4px;
+            margin: 0 0 16px;
+        }
+        img {
+            display: block;
+            width: 100%;
+        }
+        @include breakpoint(0, 1023px) {
+            width: calc(33.333% - 20px);
+        }
+        @include breakpoint(0, 600px) {
+            width: calc(50% - 10px);
+            margin: 0 0 10px 10px;
+            @include font-size(13);
+            &-img {
+                margin: 0 0 5px;
+            }
+        }
+    }
+    @include breakpoint(0, 600px) {
+        margin: 0 0 0 -10px;
+    }
+
+}

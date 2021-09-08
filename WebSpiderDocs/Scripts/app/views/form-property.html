@@ -1,0 +1,36 @@
+	<div class="modal-header">
+		<h3 class="modal-title" id="modal-title">File Properties - ID:{{$propCtrl.doc.id}} <span ng-show="$propCtrl.checkout" class="notice"> In Checkout</span></h3>
+	</div>
+	<div class="modal-body" id="modal-body">
+		<div class="form-field ">
+			<label for="lead-filter-id" class="form-field__label">Name</label>
+			<input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$propCtrl.name" ng-init="$propCtrl.name = $propCtrl.doc.title" autocomplete="off" ui-keypress="{13:'searchby()'}" class="ng-pristine ng-valid ng-empty ng-touched"  ng-disabled="$propCtrl.checkout">
+		</div>
+
+		<div class="form-field ">
+			<label for="lead-filter-id" class="form-field__label">Folder</label>
+			<input type="button" name="lead-filter-id" id="lead-filter-id" ng-model="$propCtrl.name_folder" ng-init="$propCtrl.name_folder=$propCtrl.doc.name_folder" ng-click="$propCtrl.folderclicked()" value="{{$propCtrl.name_folder || 'Please Select'}}" autocomplete="off" ng-disabled="$propCtrl.checkout">
+		</div>
+
+		<attribute tk-types="$propCtrl.types" tk-model="$propCtrl.type" tk-selected-attr="$propCtrl.selectedAttrs" tk-default-attrs="$propCtrl.defaultAttrs" on-generated="$propCtrl.attrchanged()" />
+
+		<ng-multi-combo tk-title="Notification Groups" ng-model="$propCtrl.notificationgroups" ng-disabled="$propCtrl.checkout"></ng-multi-combo>
+
+		<!-- <ng-multi-combo tk-title="Views" ng-model="$propCtrl.data.customviews" on-changed="customviewchanged();" tk-show-all=""></ng-multi-combo> -->
+
+
+
+
+		<div class="form-field">
+			<label for="lead-filter-customview" class="form-field__label">Views</label>
+			<div class="form-field__select form-field__select--blue">
+				<select name="lead-filter-customview" id="lead-filter-customview" ng-model="$propCtrl.customview" ng-options="opt.text for opt in $propCtrl.data.customviews track by opt.id"></select>
+			</div>
+		</div>
+
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="$propCtrl.ok()" ng-disabled="$propCtrl.checkout || ! $propCtrl.canGo">OK</button>
+		<button class="btn btn-warning" type="button" ng-click="$propCtrl.cancel()">Cancel</button>
+	</div>

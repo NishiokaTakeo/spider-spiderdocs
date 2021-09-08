@@ -1,0 +1,199 @@
+﻿@{
+	ViewBag.Title = "Folder - Permission";
+	Layout = "~/Views/Shared/_LayoutWebApp.cshtml";
+}
+
+@section JavaScript
+{
+	@Scripts.Render("~/bundles/js/webapp/options-preference")
+}
+
+<div ng-controller="OptionsPreferenceController">
+
+
+	<div class="main-container">
+
+
+		<div class="page-header page-header--flat panel--navy">
+			<div class="page-header__title-full">
+				<h1>Preferences - Options</h1>
+				<i class="glyphicon glyphicon-menu-hamburger size--2r spider-colour"
+					sidebarjs-toggle="menuSidebarJS"></i>
+			</div>
+		</div>
+
+
+
+		<div class="container">
+			<div class="panel panel--border edit-lead panel--light-turquoise">
+				<div class="edit-lead__group">
+					<div class="">
+						<!-- -->
+						<div class="form-field__group">
+							<h2 class="form-field__group-title">General Settings
+								<button id="cd-convert-pf-jobs" type="button" class="btn btn--mid btn--blue"
+									style="display: none;">Convert PF to NORMAL Job</button>
+							</h2>
+
+							<div class="form-field__group-inner form-wrap form-wrap--tight">
+								<div class="form-wrap__inner">
+
+								
+									<!-- <div class="edit-lead__col" > -->
+									<div class="" >
+										<div class="form-wrap__inner">
+
+											<!--<div class="form-field form-field--checkbox">
+												<input ng-model="view.models.autoLogin" type="checkbox" id="save-login-password">
+												<label for="save-login-password" class="form-field__label">Save login password</label>
+											</div>-->
+
+											<!--<div class="form-field form-field--checkbox">
+												<input ng-model="view.models.autoStartup" type="checkbox" id="auto-start">
+												<label for="auto-start" class="form-field__label">Start SpiderDocs when I log on to my computer.</label>
+											</div>-->
+											
+											<div class="form-field form-field--checkbox" style="width:50%">
+												<input ng-model="view.models.ocr" type="checkbox" id="ocr-functionality">
+												<label for="ocr-functionality" class="form-field__label">Enable OCR functionality.</label>
+											</div>
+											
+											<div class="form-field form-field--checkbox"  style="width:50%">
+												<input ng-model="view.models.defaultOCRImport" type="checkbox" id="ocr-functionality-def">
+												<label for="ocr-functionality-def" class="form-field__label">Yes as default</label>
+											</div>
+											
+											<div class="form-field form-field--checkbox">
+												<input ng-model="view.models.defaultPDFMerge" type="checkbox" id="merge-pdfs">
+												<label for="merge-pdfs" class="form-field__label">Merge PDFs</label>
+											</div>
+											
+											<!--Not Userd-->
+											<div class="form-field form-field--checkbox hidden"> 
+												<input ng-model="view.models.excludeArchive" type="checkbox" id="excl-archived-docs">
+												<label for="excl-archived-docs" class="form-field__label">Exclude archived documents</label>
+											</div>
+
+											<div class="form-field form-field--checkbox">
+												<input ng-model="view.models.enableFolderCreationByUser" type="checkbox" id="user-can-create-folder">
+												<label for="user-can-create-folder" class="form-field__label">Enabled users can create folders</label>
+											</div>
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<!-- -->
+						<div class="form-field__group">
+							<h2 class="form-field__group-title">Double-Click Behavior</h2>
+							<div class="form-field__group-inner form-wrap form-wrap--tight">
+								<div class="form-wrap__inner">
+									
+										<div class="form-field form-field--radio">
+											<input ng-model="view.models.dblClickBehavior" id="dblclick-open-to-read" name="dblclickBehavior" type="radio" value="0">
+											<label for="dblclick-open-to-read" class="form-field__label">Open to Read (Read only)</label>
+										</div> 
+									
+
+									
+										<div class="form-field form-field--radio">
+											<input ng-model="view.models.dblClickBehavior" id="dblclick-check-out" name="dblclickBehavior" type="radio" value="1">
+											<label for="dblclick-check-out" class="form-field__label">Check Out (Edit)</label>
+										</div>
+									
+
+									
+										<div class="form-field form-field--radio">
+											<input ng-model="view.models.dblClickBehavior" id="dblclick-check-out-with-footer" name="dblclickBehavior" type="radio" value="2">
+											<label for="dblclick-check-out-with-footer" class="form-field__label">Check Out With Footer (Edit)</label>
+										</div>
+									
+
+
+								</div>
+							</div>
+						</div>
+					
+					
+
+						<!-- -->
+						<div class="form-field__group">
+							<h2 class="form-field__group-title">Office Add-in</h2>
+							<div class="form-field__group-inner form-wrap form-wrap--tight">
+								<div class="form-wrap__inner">
+
+
+									
+									<div class="form-field form-field--checkbox">
+										<input ng-model="view.models.showImportDialogNewMail" type="checkbox" id="addin-ask-email-when-import">
+										<label for="addin-ask-email-when-import" class="form-field__label">Ask to import a sent email</label>
+									</div>
+
+
+
+								</div>
+							</div>
+						</div>
+						
+						
+						<div class="form-field form-field--flex form-field--small form-field--shadow">
+							<div class="form-button width--100">
+								<button type="button" class="btn btn--secondary btn--blue float--right" ng-click="savePreference()" >Save</button>
+							</div>
+						</div>
+		
+						<!-- -->
+						<!-- <div class="form-field__group">
+							<h2 class="form-field__group-title">Remote server details</h2>
+							<div class="form-field__group-inner form-wrap form-wrap--tight" >
+								<div class="form-wrap__inner">
+
+									
+									<div class="form-field form-field--66">
+										<label for="remote-address" class="form-field__label">Address</label>
+										<input ng-model="view.models.updateServer2" type="text" id="remote-address" value="" ng-disabled=" ! enabledMultiAddress()">
+									</div>
+
+									<div class="form-field form-field--33">
+										<label for="remote-address-port" class="form-field__label">Port</label>
+										<input ng-model="view.models.updateServerPort2" type="text" id="remote-address-port" value="" ng-disabled=" ! enabledMultiAddress()">
+									</div>
+
+								</div>
+							</div>
+						</div> -->
+											
+					</div>
+
+				</div>
+				<div class="edit-lead__group">
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<sidebarjs sidebarjs-name="menuSidebarJS" sidebarjs-config="{position: 'left'}">
+
+		<div class="main-header--sidebar">
+			<nav class="main-nav" aria-label="Primary Nav">
+				<ul>
+					<li class="dropdown dropdown-1 main-nav__mob-menu">
+						<div>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action(" Index", "WorkSpace" )"
+								target="_self" href="">Local Workspace</a>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action(" Local", "WorkSpace" )"
+								target="_self" href="">User Workspace</a>
+						</div>
+					</li>
+
+				</ul>
+			</nav>
+		</div>
+
+	</sidebarjs>
+
+</div>

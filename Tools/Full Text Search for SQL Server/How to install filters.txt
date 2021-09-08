@@ -1,0 +1,65 @@
+* How to install filters for full text search
+
+1. Uninstall old filters.
+
+2. Install 'FilterPack32bit' or 'FilterPack64bit'. (The 32 or 64bit depends on the server's version.)
+
+3. Install 'filterpacksp2010-kb2687447-fullfile-x86-en-us' or 'filterpacksp2010-kb2687447-fullfile-x64-en-us'.
+
+4. Install 'PDFFilter64installer'.
+
+5. Import the following values to the registry. (You can modify 'pdf.reg'.)
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[Instance Name (E.g. 'MSSQL10_50.MSSQLSERVER')]\MSSearch\Filters\.pdf]
+@="{E8978DA6-047F-4E3D-9C78-CDBE46041603}"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[Instance Name]\MSSearch\Filters\CLSID\{E8978DA6-047F-4E3D-9C78-CDBE46041603}]
+@="PDFFilter.dll"
+"ThreadingModel"="Both"
+"Flags"=dword:00000001
+
+6. Add the following path to system path.
+';C:\Program Files\Adobe\Adobe PDF iFilter 9 for 64-bit platforms\bin\'
+
+7.Search 'F07F3920-7B8C-11CF-9BE8-00AA004B9986' in the following key using Registry Editor.
+Delete all extensions found by the searching.
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[Instance Name]\MSSearch\Filters
+
+8. Execute the following commands using SQL Server Management Studio and check if proper filters are loaded.
+(To check whether the proper filters are loaded or not, run the query below and find .docx and .pdf entry in document_type.
+ If there are these extensions, it is properly loaded.)
+EXEC sp_fulltext_service 'load_os_resources', 1 
+EXEC sp_fulltext_service 'update_languages' 
+EXEC sp_fulltext_service 'restart_all_fdhosts' 
+select * from  sys.fulltext_document_types
+
+9. Restart all SQL server instances.
+
+10. Rebuild all full text search catalogs.
+Databases->[Databasename]->Storage->Full Text Catalogs->SpiderFullText 
+Right click the icon above and Rebuild.
+
+11. Restart the server if full text search does not work.
+
+Original document:
+http://dougbert.com/blog/post/Get-the-Office-2010-Filter-Pack-for-search-in-SQL-Server-2012.aspx
+
+
+
+
+select * from  sys.fulltext_document_types
+
+/*SELECT *  FROM CONTAINSTABLE( document_version, filedata, 'pre' );
+select v.id,v.extension from document_version as v inner join document as d on d.id_latest_version = v.id where contains(filedata ,'pre') 
+select v.id,v.extension from document_version as v inner join document as d on d.id_latest_version = v.id where FREETEXT(filedata ,'pre') 
+SELECT *  FROM FREETEXTTABLE ( document_version, filedata, 'pre' );
+*/
+--SELECT display_term FROM sys.dm_fts_parser('"pre"', 1033, NULL, 0);
+--SELECT display_term FROM sys.dm_fts_parser('"group"', 0, NULL, 0);
+
+--create fulltext index on dbo.document_version(filedata type COLUMN  extension  Language 2057) key index PK_document_versionn WITH CHANGE_TRACKING AUTO  
+
+/*SELECT * FROM sys.fulltext_catalogs
+SELECT * FROM sys.fulltext_indexes 
+SELECT * FROM sys.dm_fts_parser('group', 1033, 0, 0 )
+*/
+--ALTER FULLTEXT INDEX ON document_version START FULL POPULATION

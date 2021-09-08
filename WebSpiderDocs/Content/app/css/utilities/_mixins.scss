@@ -1,0 +1,74 @@
+// REM font size with px fallback
+@mixin font-size($sizeValue: 16) {
+	font-size: ($sizeValue / 10) + rem;
+}
+
+@mixin hide {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px !important;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+}
+
+// Setting a flexible ratio
+@mixin ratio($ratio){
+	&:before {
+		content: '';
+		display: block;
+		width: 100%;
+		padding-top: $ratio;
+	}
+}
+
+@mixin cover($pos: center) {
+    background-repeat: no-repeat;
+    background-position: $pos;
+    background-size: cover;
+}
+
+// hover helper
+@mixin hover() {
+    html:not(.mobile):not(.tablet) &:hover,
+    html:not(.mobile):not(.tablet) &:focus,
+    &.on_press {
+        @content;
+    }
+}
+
+// hover helper
+@mixin transition() {
+	html.reduced-motion & {
+		transition: none !important;
+		transition-duration: 0s !important;
+		@content;
+	}
+    html:not(.reduced-motion) .waypoint-reveal & {
+        @content;
+    }
+}
+
+
+// breakpoints
+@mixin breakpoint($min: 0, $max: 0, $side: 'width') {
+    // check to see if first variable is string or number
+    $type: type-of($min);
+    $sideType: type-of($side);
+
+    // if it's a number, check if min, max or both are required.
+    // then check if the values of $side are correctly spelt 'width' or 'height'
+    // write new breakpoint using these boundaries.
+    // default to 'all' if nothing specified.
+    @if $type == number and $sideType == string {
+        @if $side == 'width' or $side == 'height' {
+            $query: "all" !default;
+            @if      $min != 0 and $max != 0 { $query: "(min-#{$side}: #{$min}) and (max-#{$side}: #{$max})"; } // set both min and max
+            @else if $min != 0 and $max == 0 { $query: "(min-#{$side}: #{$min})"; } // set just min
+            @else if $min == 0 and $max != 0 { $query: "(max-#{$side}: #{$max})"; } // set just max
+            @media #{$query} { @content; }
+        }
+    }
+}

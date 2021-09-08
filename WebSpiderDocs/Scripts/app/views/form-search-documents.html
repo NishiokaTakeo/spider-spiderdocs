@@ -1,0 +1,117 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">{{$ctrl.title}} ({{$ctrl.extension}})</h3>
+</div>
+<div class="modal-body" id="modal-body">
+
+
+
+	<div class="container--searchdocs container--edge container--full">
+
+
+
+		<div class="searchdocs-table  panel--white panel--border">
+
+			<div class="searchdocs-table__header">
+
+				<div class="searchdocs-table__col searchdocs-col--id">
+					<button type="button"
+							class="btn-sort" >
+						<span>ID</span>
+					</button>
+				</div>
+				<div class="searchdocs-table__col searchdocs-col--newname">
+					<button type="button" class="btn-sort">
+						<span>
+							Name
+						</span>
+					</button>
+				</div>
+				<div class="searchdocs-table__col searchdocs-col--folder">
+					<button type="button" class="btn-sort">
+						<span>
+							Folder
+						</span>
+					</button>
+				</div>
+			</div>
+
+			<div id="{{'item_'+$index}}" class="searchdocs-table__row {{doc.selected ? 'searchdocs-table__row--checked':''}}" ng-repeat="doc in $ctrl.docs">
+
+				<div class="form-field form-field--shadow form-field--checkbox row-hover">
+					<label>
+						<input type="checkbox" ng-model="doc.selected" ng-change="$ctrl.selectChanged(doc)">
+						<span class="form-field__label">
+							<span class="hidden">Select Row</span>
+						</span>
+					</label>
+				</div>
+
+				<!-- <div class="searchdocs-table__col lead-col--id">
+					<div class="searchdocs-table__col-header ">ID</div>
+					{{doc.id}}
+				</div> -->
+				<div class="searchdocs-table__col searchdocs-col--id">
+					<div class="searchdocs-table__col-header ">ID</div>
+					<div class="searchdocs-table__trim">
+						{{doc.id}}
+					</div>
+				</div>
+				<div class="searchdocs-table__col searchdocs-col--newname">
+					<div class="searchdocs-table__col-header ">Name</div>
+					<div class="searchdocs-table__trim">
+						{{doc.title.split('.').slice(0, -1).join('.')}}
+					</div>
+				</div>
+				<div class="searchdocs-table__col searchdocs-col--folder">
+					<div class="searchdocs-table__col-header ">Folder</div>
+					<div class="searchdocs-table__trim">
+						{{doc.name_folder}}
+					</div>
+				</div>
+			</div>
+
+
+			<div class="searchdocs-table-zero" ng-show="$ctrl.docs.length == 0">
+				Document not found. Please search again or save as new.
+			</div>
+		</div>
+
+		<div class='search-panel--searchdocs'>
+
+			<div class="form-field form-field--small text-align--right">
+				<button type="button" class="btn btn--secondary btn--yellow" ng-click="$ctrl.searchDoc()">Search Doc</button>
+			</div>
+
+			<div class="form-field">
+				<label for="lead-filter-rep" class="form-field__label">Id</label>
+				<div class="">
+					<input type="number" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.search.id" ng-init="$ctrl.search.id=''" autocomplete="off" >
+				</div>
+
+			</div>
+
+			<div class="form-field ">
+				<label for="lead-filter-id" class="form-field__label">Name</label>
+				<input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.search.title" ng-init="$ctrl.search.title=''" autocomplete="off">
+			</div>
+
+			<div class="form-field ">
+				<label for="lead-filter-id" class="form-field__label">Folder</label>
+
+				<input type="button" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.search.name_folder" ng-init="" autocomplete="off" ng-click="$ctrl.folderclicked()" value="{{$ctrl.search.name_folder || 'Please Select'}}" >
+
+			</div>
+
+			<attribute tk-types="$ctrl.docTypes" tk-model="$ctrl.type" tk-selected-attr="$ctrl.selectedAttr"/>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()" ng-disabled="! $ctrl.canGo">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

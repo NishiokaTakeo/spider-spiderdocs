@@ -1,0 +1,120 @@
+<html>
+	<head>
+		<script src="./Scripts/jquery-1.10.1.min.js"></script>
+		<script src="./Scripts/md5.js"></script>
+		
+		<!-- <script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>-->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+        <script src="./Scripts/lodash.min.js"></script>
+        <script src="./Scripts/q.min.js"></script>
+        <script src="./Scripts/global.js"></script>
+		<script src="./Scripts/spiderdocsweb.js"></script>
+        <script src="./Scripts/spiderdocs-conf.js"></script>
+        <script src="./Scripts/spiderdocs-client.js"></script>        
+	</head>
+
+    <body>
+        <input id="btnLogin" type="button" value="Login" onclick="Login();" />
+        <br />
+        <br />
+
+        <input id="btnLogout" type="button" value="Logout" onclick="Logout();" />
+        <br />
+        <br />
+
+        <input id="btnGetDocuments" type="button" value="GetDocuments" onclick="GetDocuments();" />
+        <br />
+        <br />
+
+        <input id="btnExport" type="button" value="Export" onclick="Export();" />
+        <br />
+        <br />
+
+        <input type="file" id="txtUploadFile" />
+        <input id="btnUploadFile" type="button" value="UploadFile" onclick="UploadFile();" />
+        <br />
+        <br />
+
+        <input type="text" id="urlUploadRemoteFile" value="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-4/256/JPG-icon.png" />
+        <input id="btnUploadRemoteFile" type="button" value="Upload Remote File" onclick="UploadRemoteFile();" />
+        <input id="btnUploadRemoteImport" type="button" value="UploadRemote & Import at once" onclick="RemoteImport();" />
+        <input id="" type="button" value="UploadRemote & SaveDoc" onclick="SaveDoc();" />
+
+        <br />
+        <br />
+
+        <input type="text" id="txtUpdatePropertyDocId" value="1000" />
+        <input id="btnUpdateProperty" type="button" value="UpdateProperty" onclick="UpdateProperty_GetDocument();" />
+        <br />
+        <br />
+
+        <input id="btnDelete" type="button" value="Delete" onclick="Delete();" />
+        <br />
+        <br />
+
+
+        <input id="btnCheckOut" type="button" value="Check Out" onclick="CheckOut();" />
+        <br />
+        <br />
+        
+        <input id="btnCancellCheckOut" type="button" value="Cancell Check Out" onclick="CancelCheckOut();" />
+        <br />
+        <br />
+
+
+        <input id="btnGetFolders" type="button" value="GetFolders" onclick="GetFolders();" />
+        <br />
+        <br />
+
+        <input id="btnSaveFolder" type="button" value="SaveFolder" onclick="SaveFolder();" />
+        <br />
+        <br />
+
+        <input id="btnGetDocumentTypes" type="button" value="GetDocumentTypes" onclick="GetDocumentTypes();" />
+        <br />
+        <br />
+
+        <input id="btnGetAttributes" type="button" value="GetAttributes" onclick="GetAttributes();" />
+        <br />
+        <br />
+
+        <input id="btnGetAttributeComboboxItems" type="button" value="GetAttributeComboboxItems" onclick="GetAttributeComboboxItems();" />
+        <br />
+        <br />
+
+        <input type="text" id="txtGetAttributeDocType" value="" />
+        <input id="btnGetAttributeDocType" type="button" value="GetAttributeDocType" onclick="GetAttributeDocType();" />
+        <br />
+        <br />
+
+        <input id="btnGetAttributeComboboxItemByItemId" type="button" value="GetAttributeComboboxItemByItemId" onclick="GetAttributeComboboxItemByItemId();" />
+        <br />
+        <br />
+
+        <input type="text" id="txtEditAttributeComboboxItem" value="" />
+        <input id="btnEditAttributeComboboxItem" type="button" value="EditAttributeComboboxItem" onclick="EditAttributeComboboxItem();" />
+        <br />
+        <br />
+
+        <input id="btnGetUser" type="button" value="Get User" onclick="GetUser();" />
+        <br />
+        <br />
+
+        <input id="btnUpdateUser" type="button" value="Update User" onclick="UpdateUser();" />
+        <br />
+        <br />
+        <input id="btnEmailLink" type="button" value="Email with Link" onclick="EmailDocLink();" />
+        <br />
+        <br />
+        <input type="text" id="txtGetHistoryID" value="" />
+        <input type="button" value="GetHistories" onclick="GetHistories();" />
+        <br />
+        <br />
+        <input type="text" id="txtMerges" value="4070,1010,3025,4043,4037,1024" />pdf,msg,png,jpg,txt,pdf
+        <input type="button" value="Merge files" onclick="ToPdf();" />
+        <br />
+        <br />
+
+    </body>
+</html>

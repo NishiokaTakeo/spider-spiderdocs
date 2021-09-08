@@ -1,0 +1,263 @@
+﻿
+@{
+	ViewBag.Title = "Folder - Permission";
+	Layout = "~/Views/Shared/_LayoutWebApp.cshtml";
+}
+
+@section JavaScript
+{
+	@Scripts.Render("~/bundles/js/webapp/permission-folder")
+
+}
+
+<div ng-controller="permissionFolderController">
+
+
+	<div class="main-container">
+
+
+		<div class="page-header page-header--flat panel--navy">
+			<div class="page-header__title-full">
+				<h1>Registration - Folder</h1>
+				<i class="glyphicon glyphicon-menu-hamburger size--2r spider-colour" sidebarjs-toggle="menuSidebarJS"></i>
+
+
+				<div class="leads-filters__inner">
+					<div class="leads-filters__contents filters-bar">
+
+						<div class="form-field form-field--small  form-field--setup-permit">
+							<label for="search-folder" class="form-field__label">Folder to setup permission</label>
+							<input type="button" name="search-folder" id="search-folder" ng-model="view.search.name_folder" ng-click="openSearchFolderForm()" value="{{view.search.name_folder || 'Please Select'}}" autocomplete="off">
+						</div>
+
+						<div class="form-field form-field--small form-field--inherit-permit">
+							<label for="inherit-permissions" class="form-field__label">Permission inherited folder: {{view.inheritance.from}}</label>
+							<input type="button" name="inherit-permissions" id="inherit-permissions" ng-click="toggleInheritance()" value="{{ view.inheritance.is ? 'Disable':'Enable'}} inheritance" autocomplete="off" ng-disabled=" !view.search.id_folder || !view.search.id_parent">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container container--edge container--underlap container--full flex">
+
+			<div class="flex--grow">
+				<div class="section-header--invert">Groups</div>
+				<div class="registration-folder-permission-table--with-scroll panel--white panel--border" >
+
+					<div class="registration-folder-permission-table__header">
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--type-name">
+							<button type="button"
+									class="btn-sort">
+								<span>Group names</span>
+							</button>
+						</div>
+					</div>
+
+					<div id="{{'item_'+$index}}" class="registration-folder-permission-table__row"  ng-repeat="group in view.data.groups" ng-click="groupChange(group)">
+
+
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--type-name">
+							<div class="registration-folder-permission-table__col-header">Type</div>
+
+							<button type="button"><span>{{group.group_name}}</span></button>
+						</div>
+
+						<a href="" class="btn btn--small btn--shadow row-hover margin-top--15 registration-folder-permission-col--edit" target="_self" ng-click="addGroupToFolder(group)" ng-show="! view.inheritance.is ">Add</a>
+
+						@* <a href="" class="btn btn--small btn--shadow row-hover margin-top--15 registration-folder-permission-col--delete" target="_self" ng-click="delete(type)" >Delete</a> *@
+					</div>
+
+					<div class="registration-folder-permission-table-zero" ng-show="data.groups.length == 0">
+						No type is found!
+					</div>
+				</div>
+
+
+				<div class="section-header">Members of group</div>
+				<div class="registration-folder-permission-table--with-scroll panel--white panel--border " >
+
+					<div class="registration-folder-permission-table__header" >
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--type-name">
+							<button type="button"
+									class="btn-sort">
+								<span>User names</span>
+							</button>
+						</div>
+					</div>
+
+					<div id="{{'item_'+$index}}" class="registration-folder-permission-table__row "  ng-repeat="user in view.data.users">
+
+
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--type-name">
+							<div class="registration-folder-permission-table__col-header">User names</div>
+
+							<button type="button"><span>{{user.name}}</span></button>
+						</div>
+
+						<a href="" class="btn btn--small btn--shadow row-hover margin-top--15 registration-folder-permission-col--edit" target="_self" ng-click="addUserToFolder(user)" ng-show="! view.inheritance.is ">Add</a>
+
+						@* <a href="" class="btn btn--small btn--shadow row-hover margin-top--15 registration-folder-permission-col--delete" target="_self" ng-click="delete(type)" >Delete</a> *@
+					</div>
+
+					<div class="registration-folder-permission-table-zero" ng-show="view.users.length == 0">
+						No type is found!
+					</div>
+				</div>
+
+			</div>
+			<div class="flex--grow">
+				<div>
+					<div class="section-header--invert" >Allowed</div>
+				</div>
+				<div class="registration-folder-permission-table panel--white panel--border ">
+
+					<div class="registration-folder-permission-table__header">
+
+						@* <div class="registration-folder-permission-table__col registration-folder-permission-col--checkbox">
+							<button type="button"
+									class="btn-sort">
+								<span>Select</span>
+							</button>
+						</div> *@
+
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--attr-name">
+							<button type="button"
+									class="btn-sort">
+								<span>Group/User Name</span>
+							</button>
+						</div>
+					</div>
+
+					<div id="{{'item_'+$index}}" class="registration-folder-permission-table__row {{item.checked ? 'selected':''}}" ng-repeat="item in  view.data.allowed" ng-click="toggleSelected(item)">
+
+						@* <div class="registration-folder-permission-table__col registration-folder-permission-col--checkbox">
+
+							<div class="form-field form-field--shadow form-field--checkbox" >
+								<label>
+									<input type="checkbox" ng-model="item.checked"  ng-change="toggleSelected(item, {{item.checked}})">
+									<span class="form-field__label">
+										<span class="hidden">Select</span>
+									</span>
+								</label>
+							</div>
+
+						</div> *@
+
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--attr-name">
+							<div class="registration-folder-permission-table__col-header ">Group Or User Name</div>
+							{{item.name}}
+						</div>
+
+						<a href="" class="btn btn--small btn--shadow row-hover margin-top--15 registration-folder-permission-col--edit" target="_self" ng-click="delete(item)"  ng-show="view.inheritance.from.toLowerCase() == 'none'">Delete</a>
+
+					</div>
+
+					<div class="registration-folder-permission-table__row--zero" ng-show="view.data.allowed.length == 0" >
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="flex--grow">
+
+				<div>
+					<div class="section-header--invert">Permissions</div>
+				</div>
+
+				<div class="registration-folder-permission-table panel--white panel--border ">
+
+					<div class="registration-folder-permission-table__header">
+
+
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--attr-name">
+							<button type="button"
+									class="btn-sort">
+								<span>Permission</span>
+							</button>
+						</div>
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--checkbox">
+							<button type="button"
+									class="btn-sort">
+								<span>Allow</span>
+							</button>
+						</div>
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--checkbox">
+							<button type="button"
+									class="btn-sort">
+								<span>Deny</span>
+							</button>
+						</div>
+					</div>
+
+					<div id="{{'item_'+$index}}" class="registration-folder-permission-table__row " ng-repeat="per in view.data.permissions">
+
+
+
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--attr-name">
+							<div class="registration-folder-permission-table__col-header ">Permission</div>
+							{{ per.name}}
+						</div>
+
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--checkbox">
+
+							<div class="form-field form-field--shadow form-field--checkbox" >
+								<label>
+									<input type="checkbox" ng-model="per.allow"  ng-change="permissionChanged('allow',per)">
+									<span class="form-field__label">
+										<span class="hidden">Allow</span>
+									</span>
+								</label>
+							</div>
+
+						</div>
+						<div class="registration-folder-permission-table__col registration-folder-permission-col--checkbox">
+
+							<div class="form-field form-field--shadow form-field--checkbox" >
+								<label>
+									<input type="checkbox" ng-model="per.deny" ng-change="permissionChanged('deny',per)">
+									<span class="form-field__label">
+										<span class="hidden">Deny</span>
+									</span>
+								</label>
+							</div>
+
+						</div>
+
+
+					</div>
+
+					<div class="registration-folder-permission-table__row--zero"  ng-show="view.data.permissions.length == 0" >
+
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+		<sidebarjs sidebarjs-name="menuSidebarJS"  sidebarjs-config="{position: 'left'}">
+
+			<div class="main-header--sidebar">
+				<nav class="main-nav" aria-label="Primary Nav">
+					<ul>
+					<li class="dropdown dropdown-1 main-nav__mob-menu">
+						<div>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Index", "WorkSpace")" target="_self"  href="">Local Workspace</a>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Local", "WorkSpace")" target="_self"  href="">User Workspace</a>
+						</div>
+					</li>
+
+					</ul>
+				</nav>
+			</div>
+
+		</sidebarjs>
+
+</div>
+

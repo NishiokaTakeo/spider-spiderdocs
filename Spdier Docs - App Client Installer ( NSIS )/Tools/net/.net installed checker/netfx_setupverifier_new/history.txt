@@ -1,0 +1,199 @@
+.NET Framework verification tool change history
+
+The current build was created on October 26, 2016
+
+
+For more information about the .NET Framework verification tool, see the following blog post:
+
+https://blogs.msdn.microsoft.com/astebner/2008/10/13/net-framework-setup-verification-tool-users-guide/
+
+
+-------------------
+  Change history
+-------------------
+
+February 4, 2008    -  Initial version of the tool created.
+
+February 11, 2008   -  Added command line switches to specify the locations
+                       of the log files created by setupverifier.exe.
+
+February 29, 2008   -  Added steps to verify all of the files installed by
+                       the .NET Framework 3.0 and 3.5.
+
+March 4, 2008       -  Updated the tool to correctly handle some files for 
+                       the .NET Framework 3.0 that are only installed on
+                       Windows Vista and higher and some files that are not
+                       installed on 64-bit OS's.
+
+March 5, 2008       -  Fixed a .NET Framework 3.0 registry value that was
+                       incorrectly reporting failure on 64-bit Windows Vista.
+
+March 17, 2008      -  Fixed some registry values and a file that were 
+                       incorrectly reporting failure on Windows Vista.
+
+March 28, 2008      -  Added log file entry to indicate what OS version the
+                       tool is being run on.
+
+June 5, 2008        -  Fixed issue retrieving the Windows directory on 
+                       systems with Terminal Services enabled.
+
+June 24, 2008       -  Fixed false positive for a file installed by the .NET
+                       Framework 3.0 SP1 but not the original version of the
+                       .NET Framework 3.0.
+
+September 3, 2008   -  Added logic to the setup verification tool to verify
+                       the .NET Framework 2.0 SP2, 3.0 SP2 and 3.5 SP1.
+
+September 4, 2008   -  Added logging for .NET Framework version detection.  Updated 
+                       the tool to allow configuring the window title in cleanup.ini.
+
+September 5, 2008   -  Fixed some false positives in .NET Framework 1.1
+                       verification logic.
+
+September 15, 2008  -  Fixed detection error for .NET Framework 1.0 files on
+                       64-bit OS's.
+
+September 27, 2008  -  Added logic to verify DWORD registry values are greater than
+                       or less than expected values instead of only equal to
+                       expected values.
+
+October 15, 2008    -  Added a test application that verifies that the .NET Framework
+                       runtime can be started on a user's system.
+
+October 31, 2008    -  Fixed a false positive for 3 files that were removed from the 
+                       .NET Framework 3.0 SP2 on Windows XP and Windows Server 2003.
+
+November 25, 2008   -  Fixed a logic problem that caused the verification tool to not
+                       check the correct location for 32-bit registry values on 64-bit
+                       versions of Windows.
+
+December 22, 2008   -  Added version string that is added to the log file.
+
+February 20, 2009   -  Added product filtering so the UI will only display installed
+                       versions of the .NET Framework by default.  This can be
+                       overridden with the new /a switch if needed.
+
+                       Added an option to verify the .NET Framework 1.1 SP1.
+
+                       Fixed .NET Framework 1.1 detection issue on 64-bit Windows.
+
+                       Added better logging for registry values being verified.
+
+February 24, 2009   -  Fixed a bug that would cause a version of the .NET Framework
+                       to be filtered out if it was installed but the service pack
+                       registry value was missing.
+
+March 10, 2009      -  Removed checks for HKEY_CURRENT_USER registry values because
+                       they cause false errors on systems with multiple user accounts.
+
+March 13, 2009      -  Removed some .NET Framework 1.1 registry keys that were causing
+                       false error reports.
+
+March 23, 2009      -  Fixed some more .NET Framework 1.1 registry keys that were causing
+                       false error reports.
+
+July 17, 2009       -  Fixed false errors being reported on non-English versions of the
+                       .NET Framework 1.0.
+
+                       Fixed filtering problem that caused the .NET Framework 1.0 to be
+                       removed from the list if any 1.0 service packs are installed.
+
+                       Fixed false errors being reported for the .NET Framework 1.1 if
+                       the .NET Framework 1.0 is also installed on the system.
+
+                       Fixed false errors being reported for the .NET Framework 3.5 SP1
+                       on Windows 7.
+
+                       Added detection and logging for .NET Framework 4 and Windows 7.
+
+October 19, 2009     - Fixed false errors being reported on Windows 98 and Windows ME.
+
+November 10, 2009    - Fixed false error being reported on Windows Server 2008 R2 and
+                       Windows 7.
+
+December 9, 2009     - Fixed detection problems for performance counter files and
+                       registry keys on Windows 98 and ME.
+
+January 18, 2010     - Stop checking for some .config files during .NET Framework 2.0
+                       verification that can result in false errors.
+
+January 27, 2010     - Stop checking for some additional .config files during .NET 
+                       Framework 2.0 verification that can result in false errors.
+
+February 19, 2010    - Stop checking for English-only registry keys for the .NET
+                       Framework 3.5 SP1 because it causes false errors on non-English
+                       versions of Windows 7.
+
+February 20, 2010    - Stop checking for English-only files for the .NET Framework
+                       3.5 SP1 because it causes false errors on non-English versions
+                       of Windows.
+
+March 15, 2010       - Force the process exit code to get propagated to the self-
+                       extracting setup package.
+
+March 29, 2010       - Add the ability to treat missing files as warnings instead of
+                       errors. Add file version information for each verified file
+                       to the log file.
+
+May 11, 2010         - Add the ability to verify the .NET Framework 4 Client and Full.
+
+May 24, 2010         - Fix some false errors for .NET Framework 4 verification on
+                       Windows XP.
+
+July 2, 2010         - Fix some false errors for .NET Framework 4 verification on
+                       Windows Vista and higher.
+
+August 16, 2010      - Fix some false errors for .NET Framework 4 verification on 
+                       Windows Server 2003 x64.
+
+October 11, 2010     - Add the ability to treat missing or incorrect registry keys
+                       as warnings instead of errors. Mark several .NET Framework 
+                       1.1 registry keys to be treated as warnings instead of 
+                       errors to eliminate false positives during verification.
+
+October 15, 2010     - Fixed bug in registry parsing introduced by the previous change.
+
+January 17, 2011     - Fix some false errors for .NET Framework 1.1 verification on
+                       non-English versions of Windows Server 2003.
+
+December 23, 2011    - Added special-case logic to prevent the product list dropdown
+                       from being blank.
+
+                       Fixed bug that caused a Windows 7 PCA dialog to appear
+                       appear when exiting the tool.
+
+                       Updated the build system for the tool to VS 2010.
+
+December 29, 2011    - Fix a crash that can occur when verifying the .NET
+                       Framework 1.1.
+
+                       Prevent the user from typing in their own product names in
+                       drop-down list in the UI.
+
+June 29, 2012        - Add the ability to verify the .NET Framework 4.5.
+
+August 4, 2012       - Add better error handling for CreateProcess failures. Add more
+                       logging for system folder path information.
+
+August 21, 2012      - Fixed incorrect error being reported for the .NET Framework
+                       4.5 RTM build.
+
+September 10, 2012   - Removed silent mode and updated logic for errors and warnings
+                       to address Windows application compatibility concerns.
+
+September 26, 2012   - Fixed some issues related to the removal of silent mode.
+
+November 6, 2013     - Add the ability to verify the .NET Framework 4.5.1.
+
+November 11, 2013    - Fixed a bug with the detection of the .NET Framework 4.5.1 on
+                       Windows 8.1. Updated tool to allow it to differentiate between
+                       Windows 8 and Windows 8.1.
+
+June 24, 2014        - Add the ability to verify the .NET Framework 4.5.2.
+
+July 31, 2015        - Add the ability to verify the .NET Framework 4.6. Updated tool to
+                       allow it to differentiate between Windows 8.1 and Windows 10.
+
+December 18, 2015    - Add the ability to verify the .NET Framework 4.6.1.
+
+October 26, 2016     - Add the ability to verify the .NET Framework 4.6.2.

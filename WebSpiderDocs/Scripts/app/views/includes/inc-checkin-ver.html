@@ -1,0 +1,121 @@
+<div ng-controller="incCheckinVerCtrl as $verCtrl">
+
+<div class="container--checkin-ver container--edge container--full" >
+
+	<div class="checkin-table  panel--white panel--border">
+
+		<div class="checkin-table__header">
+
+			<div class="checkin-table__col checkin-col--file">
+				<button type="button"
+						class="btn-sort" >
+					<span>File</span>
+				</button>
+			</div>
+			<div class="checkin-table__col checkin-col--id">
+				<button type="button"
+						class="btn-sort" >
+					<span>ID</span>
+				</button>
+			</div>
+			<div class="checkin-table__col checkin-col--name">
+				<button type="button" class="btn-sort" ng-click="sort('filename');">
+					<span>
+						Name
+					</span>
+				</button>
+			</div>
+			<div class="checkin-table__col checkin-col--folder">
+				<button type="button" class="btn-sort" ng-click="sort('filename');">
+					<span>
+						Folder
+					</span>
+				</button>
+			</div>
+		</div>
+
+		<div id="{{'item_'+$index}}" class="checkin-table__row {{doc.selected ? 'checkin-table__row--checked':''}}" ng-repeat="doc in $verCtrl.docs">
+
+			<div class="form-field form-field--shadow form-field--checkbox">
+				<label>
+					<input type="checkbox" ng-model="doc.selected" class="">
+					<span class="form-field__label">
+						<span class="hidden">Select Row</span>
+					</span>
+				</label>
+			</div>
+
+			<!-- <div class="checkin-table__col lead-col--id">
+				<div class="checkin-table__col-header ">ID</div>
+				{{doc.id}}
+			</div> -->
+			<div class="checkin-table__col checkin-col--file">
+				<div class="checkin-table__col-header ">File</div>
+				<div class="checkin-table__trim">
+					{{doc.title}}
+				</div>
+			</div>
+			<div class="checkin-table__col checkin-col--id">
+				<div class="checkin-table__col-header ">ID</div>
+				<div class="checkin-table__trim">
+					{{doc.verDoc.id}}
+				</div>
+			</div>
+			<div class="checkin-table__col checkin-col--name">
+				<div class="checkin-table__col-header ">Name</div>
+				<div class="checkin-table__trim">
+					{{doc.verDoc.title}}
+				</div>
+			</div>
+			<div class="checkin-table__col checkin-col--folder">
+				<div class="checkin-table__col-header ">Folder</div>
+				<div class="checkin-table__trim">
+					{{doc.verDoc.name_folder}}
+				</div>
+			</div>
+		</div>
+
+		<div class="checkin-table-zero" ng-show="docs.length == 0">
+			You do not have any local files.
+		</div>
+	</div>
+
+
+
+
+	<div class='attribute-panel--checkinver'>
+
+
+		<div class="form-field form-field--small text-align--right">
+			<button type="button" class="btn btn--secondary btn--yellow" ng-click="$verCtrl.openSearchDoc()">Search Doc</button>
+		</div>
+
+		<div class="form-field" ng-show="$verCtrl.needReason">
+			<label for="lead-filter-id" class="form-field__label">Reason : <span ng-show="!$verCtrl.checklength()">At least {{$verCtrl.reasonMinumLen - $verCtrl.reason.length }} characters.</span> <span class="modal-ok" ng-show="$verCtrl.checklength()">OK</span></label>
+
+			<textarea type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$verCtrl.reason" autocomplete="off"
+			class="" ng-change="$verCtrl.validateTogo();"></textarea>
+		</div>
+
+	</div>
+</div>
+
+
+<div class="checkin-option">
+	<div class="checkin-option__save-as-pdf" ng-show="$verCtrl.canOCRable">
+		<div class="form-field form-field--shadow form-field--checkbox row-hover">
+			<label>
+				<input type="checkbox" ng-model="$verCtrl.options.saveAsPDF" ng-change="$verCtrl.resetverDoc()" >
+				<span class="form-field__label">
+					<span>Save as PDF file</span>
+				</span>
+			</label>
+		</div>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="$verCtrl.ok()" ng-disabled="! $verCtrl.canGo">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="$verCtrl.cancel()">Cancel</button>
+</div>
+</div>

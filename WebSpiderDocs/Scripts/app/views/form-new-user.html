@@ -1,0 +1,74 @@
+
+<div class="modal-header">
+		<h3 class="modal-title" id="modal-title">New User<span ng-show="checkout" class="notice"></span></h3>
+	</div>
+
+	<div class="modal-body" id="modal-body">
+
+		<form action="" method="post" name="myform" novalidate>
+			<div class="form-field ">
+				<label for="user_name" class="form-field__label">Name (At least 4 characters)</label>
+				<input type="text" name="user_name" id="user_name" ng-model="model.name" autocomplete="off" required>
+				<p ng-show="myform.user_name.$dirty && myform.user_name.$error.required " class="help-block error-box">Name is mandatory.</p>
+				<!-- <p ng-show="!checkName()" class="help-block error-box">Name must have at least 4 characters.</p> -->
+
+			</div>
+			<div class="form-field ">
+				<label for="user_login" class="form-field__label">Login (At least 4 characters)</label>
+				<input type="text" name="user_login" id="user_login" ng-model="model.login" autocomplete="off" required>
+				<p ng-show="myform.user_login.$dirty && myform.user_login.$error.required" class="help-block error-box">Login is mandatory.</p>
+			</div>
+
+			<div class="form-field ">
+				<label for="user_password" class="form-field__label">Password  (At least 6 characters)</label>
+				<input type="password" name="user_password" id="user_password" ng-model="model.password" autocomplete="off" required>
+				<p ng-show="myform.user_password.$dirty && myform.user_password.$error.required" class="help-block error-box">Password is mandatory.</p>
+			</div>
+
+			<div class="form-field ">
+				<label for="password_confimation" class="form-field__label">Password (Confimation)<span ng-show="model.password.length > 6 && model.password === model.password_confimation" class="modal-ok"> OK</span></label>
+				<input type="password" name="password_confimation" id="password_confimation" ng-model="model.password_confimation" autocomplete="off"  required>
+				<p ng-show="myform.user_password_confimation.$dirty && myform.user_password_confimation.$error.required" class="help-block error-box">Password (Confimation) is mandatory.</p>
+				<p ng-show="myform.user_password.$dirty && model.password !== model.password_confimation" class="help-block error-box">Password missmatch.</p>
+			</div>
+			<!-- Fully implement password comfimation property, see https://stackoverflow.com/questions/44878725/angularjs-confirmation-password-validations https://docs.angularjs.org/guide/forms#custom-validation-->
+
+			<div class="form-field ">
+				<label for="user_email" class="form-field__label">E-Mail</label>
+				<input type="email" name="user_email" id="user_email" ng-model="model.email" autocomplete="off" required>
+				<!-- <p ng-show="myform.user_email.$dirty && myform.user_email.$error.required" class="help-block error-box">Email is mandatory.</p> -->
+				<p ng-show="myform.user_email.$dirty && myform.user_email.$error.required||myform.user_email.$dirty && myform.user_email.$invalid" class="help-block error-box">Email must have 'xxx@xxx.xxx' format.</p>
+			</div>
+
+			<div class="form-field">
+				<label for="user_access-level" class="form-field__label">Menu Access Level</label>
+				<div class="form-field__select">
+					<select name="user_access-level" title="Menu Access level" ng-model="model.access_level" ng-options="opt.permission for opt in data.access_level track by opt.id"></select>
+				</div>
+			</div>
+
+
+			<div class="form-field form-field--shadow form-field--checkbox row-hover">
+				<label>
+					<input type="checkbox" ng-model="model.reviewer" class="">
+					<span class="form-field__label">
+						<span class="">Reviewer</span>
+					</span>
+				</label>
+			</div>
+
+			<div class="form-field form-field--shadow form-field--checkbox row-hover">
+				<label>
+					<input type="checkbox" ng-model="model.active" class="">
+					<span class="form-field__label">
+						<span class="">Active</span>
+					</span>
+				</label>
+			</div>
+		</form>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="ok()" >OK</button>
+		<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+	</div>

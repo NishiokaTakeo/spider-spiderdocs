@@ -1,0 +1,136 @@
+[ng-controller="permissionFolderController"]
+{
+	.registration-folder-permission
+	{
+
+		&-table
+		{
+			margin:0 1rem;
+
+			&--with-scroll
+			{
+				margin:0 1rem;
+				height: 400px;
+				overflow: scroll;
+				overflow-x: hidden;
+			}
+
+			@extend .leads-table;
+
+			&__header
+			{
+				@extend .leads-table__header;
+				top:0;
+			}
+			&__col-header
+			{
+				@extend .leads-table__col-header;
+			}
+
+			&__col
+			{
+				@extend .leads-table__col;
+
+				// padding-bottom:5px;
+			}
+
+			&__row
+			{
+				@extend .leads-table__row;
+
+				.form-field--checkbox
+				{
+					position: relative;
+					top: 0px;
+					left: 0px;
+					width: auto;
+				}
+
+				&--zero
+				{
+					// @extend
+					min-height:340px;
+				}
+
+			}
+
+			&__row--checked
+			{
+				@extend .leads-table__row--checked;
+			}
+
+			&-zero
+			{
+				@extend .leads-table-zero;
+			}
+
+		}
+
+		/*Indivisual columns*/
+		&-col--checkbox
+		{
+			padding-left:40px;
+			flex: 0.1;
+		}
+		&-col--type-name
+		{
+			padding-left:40px;
+			flex: 0.5;
+		}
+		&-col--attr-name
+		{
+			padding-left:40px;
+			flex: 0.5;
+		}
+
+		&-col--attr-type
+		{
+			flex:0.4;
+		}
+		&-col--attr-type
+		{
+			flex:0.4;
+		}
+		&-col--edit
+		{
+			position: absolute;
+			right: 1rem;
+			// z-index:99999
+		}
+		&-col--delete
+		{
+			position: absolute;
+			right: 5rem;
+			// z-index:99999
+		}
+
+
+
+
+	}
+
+	& .section-header
+	{
+		margin:1rem;
+		&--invert
+		{
+			margin:0 1rem;
+			color:white;
+		}
+	}
+	& .form-field
+	{
+		//@extend .form-field;
+
+		&--setup-permit
+		{
+			margin-top:2em;
+		}
+
+		&--inherit-permit
+		{
+			margin-top:2em; margin-left:3em;
+		}
+
+	}
+}

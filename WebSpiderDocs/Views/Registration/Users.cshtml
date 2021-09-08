@@ -1,0 +1,154 @@
+﻿
+@{
+	ViewBag.Title = "Users - Registration";
+	Layout = "~/Views/Shared/_LayoutWebApp.cshtml";
+}
+
+@section JavaScript
+{
+	@Scripts.Render("~/bundles/js/webapp/registration-users")
+
+}
+<div ng-controller="registrationUserController">
+
+
+	<div class="main-container">
+
+		<div class="page-header page-header--flat panel--navy">
+			<div class="page-header__title-full">
+				<h1>Registration - User</h1>
+				<i class="glyphicon glyphicon-menu-hamburger size--2r spider-colour" sidebarjs-toggle="menuSidebarJS"></i>
+
+				<div class="form-field form-field--small">
+					<label for="" class="form-field__label">&nbsp;</label>
+					<div class="form-field__select--blue">
+						<button type="button" class="btn btn--secondary btn--yellow" ng-click="new()">New</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container container--edge container--underlap container--full">
+
+			<div class="reg-user-table panel--white panel--border">
+
+				<div class="reg-user-table__header">
+					<div class="reg-user-table__col reg-user-col--name">
+						<button type="button"
+								class="btn-sort">
+							<span>Name</span>
+						</button>
+					</div>
+					<div class="reg-user-table__col reg-user-col--login">
+						<button type="button"
+								class="btn-sort" >
+							<span>Login</span>
+						</button>
+					</div>
+					<!-- btn-sort--desc -->
+					<div class="reg-user-table__col reg-user-col--leve-lpermission">
+						<button type="button" class="btn-sort">
+							<span>
+								Level Permission
+							</span>
+						</button>
+					</div>
+					<div class="reg-user-table__col reg-user-col--email">
+						<button type="button" class="btn-sort" >
+							<span>
+								E-Mail
+							</span>
+						</button>
+					</div>
+					<div class="reg-user-table__col reg-user-col--active">
+						<button type="button"
+								class="btn-sort">
+							<span>Active</span>
+						</button>
+					</div>
+
+					<div class="reg-user-table__col reg-user-col--reviewer">
+						<button type="button"
+								class="btn-sort">
+							<span>Reviewer</span>
+						</button>
+					</div>
+
+				</div>
+
+				<div id="{{'item_'+$index}}" class="reg-user-table__row "  ng-repeat="user in data.users">
+
+
+					<div class="reg-user-table__col reg-user-col--name">
+						<div class="reg-user-table__col-header ">Name</div>
+						{{user.name}}
+					</div>
+					<div class="reg-user-table__col reg-user-col--login">
+						<div class="reg-user-table__col-header ">Login</div>
+						{{user.login}}
+					</div>
+					 <div class="reg-user-table__col reg-user-col--level-permission ">
+						<div class="reg-user-table__col-header">Level Permission</div>
+						<div class="reg-user-table__trim">
+							<a href="" target="blank">{{user.permission_str}}</a>
+						</div>
+					</div>
+					<div class="reg-user-table__col reg-user-col--email">
+						<div class="reg-user-table__col-header">E-mail</div>
+						<div class="reg-user-table__trim">
+							<a href="" target="blank">{{user.email}}</a>
+						</div>
+					</div>
+
+
+					<div class="form-field form-field--shadow form-field--checkbox row-hover reg-user-table__col reg-user-col--active">
+						<label>
+							<input type="checkbox" ng-model="user.active" class="" ng-disabled="true">
+							<span class="form-field__label">
+								<span class="hidden">Active</span>
+							</span>
+						</label>
+					</div>
+
+					<div class="reg-user-table__col reg-user-col--reviewer form-field form-field--shadow form-field--checkbox row-hover">
+						<label>
+							<input type="checkbox" ng-model="user.reviewer" class="" ng-disabled="true">
+							<span class="form-field__label">
+								<span class="hidden">Reviewer</span>
+							</span>
+						</label>
+					</div>
+
+					<a href="" class="btn btn--small btn--shadow row-hover margin-top--15" target="_self" ng-click="edit(user)">Edit</a>
+				</div>
+
+				<div class="reg-user-table-zero" ng-show="data.docs.length == 0">
+					No user is found!
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+		<sidebarjs sidebarjs-name="menuSidebarJS"  sidebarjs-config="{position: 'left'}">
+
+			<div class="main-header--sidebar">
+				<nav class="main-nav" aria-label="Primary Nav">
+					<ul>
+					<li class="dropdown dropdown-1 main-nav__mob-menu">
+						<div>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Index", "WorkSpace")" target="_self"  href="">Local Workspace</a>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Local", "WorkSpace")" target="_self"  href="">User Workspace</a>
+						</div>
+					</li>
+
+					</ul>
+				</nav>
+			</div>
+
+		</sidebarjs>
+
+</div>
+

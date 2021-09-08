@@ -1,0 +1,768 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <SGenUseProxyTypes>false</SGenUseProxyTypes>
+    <SGenPlatformTarget>$(Platform)</SGenPlatformTarget>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7EF452C6-FA1C-4547-9F71-18096C796A5B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpiderDocs</RootNamespace>
+    <AssemblyName>SpiderDocs</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">.\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\WindowsApplication1.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <Optimize>false</Optimize>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\WindowsApplication1.exe.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\icon3d.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>SpiderCertificate.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>2F8D05E2B14B9F8C1271C92B8A2DE45C0DBADFB1</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Unit Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Unit Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Unit Test|x86'">
+    <OutputPath>bin\x86\Unit Test\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.IWshRuntimeLibrary">
+      <HintPath>..\SpiderCommonModules\Interop.IWshRuntimeLibrary.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="LazyCache, Version=0.7.1.44, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\LazyCache.0.7.1.44\lib\net45\LazyCache.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\SpiderCommonModules\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\SpiderCommonModules\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>packages\NLog.4.5.9\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.0.898.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SpiderCommonModules\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PreviewPanel">
+      <HintPath>..\Spider Docs - Components\Spider Docs - PreviewPanel\bin\Debug\PreviewPanel.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleSpeedTester, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\SimpleSpeedTester.1.1.0\lib\net40\SimpleSpeedTester.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Spider.FormUtilities">
+      <HintPath>..\SpiderCommonModules\Spider.FormUtilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Spider.Office">
+      <HintPath>..\SpiderCommonModules\Spider.Office.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="ZetaLongPaths, Version=1.0.0.37, Culture=neutral, PublicKeyToken=b764f59068f31f38, processorArchitecture=MSIL">
+      <HintPath>packages\ZetaLongPaths.1.0.0.37\lib\net452-full\ZetaLongPaths.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\frmFavourite.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFavourite.Designer.cs">
+      <DependentUpon>frmFavourite.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmReportBuilder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportBuilder.Designer.cs">
+      <DependentUpon>frmReportBuilder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmNotificationGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmNotificationGroup.Designer.cs">
+      <DependentUpon>frmNotificationGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WorkSpace\frmList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WorkSpace\frmList.Designer.cs">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Inherited.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DocBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\DocBrowser.designer.cs">
+      <DependentUpon>DocBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PBPictureBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PBPictureBox.Designer.cs">
+      <DependentUpon>PBPictureBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PictureStrip.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\PictureStrip.Designer.cs">
+      <DependentUpon>PictureStrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Opening\frmModeSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Opening\frmModeSetting.Designer.cs">
+      <DependentUpon>frmModeSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReview.Designer.cs">
+      <DependentUpon>frmReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmFooterSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFooterSettings.Designer.cs">
+      <DependentUpon>frmFooterSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmScan.Designer.cs">
+      <DependentUpon>frmScan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDeleteFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDeleteFile.Designer.cs">
+      <DependentUpon>frmDeleteFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDocumentType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDocumentType.Designer.cs">
+      <DependentUpon>frmDocumentType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAttribute.Designer.cs">
+      <DependentUpon>frmAttribute.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPreferences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPreferences.Designer.cs">
+      <DependentUpon>frmPreferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmDeletedFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmDeletedFiles.Designer.cs">
+      <DependentUpon>frmDeletedFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmReportUserLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmReportUserLog.Designer.cs">
+      <DependentUpon>frmReportUserLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Opening\frmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Opening\frmSplashScreen.Designer.cs">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmFileProperties.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFileProperties.Designer.cs">
+      <DependentUpon>frmFileProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmFolderPermissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFolderPermissions.Designer.cs">
+      <DependentUpon>frmFolderPermissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WorkSpace\frmWorkSpace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WorkSpace\frmWorkSpace.Designer.cs">
+      <DependentUpon>frmWorkSpace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmControlPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmControlPermission.Designer.cs">
+      <DependentUpon>frmControlPermission.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGroup.Designer.cs">
+      <DependentUpon>frmGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmGroupUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmGroupUser.Designer.cs">
+      <DependentUpon>frmGroupUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmImportFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmImportFiles.Designer.cs">
+      <DependentUpon>frmImportFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMDI.Designer.cs">
+      <DependentUpon>frmMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmUser.Designer.cs">
+      <DependentUpon>frmUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\SpiderDocsApplication.cs" />
+    <Compile Include="Utilities\Utilities.cs" />
+    <None Include="Resources\up.png" />
+    <None Include="Resources\up.jpg" />
+    <EmbeddedResource Include="Forms\frmFavourite.resx">
+      <DependentUpon>frmFavourite.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportBuilder.resx">
+      <DependentUpon>frmReportBuilder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmNotificationGroup.resx">
+      <DependentUpon>frmNotificationGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WorkSpace\frmList.resx">
+      <DependentUpon>frmList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PBPictureBox.resx">
+      <DependentUpon>PBPictureBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\PictureStrip.resx">
+      <DependentUpon>PictureStrip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Opening\frmModeSetting.resx">
+      <DependentUpon>frmModeSetting.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReview.resx">
+      <DependentUpon>frmReview.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFooterSettings.resx">
+      <DependentUpon>frmFooterSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmScan.resx">
+      <DependentUpon>frmScan.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDeleteFile.resx">
+      <DependentUpon>frmDeleteFile.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDocumentType.resx">
+      <DependentUpon>frmDocumentType.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAttribute.resx">
+      <DependentUpon>frmAttribute.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPreferences.resx">
+      <DependentUpon>frmPreferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmDeletedFiles.resx">
+      <DependentUpon>frmDeletedFiles.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmReportUserLog.resx">
+      <DependentUpon>frmReportUserLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Opening\frmSplashScreen.resx">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFileProperties.resx">
+      <DependentUpon>frmFileProperties.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFolderPermissions.resx">
+      <DependentUpon>frmFolderPermissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WorkSpace\frmWorkSpace.resx">
+      <DependentUpon>frmWorkSpace.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmControlPermission.resx">
+      <DependentUpon>frmControlPermission.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGroup.resx">
+      <DependentUpon>frmGroup.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmGroupUser.resx">
+      <DependentUpon>frmGroupUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmImportFiles.resx">
+      <DependentUpon>frmImportFiles.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMDI.resx">
+      <DependentUpon>frmMDI.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUser.resx">
+      <DependentUpon>frmUser.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Forms\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <None Include="SpiderCertificate.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSave.Image.png" />
+    <Content Include="icon3d.ico" />
+    <None Include="Resources\folder-add.png" />
+    <None Include="Resources\folder-remove.png" />
+    <None Include="Resources\folder-rename.png" />
+    <None Include="Resources\FolderExplorerBG.png" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\folder_add.png" />
+    <None Include="Resources\folder_remove.png" />
+    <None Include="Resources\folder_rename.png" />
+    <None Include="Resources\error.png" />
+    <None Include="Resources\btn_save.png" />
+    <None Include="Resources\devices.png" />
+    <None Include="Resources\action_r.png" />
+    <None Include="Resources\add_custom_field.png" />
+    <None Include="Resources\favourite.png" />
+    <None Include="Resources\add2.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\down.jpg" />
+    <None Include="Resources\down.png" />
+    <Content Include="Resources\header.xml" />
+    <None Include="Resources\icon_workspace.png" />
+    <None Include="Resources\help.png" />
+    <None Include="Resources\icon_delete_user.png" />
+    <None Include="Resources\icon_user.png" />
+    <None Include="Resources\import.png" />
+    <Content Include="Resources\menu-import.ico" />
+    <None Include="Resources\Ok.png" />
+    <None Include="Resources\menu_exit.png" />
+    <None Include="Resources\search_b_icon.png" />
+    <None Include="Resources\rubbish-bin.png" />
+    <None Include="Resources\rotate_page.png" />
+    <None Include="Resources\scanner.png" />
+    <None Include="Resources\ScanBG.jpg" />
+    <None Include="Resources\register.png" />
+    <None Include="Resources\properties.png" />
+    <None Include="Resources\menu_logout.png" />
+    <None Include="Resources\salvar.png" />
+    <None Include="Resources\page.png" />
+    <None Include="Resources\notification.png" />
+    <None Include="Resources\report-builder.png" />
+    <Content Include="Resources\Splash-App_Installer.jpg" />
+    <Content Include="Resources\top_app-Installer.jpg" />
+    <None Include="Resources\new_version.png" />
+    <None Include="Resources\loading.gif" />
+    <None Include="Resources\expand.png" />
+    <None Include="Resources\icon_pdf.gif" />
+    <None Include="Resources\icon_webaccess.png" />
+    <None Include="Resources\url_icon.png" />
+    <None Include="Resources\icon_customize.ico" />
+    <None Include="Resources\arrow_r_32.png" />
+    <Content Include="Resources\dms.ico" />
+    <Content Include="Resources\icon_sync.png" />
+    <Content Include="Resources\logo.ico" />
+    <None Include="Resources\connect_button.png" />
+    <None Include="Resources\working_offline.png" />
+    <None Include="Resources\loading_file.gif" />
+    <None Include="Resources\big_bin.png" />
+    <None Include="Resources\preferences.png" />
+    <None Include="Resources\menu_arquive.png" />
+    <None Include="Resources\bin.png" />
+    <None Include="Resources\graphics.png" />
+    <None Include="Resources\loginScreen.png" />
+    <None Include="Resources\database.png" />
+    <None Include="Resources\server.png" />
+    <None Include="Resources\menu_copy.png" />
+    <None Include="Resources\filter.png" />
+    <None Include="Resources\exclamation.png" />
+    <None Include="Resources\Preppy-icon2.png" />
+    <None Include="Resources\add_custom_field.ico" />
+    <None Include="Resources\custom_field_cbo.ico" />
+    <None Include="Resources\menu_menu.ico" />
+    <None Include="Resources\new_file.ico" />
+    <None Include="Resources\check_out.png" />
+    <None Include="Resources\icon3d.ico" />
+    <None Include="Resources\change_folder.ico" />
+    <None Include="Resources\properties.ico" />
+    <None Include="Resources\splashScreen.png" />
+    <None Include="Resources\page-rotate2.png" />
+    <None Include="Resources\left-side1.png" />
+    <None Include="Resources\right-side.png" />
+    <None Include="Resources\both-side.png" />
+    <None Include="Resources\checked.png" />
+    <None Include="Resources\list_add.png" />
+    <None Include="Resources\list_remove.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\uncheck.png" />
+    <None Include="Resources\calendar.png" />
+    <None Include="Resources\checkbox.png" />
+    <None Include="Resources\combobox.png" />
+    <None Include="Resources\textbox.png" />
+    <None Include="Resources\p_scanner.png" />
+    <None Include="Resources\My-Recent-Documents-icon.png" />
+    <None Include="Resources\search-b-icon.png" />
+    <None Include="Resources\My-Recent-Documents-icon2.png" />
+    <None Include="Resources\full_page.png" />
+    <None Include="Resources\page-rotate.png" />
+    <None Include="Resources\add.ico" />
+    <None Include="Resources\editing.png" />
+    <None Include="Resources\drag_and_drop.png" />
+    <None Include="Resources\icon_Lock.png" />
+    <None Include="Resources\icon_clients.png" />
+    <None Include="Resources\icon_options.png" />
+    <None Include="Resources\icon_key.png" />
+    <None Include="Resources\icon_glasses.png" />
+    <None Include="Resources\icon_e-mail.png" />
+    <None Include="Resources\icon_email.png" />
+    <None Include="Resources\icon_delete.png" />
+    <None Include="Resources\icon_hd.png" />
+    <None Include="Resources\option.png" />
+    <None Include="Resources\reg.png" />
+    <None Include="Resources\order.png" />
+    <None Include="Resources\logospider_about.png" />
+    <None Include="Resources\log.png" />
+    <None Include="Resources\report.png" />
+    <None Include="Resources\reports.png" />
+    <None Include="Resources\menu_log.png" />
+    <None Include="Resources\email_settings.png" />
+    <None Include="Resources\big_groups.png" />
+    <None Include="Resources\Folder-Open-icon.png" />
+    <None Include="Resources\checklist-icon.png" />
+    <Content Include="Resources\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Spider Docs - Components\Spider Docs - CheckComboBox\CheckComboBox.csproj">
+      <Project>{092968d1-9ac4-45c8-9d7b-9af4a241052c}</Project>
+      <Name>CheckComboBox</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Spider Docs - Components\Spider Docs - DragAndDropListView\DragNDrop.csproj">
+      <Project>{C7E21F05-C166-4DCC-8429-EC8A4C1A67B6}</Project>
+      <Name>DragNDrop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpiderDocsCommon\DatabaseUtilities\DatabaseUtilities.csproj">
+      <Project>{016bc79b-1506-4122-a401-9110e5722806}</Project>
+      <Name>DatabaseUtilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpiderDocsCommon\SpiderDocsForm\SpiderDocsForms.csproj">
+      <Project>{9a48ea8c-727b-4cc3-961a-e49445749654}</Project>
+      <Name>SpiderDocsForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpiderDocsCommon\SpiderDocsModule\SpiderDocsModule.csproj">
+      <Project>{b084bda0-2a1f-4d1a-a968-8eb0f8d60a96}</Project>
+      <Name>SpiderDocsModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpiderDocsCommon\SpiderDocsOCR\SpiderDocsOCR.csproj">
+      <Project>{b66e2d37-3e66-4033-87d2-37ad3485a549}</Project>
+      <Name>SpiderDocsOCR</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpiderDocsCommon\Utilities\Utilities.csproj">
+      <Project>{83c6eeac-8fd6-4a70-bc6f-88b2d8c253db}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>powershell -windowstyle hidden -ExecutionPolicy ByPass -File "$(SolutionDir)..\Spdier Docs - App Client Installer ( NSIS )\postbuild.ps1" $(ConfigurationName)</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+  </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

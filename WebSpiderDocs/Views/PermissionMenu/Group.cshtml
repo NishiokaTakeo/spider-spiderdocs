@@ -1,0 +1,150 @@
+﻿
+@{
+	ViewBag.Title = "Group - Permission";
+	Layout = "~/Views/Shared/_LayoutWebApp.cshtml";
+}
+
+@section JavaScript
+{
+	@Scripts.Render("~/bundles/js/webapp/permission-group")
+
+}
+
+<div ng-controller="permissionGroupController">
+
+
+	<div class="main-container">
+
+		<div class="page-header page-header--flat panel--navy">
+			<div class="page-header__title-full">
+				<h1>Permission - Group</h1>
+				<i class="glyphicon glyphicon-menu-hamburger size--2r spider-colour" sidebarjs-toggle="menuSidebarJS"></i>
+
+				<div class="form-field form-field--small hidden">
+					<label for="" class="form-field__label">&nbsp;</label>
+					<div class="form-field__select--blue">
+						<button type="button" class="btn btn--secondary btn--yellow" ng-click="new()">New</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="container container--edge container--underlap container--full" style="display:flex;">
+
+			<div class="permission-group-table panel--white panel--border" style="flex:1;margin:0 1rem;" >
+
+				<div class="permission-group-table__header">
+					<div class="permission-group-table__col permission-group-col--group-name">
+						<button type="button"
+								class="btn-sort">
+							<span>Groups\Departments</span>
+						</button>
+					</div>
+				</div>
+
+				<div id="{{'item_'+$index}}" class="permission-group-table__row "  ng-repeat="group in view.data.groups" ng-click="groupChange(group)">
+
+
+					<div class="permission-group-table__col permission-group-col--group-name">
+						<div class="permission-group-table__col-header">Group\Department</div>
+
+						<button type="button"><span>{{group.group_name}}</span></button>
+					</div>
+
+				</div>
+
+				<div class="permission-group-table-zero" ng-show="data.groups.length == 0">
+					No group is found!
+				</div>
+			</div>
+
+			<div class="permission-user-table panel--white panel--border"  style="flex:1;margin:0 1rem;">
+
+				<div class="permission-user-table__header">
+					<div class="permission-user-table__col permission-user-col--user-name">
+						<button type="button"
+								class="btn-sort">
+							<span>Users</span>
+						</button>
+					</div>
+					<div class="permission-user-table__col permission-user-col--single-checkbox">
+						<button type="button"
+								class="btn-sort">
+							<span>Select</span>
+						</button>
+					</div>
+				</div>
+
+				<div id="{{'item_'+$index}}" class="permission-user-table__row " ng-repeat="user in view.data.users">
+
+
+					<div class="permission-user-table__col permission-user-col--user-name">
+						<div class="permission-user-table__col-header ">User</div>
+						{{user.name}}
+					</div>
+
+					<div class="permission-user-table__col permission-user-col--single-checkbox">
+						@* <div class="permission-user-table__col-header ">Check</div>
+
+						{{user.checked}} *@
+
+						<div class="form-field form-field--shadow form-field--checkbox" >
+							<label>
+								<input type="checkbox" ng-model="user.checked" class="" ng-disabled="selected.group ===1" ng-change="toggleSelected(user)">
+								<span class="form-field__label">
+									<span class="hidden">Select</span>
+								</span>
+							</label>
+						</div>
+
+					</div>
+
+
+
+
+				</div>
+
+				<div class="permission-user-table-zero" ng-show="data.users.length == 0">
+					No user is found!
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+
+	</div>
+
+		<sidebarjs sidebarjs-name="menuSidebarJS"  sidebarjs-config="{position: 'left'}">
+
+			<div class="main-header--sidebar">
+				<nav class="main-nav" aria-label="Primary Nav">
+					<ul>
+					<li class="dropdown dropdown-1 main-nav__mob-menu">
+						<div>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Index", "WorkSpace")" target="_self"  href="">Local Workspace</a>
+							<a sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Local", "WorkSpace")" target="_self"  href="">User Workspace</a>
+						</div>
+					</li>
+
+					</ul>
+				</nav>
+			</div>
+
+		</sidebarjs>
+
+</div>
+

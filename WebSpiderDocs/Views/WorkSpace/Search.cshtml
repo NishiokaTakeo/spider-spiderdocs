@@ -1,0 +1,59 @@
+﻿@model WebSpiderDocs.Models.DocumentSearchViewModel
+@using WebSpiderDocs
+@using SpiderDocsModule
+@*@using MvcCheckBoxList.Model*@ 
+
+@{
+	// cache
+	//SelectList UserList = UserUtilities.GetSelectList();
+	List<User> UserList = UserUtilities.GetAll();
+}
+
+@using(Html.BeginForm("Search", "WorkSpace", FormMethod.Post, new { @style="margin-left:10px;" }))
+{
+	using(Html.BeginDisableClientSideValidation())
+	{
+		<div style="display:table-cell;">
+			<div style="margin-bottom:5px;">
+				<span class="search_field">
+					<span>Id:</span>
+					<span>@Html.EditorFor(model => model.StrDocIds, new { style="width:6em;" })</span>
+				</span>
+
+				<span class="search_field">
+					<span>Title:</span>
+					<span>@Html.EditorFor(model => model.Titles, new { style="width:10em;" })</span>
+				</span>
+
+@*				<span class="search_field">
+					<span>Auther:</span>
+					<span>@Html.CheckBoxListFor(model => model.UserIds,UserList, model => model.UserIds, UserList.FirstOrDefault(a => a.id == model.id
+					
+				</span>*@
+			</div>
+
+			<div>
+				<span class="search_field">
+					<span>Keywords:</span>
+					<span>@Html.EditorFor(model => model.Keywords, new { style="width:10em;" })</span>
+				</span>
+
+				<span class="search_field">
+					<span>Created Date:</span>
+				</span>
+
+				<span class="search_field">
+					<span>Number of Records:</span>
+					<span>@Html.DropDownListFor(model => model.ItemCount, new SelectList(new int[] { 10, 25, 50 }))</span>
+				</span>
+			</div>
+		</div>
+
+		<div style="display:table-cell;">
+			<input type="submit" id="btnSearch" value="Search" style="height:100%;margin-left:20px;vertical-align:middle;" />
+			<input type="button" id="btnResetResult" value="Reset&#13;&#10;Search Result" style="height:100%;vertical-align:middle;" />
+			<input type="button" id="btnClear" value="Clear" style="height:100%;vertical-align:middle;" />
+		</div>
+	}
+}
+<br />

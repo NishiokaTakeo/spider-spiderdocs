@@ -1,0 +1,452 @@
+﻿/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-bottom: 20px;
+}
+
+input[type="checkbox"][readonly] {
+  pointer-events: none;
+}
+
+input[type='checkbox'] {
+	width: 20px !important;
+	height: 20px !important;
+    margin-right: 5px!important;
+	vertical-align: middle;
+}
+
+input[type='radio'] {
+	width: 20px !important;
+	height: 20px !important;
+	vertical-align: middle;
+}
+
+input[type=date]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    display: none;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists
+   will truncate terms that are too long to fit in the left column
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Akira added */
+.tblMainPage .row {
+	padding-left:20px;
+	padding-bottom:30px;
+}
+
+.loginUser
+{
+    position:absolute;
+    top: 0px;
+    right:40px;
+
+    text-align:right;
+    padding-top:30px;
+	height:100px;
+	width:350px;
+	margin-top:0;
+	margin-bottom:0;
+}
+.loggedInUser
+{
+    font-weight:bold;
+    font-size:1.2em;
+}
+.logout
+{
+    width:16px;
+}
+
+.page
+{
+    width: 100%;
+    height:100px;
+    background-color: #fff;
+    margin: 0px 0px 0px 0px;
+}
+
+.header
+{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+    background: #ffffff;
+    width: 100%;
+}
+
+div.hideSkiplink
+{
+    background-color:#3a4f63;
+    width:100%;
+	height:10px;
+}
+
+.widthFull {
+	width:100%;
+}
+.widthThreeQuarter{
+	width:75%;
+}
+.widthTwoThird{
+	width:66%;
+}
+.widthHalf {
+	width:50%;
+}
+.widthOneThird {
+	width:33%;
+}
+.widthQuarter{
+	width:25%;
+}
+
+.textLeft {
+	text-align:left;
+}
+
+.textRight {
+	text-align:right;
+}
+
+/* Currency */
+input.currency {
+    text-align: right;
+    padding-right: 15px;
+}
+
+
+
+/* Customized By Kanishka
+----------------------------------------------------------*/
+.Initial
+{
+  display: block;
+  padding: 4px 18px 4px 18px;
+  float: left;
+  color: Black;
+  font-weight: bold;
+}
+.Clicked
+{
+  float: left;
+  display: block;
+  padding: 4px 18px 4px 18px;
+  color: Black;
+  font-weight: bold;
+  color: White;
+}
+.WordWrap
+{
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.searchResult {
+  max-height: 340px;
+  overflow-y: scroll;
+}
+
+.fontSmall {
+    font-size:0.8em;
+    word-wrap: break-word;
+}
+.fontSmallMedium {
+    font-size:0.9em;
+    word-wrap: break-word;
+}
+
+.red{
+    background-color:red;
+}
+
+
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+	.modal.left .modal-dialog,
+	.modal.right .modal-dialog {
+		position: fixed;
+		margin: auto;
+		width: 320px;
+		height: 100%;
+		-webkit-transform: translate3d(0%, 0, 0);
+		    -ms-transform: translate3d(0%, 0, 0);
+		     -o-transform: translate3d(0%, 0, 0);
+		        transform: translate3d(0%, 0, 0);
+	}
+
+	.modal.left .modal-content,
+	.modal.right .modal-content {
+		height: 100%;
+		overflow-y: auto;
+	}
+	
+	.modal.left .modal-body,
+	.modal.right .modal-body {
+		padding: 15px 15px 80px;
+	}
+
+/*Left*/
+	.modal.left.fade .modal-dialog{
+		left: -320px;
+		-webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+		   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+		     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+		        transition: opacity 0.3s linear, left 0.3s ease-out;
+	}
+	
+	.modal.left.fade.in .modal-dialog{
+		left: 0;
+	}
+        
+/*Right*/
+	.modal.right.fade .modal-dialog {
+		right: -320px;
+		-webkit-transition: opacity 0.3s linear, right 0.3s ease-out;
+		   -moz-transition: opacity 0.3s linear, right 0.3s ease-out;
+		     -o-transition: opacity 0.3s linear, right 0.3s ease-out;
+		        transition: opacity 0.3s linear, right 0.3s ease-out;
+	}
+	
+	.modal.right.fade.in .modal-dialog {
+		right: 0;
+	}
+
+/* ----- MODAL STYLE ----- */
+	.modal-content {
+		border-radius: 0;
+		border: none;
+	}
+
+	.modal-header {
+		border-bottom-color: #EEEEEE;
+		background-color: #FAFAFA;
+	}
+
+/* ----- v CAN BE DELETED v ----- */
+body {
+	background-color: #78909C;
+}
+
+.demo {
+	padding-top: 60px;
+	padding-bottom: 110px;
+}
+
+.btn-demo {
+	margin: 15px;
+	padding: 10px 15px;
+	border-radius: 0;
+	font-size: 16px;
+	background-color: #FFFFFF;
+}
+
+.btn-demo:focus {
+	outline: 0;
+}
+
+.demo-footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding: 15px;
+	background-color: #212121;
+	text-align: center;
+}
+
+.demo-footer > a {
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 16px;
+	color: #fff;
+}
+
+.select2-results__option[aria-selected=true] {
+    display: none;
+}
+
+.previewContainer {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 90%;
+}
+.previewInvoice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.previewReport {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.tblRAPTCPSList {
+  max-width: 150px;
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+#QualManagement_gridviewQualification > .jsgrid-grid-header {
+  font-size: 0.8em;
+}
+
+.dateSearchStyle {
+    font-size:11px!important;
+    min-width:130px!important;
+}
+
+.usermenu_logout {
+    height: 16px !important;
+    width: 16px !important;
+    content:url(/Images/logout.png) !important
+}
+.usermenu_change_password {
+    height: 16px !important;
+    width: 16px !important;
+    content:url(/Images/settings.png) !important
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+    .body-content {
+        padding: 0;
+    }
+}
+
+.jsgrid-edit-button[title="Edit"],
+.jsgrid-update-button[title="Update"]
+{
+    display:none;
+}
+
+.jsgrid-delete-button[title="Delete"]
+{
+    background-repeat: inherit !important;
+    height: 29px !important;
+    width: 23px !important;
+    background-position: initial !important;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAdCAYAAACuc5z4AAAACXBIWXMAAAsSAAALEgHS3X78AAABa0lEQVRIie2Vv0oDQRCHv7lbQSQklQa7dDbpRXyBhEvja6i1gtY21sHKTh/AIoGQxk6wyyOkCOQsUwlHjrHwLubP7ZnspczXLPx25zezM+ydAB4g/KHJKs1m88L3/TZQZZGv6XR62ev13myxVlMAiylA1RjzlBdrbBupAcBgMDgYjUYRQK1W26vX699LCVdivRzTVCM1BXQ4HEYskhkrgAmC4EZEroDjpQNro6oKhEC72+0+ShAEdyLy4GJmTxLfe0mlW8a7NsBRcg1EQHXxiIsmwqEAPvnDc9IMoK1WK8672KZ0Oh3f+/+YEysvb2tkVhxF0Xkcx2cuWorJEvv9/ie/vd9YS1CPuac7v1FAAyytSMjq/dqabXhFNCC/4kLkGRfq/W54M3bDm5H5rWg0GqeuWoIYQFR1IiKVWTZjPlYqWFNT1QkkPVbVV0tmF17g93/nlcvl91KpVAFORGTfxS2p9DkMw9vxeDz9ASIOoKtkra4eAAAAAElFTkSuQmCC') !important;
+}
+
+.jsgrid-edit-icon
+{
+
+    background-repeat: inherit !important;
+    height: 32px !important;
+    width: 32px !important;
+    background-position: initial !important;
+    background-image: url(/images/edit.png) !important;
+}
+
+
+/* Autocomplete */
+div.autocomplete-suggestions{
+    border: 1px solid #aaaaaa;
+    background: #ffffff;
+    color: #222222;
+    width: 382px;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 1.1em;
+    /*text-indent:0.5em;*/
+    padding:0.5em 1em;
+    line-height:2em;
+    overflow: scroll;
+    overflow-x:hidden;
+}
+
+div.autocomplete-selected{
+    background-color:#cccccc;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+
+}
+
+.GuardianBkGround {
+    background-color: #FE7E7E!important;
+    color: black!important;
+}
+
+.pac-container:after {
+    /* Disclaimer: not needed to show 'powered by Google' if also a Google Map is shown */
+
+    background-image: none !important;
+    height: 0px;
+}
+
+.menuHeader
+{
+	color: #3a87ad!important;
+    background-color: #d9edf7!important;
+    border-color: #bce8f1!important;
+}
+
+.menuHeaderWarning
+{
+	color: #C09853!important;
+    background-color: #FCF8E3!important;
+    border-color: #FBEED5!important;
+}
+#pagerctr
+{
+    width:8em;float:left;
+}
+#pagerctr-wrap
+{
+    width: 200px;
+    display: inline-block;
+}
+#pagerctr-wrap .say{
+    position: relative;bottom: 0.5em;z-index: -1;
+}
+
+
+.error
+{
+    color:red;
+}
+
+
+.tooltipCustom .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1; 
+    margin-left:45px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltipCustom:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}

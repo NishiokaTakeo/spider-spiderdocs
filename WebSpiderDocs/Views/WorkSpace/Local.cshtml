@@ -1,0 +1,225 @@
+﻿
+@{
+	ViewBag.Title = "User WorkSpace - SpiderDocs";
+	Layout = "~/Views/Shared/_LayoutWebApp.cshtml";
+}
+
+@section JavaScript
+{
+	@Scripts.Render("~/bundles/js/webapp/workspace-local.js")
+}
+<div ng-controller="workspaceLocalController">
+
+
+	<div class="main-container">
+
+		<div class="page-header page-header--flat panel--navy">
+			<div class="page-header__title-full">
+				<h1>User Database</h1>
+				<i class="glyphicon glyphicon-menu-hamburger size--2r spider-colour" sidebarjs-toggle="menuSidebarJS"></i>
+			</div>
+
+			<div ng-include="'scripts/app/views/includes/inc-database-menus.html'" ng-init="localOnly = true" class="form-field form-field--flex"></div>
+
+
+
+
+		</div>
+
+
+		<div class="container container--edge container--underlap container--full">
+
+
+			<div class="leads-filters panel--dark hidden">
+
+				<div class="leads-filters__inner" ng-enter="searchby()">
+					<div class="leads-filters__contents filters-bar">
+
+						<div class="form-field ">
+							<label for="lead-filter-id" class="form-field__label">File name</label>
+							<input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="search.title" ng-init="search.title=''" autocomplete="off" ui-keypress="{13:'searchby()'}">
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			<div class="local-table panel--white panel--border">
+
+				<div class="local-table__header">
+					<div class="local-table__col local-col--id js--header__id {{sortby.key == 'id' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}} hidden">
+						<button type="button"
+								class="btn-sort" ng-click="sort('id')">
+							<span>ID</span>
+						</button>
+					</div>
+					<div class="local-table__col local-col--id js--header__id_doc {{sortby.key == 'id_doc' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}">
+						<button type="button"
+								class="btn-sort" ng-click="sort('id_doc')">
+							<span>Doc ID</span>
+						</button>
+					</div>
+					<!-- btn-sort--desc -->
+					<div class="local-table__col local-col--filename js--header__filename {{sortby.key == 'filename' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}">
+						<button type="button" class="btn-sort" ng-click="sort('filename');">
+							<span>
+								File Name
+							</span>
+						</button>
+					</div>
+					<div class="local-table__col local-col--filesize js--header__filesize {{sortby.key == 'filesize' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}" >
+						<button type="button" class="btn-sort" ng-click="sort('filesize');">
+							<span>
+								File Size
+							</span>
+						</button>
+					</div>
+					<div class="local-table__col local-col--lastmodified js--header__lastmodified_date {{sortby.key == 'lastmodified_date' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}">
+						<button type="button"
+								class="btn-sort" ng-click="sort('lastmodified_date');">
+							<span>Date<br>Last Modified</span>
+						</button>
+					</div>
+
+					<div class="local-table__col local-col--created js--header__created_date {{sortby.key == 'created_date' ? sortby.asc ? 'btn-sort--asc' : 'btn-sort--desc' : ''}}">
+						<button type="button"
+								class="btn-sort" ng-click="sort('created_date');">
+							<span>Date<br>Created</span>
+						</button>
+					</div>
+
+				</div>
+
+				<div context-menu menu-items="menus" id="{{'item_'+$index}}" class="local-table__row {{doc.selected ? 'local-table__row--checked':''}}" ng-repeat="doc in data.docs">
+
+					<div class="form-field form-field--shadow form-field--checkbox row-hover hidden">
+						<label>
+							<input type="checkbox" ng-model="doc.selected" class="">
+							<span class="form-field__label">
+								<span class="hidden">Select Row</span>
+							</span>
+						</label>
+					</div>
+
+					<div class="local-table__col local-col--id hidden">
+						<div class="local-table__col-header ">ID</div>
+						{{doc.id}}
+					</div>
+					<div class="local-table__col local-col--id">
+						<div class="local-table__col-header ">Doc ID</div>
+						{{doc.id_doc > 0 ? doc.id_doc : 'New'}}
+					</div>
+					<div class="local-table__col local-col--filename ">
+						<div class="local-table__col-header">File Name</div>
+						<div class="local-table__trim">
+							<a href="" target="blank">{{doc.filename}}</a>
+						</div>
+					</div>
+					<div class="local-table__col local-col--filesize">
+						<div class="local-table__col-header">File Size</div>
+						<div class="local-table__trim">
+							<a href="" target="blank">{{doc.filesizeText}}</a>
+						</div>
+					</div>
+					<div class="local-table__col local-col--lastmodified ">
+						<div class="local-table__col-header">Date Last Modified</div>
+						{{doc.lastmodified_date | toDate | date:'dd/MM/yyyy' | dispNA}}
+					</div>
+
+					<div class="local-table__col local-col--created ">
+						<div class="local-table__col-header">Date Created</div>
+						{{doc.created_date | toDate | date:'dd/MM/yyyy' | dispNA}}
+					</div>
+
+
+					<a href="" class="btn btn--small btn--shadow cta-edit-lead row-hover hidden" target="_self" ng-click="download(doc)">Download</a>
+					<a href="" class="btn btn--small btn--shadow cta-email-lead row-hover hidden" target="_self" ng-click="delete(doc)">Delete</a>
+					@* <a href="" class="btn btn--small btn--shadow cta-email-lead row-hover" target="blank">Checkout</a> *@
+
+
+
+					<div ng-if="$index == leads.length -1">
+						<!-- <script type="text/javascript" src="Scripts/app/build.js"></script> -->
+					</div>
+
+				</div>
+
+				<div class="local-table-zero" ng-show="data.docs.length == 0">
+					You do not have any local files.
+				</div>
+			</div>
+			<style>
+				.pagination li {
+					display: inline
+				}
+			</style>
+			<ul class="pagination hidden" ng-show="data.docs.length > 0">
+				<li><a href="" ng-click="prev();" class="pagination__action pagination__action--prev"><span class="hidden">Previous Page</span></a></li>
+
+				<li ng-repeat="page in pages">
+					<span ng-if="cur_page == page" class="pagination__active">{{page}}</span>
+					<a href="" ng-click="page_at(page);" ng-if="cur_page != page" class="pagination__active">{{page}}</a>
+				</li>
+
+				<li class="hidden"><span>…</span></li>
+				<li><a href="" ng-click="next();" class="pagination__action pagination__action--next"><span class="hidden">Next Page</span></a></li>
+			</ul>
+
+
+		</div>
+
+	</div>
+
+		<sidebarjs sidebarjs-name="menuSidebarJS"  sidebarjs-config="{position: 'left'}">
+
+			<div class="main-header--sidebar">
+				<nav class="main-nav" aria-label="Primary Nav">
+					<ul>
+					<li class="dropdown dropdown-1 main-nav__mob-menu">
+						<div>
+
+							<a  sidebarjs-toggle="menuSidebarJS" href="@Url.Action("Index", "WorkSpace")" target="_self"  href="">Local Workspace</a>
+						</div>
+					</li>
+
+					</ul>
+				</nav>
+			</div>
+
+		</sidebarjs>
+
+</div>
+
+<upload id="upload1" to="webservices/spidereating/fileUpload" ng-model="fileupload" class="uploader hidden"></upload>
+
+
+
+
+ <script type="text/ng-template" id="form-import.html">
+	<div class="modal-header">
+		<h3 class="modal-title" id="modal-title">[{{$ctrl.doc.id}}] {{$ctrl.doc.title}}</h3>
+	</div>
+	<div class="modal-body" id="modal-body">
+		<h3>Please upload with extension ({{$ctrl.doc.extension}}): <span class="modal-ok" ng-show="$ctrl.file">OK</span></h3>
+		<div class="modal-error-message">{{$ctrl.error}}</div>
+		<div class="modal-upload-container">
+			<upload id="upload1" to="webservices/spidereating/fileUpload" ng-model="$ctrl.fileupload" class="uploader" ng-on-drop="$ctrl.onDrop($event)" ng-click="$ctrl.deletePic($event)"></upload>
+		</div>
+
+		<div class="form-field" ng-show="$ctrl.needReason">
+			<label for="lead-filter-id" class="form-field__label">Reason : <span ng-show="!$ctrl.checklength()">At least {{10 - $ctrl.reason.length }} characters.</span> <span class="modal-ok" ng-show="$ctrl.checklength()">OK</span></label>
+
+			<textarea type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.reason" autocomplete="off"
+			class="ng-pristine ng-valid ng-empty ng-touched" ng-change="$ctrl.validateTogo()">
+
+			</textarea>
+		</div>
+
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()" ng-disabled="! $ctrl.canGo">OK</button>
+		<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+	</div>
+</script>
+

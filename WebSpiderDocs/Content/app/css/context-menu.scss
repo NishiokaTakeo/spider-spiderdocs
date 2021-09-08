@@ -1,0 +1,120 @@
+﻿
+@import "../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+
+
+.custom-context-menu {
+    @extend .dropdown-menu;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 9999;
+
+    &.shown {
+        display: block;
+    }
+
+    li {
+        cursor: pointer;
+    }
+}
+
+.context-caret {
+
+    &:before,
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 9px solid transparent;
+        border-right: 9px solid transparent;
+        border-bottom: 10px solid #fff;
+        z-index: 2;
+    }
+
+    &:after {
+        border-bottom-color:#bbb;
+        z-index: 1;
+    }
+
+    &-top-left {
+          margin: 10px 0 0 -28px;
+
+        &:before {
+            left: 20px;
+            top: -10px;
+        }
+
+        &:after {
+            left: 20px;
+            top: -11px;
+        }
+    }
+
+    &-top-right {
+        margin: 10px 0 0 18px;
+
+        &:before {
+            left: calc(100% - 26px);
+            top: -10px;
+        }
+
+        &:after {
+            left: calc(100% - 26px);
+            top: -11px;
+        }
+    }
+
+    &-bottom-left {
+        margin: -7px 0 0 -29px;
+
+        &:before {
+            left: 20px;
+            top: calc(100%);
+            border-bottom-color: transparent;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-top: 10px solid #fff;
+        }
+
+        &:after {
+            left: 20px;
+            top: calc(100% + 1px);
+            border-bottom-color: transparent;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-top: 10px solid #bbb;
+        }
+    }
+
+
+    &-bottom-right {
+        margin: -7px 0 0 18px;
+
+        &:before {
+            left: calc(100% - 26px);
+            top: calc(100%);
+            border-bottom-color: transparent;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-top: 10px solid #fff;
+        }
+
+        &:after {
+            left: calc(100% - 26px);
+            top: calc(100% + 1px);
+            border-bottom-color: transparent;
+            border-left: 9px solid transparent;
+            border-right: 9px solid transparent;
+            border-top: 10px solid #bbb;
+        }
+    }
+
+}
+
+
+.twrap {
+    max-height: 400px;
+    overflow: auto;
+}

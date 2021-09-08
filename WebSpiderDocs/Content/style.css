@@ -1,0 +1,103 @@
+body
+{
+	margin: 15px;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	padding-right: 0px !important;
+	overflow: auto !important;
+}
+
+hr
+{
+	margin-top:5px !important;
+	margin-bottom:5px !important;
+	border-top: 2px solid #eee !important;
+}
+
+table.general_tabel
+{
+	width:98%;
+	margin:auto;
+}
+
+table.general_tabel th
+{
+	background-color:#CCCCCC !important;
+	font-weight:bold;
+}
+
+table.general_tabel, table.general_tabel th, table.general_tabel td
+{
+	color:Black;
+	background-color:White;
+	border-color:#CCCCCC;
+	border-width:1px;
+	border-style:Solid;
+	border-collapse:collapse;
+	padding:3px;
+}
+
+.DataGrid span[class^="EditField_"] input, .DataGrid span[class^="EditField_"] select
+{
+	width: 100%;
+}
+
+input[type="checkbox"]
+{
+	vertical-align: bottom;
+}
+
+div.top_menu
+{
+	text-align: center;
+}
+
+div.top_menu a
+{
+	display: inline-block;
+	height: 40px;
+
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-left: 10px;
+
+	border: 1px solid lightgray;
+	border-bottom: none;
+
+	background-color: darkgray;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div.top_menu a.selected
+{
+	background-color: lightgray;
+}
+
+[class*="search_field"] input
+{
+	height:1.5em;
+}
+
+.search_field span:nth-child(1)
+{
+	font-weight:bold;
+	margin-right:10px;
+}
+
+.search_field span:nth-child(2)
+{
+	margin-right:10px;
+}
+
+.notes_cell
+{
+	width: 200px !important;
+}
+
+.hide
+{
+	display: none;
+}

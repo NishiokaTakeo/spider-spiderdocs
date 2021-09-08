@@ -1,0 +1,274 @@
+.filters-bar {
+    display: flex;
+    padding: 0 0 18px;
+    .form-field {
+        white-space: nowrap;
+        margin-bottom: 0;
+    }
+
+    select {
+        @include fw-med;
+        @include breakpoint(1501px, 0) {
+            min-width: 140px;
+        }
+    }
+
+    @include breakpoint(0, 1023px) {
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+
+// Quick Filters
+.quick-filters {
+
+	.form-button
+	{
+		@include breakpoint(0,600px)
+		{
+			flex:1;
+			flex-wrap: wrap;
+			margin-top:10px;
+		}
+	}
+
+    .form-field {
+        &__label {
+            color: rgba($f, 0.7);
+            @include fw-semi;
+        }
+
+        // Checkbox Tweak
+        input:checked + .form-field__label {
+            color: $yellow;
+        }
+        + .form-field {
+            margin-left: 25px;
+            @include breakpoint(0, 1500px) {
+                margin-left: 15px;
+            }
+            @include breakpoint(0, 1023px) {
+                margin-left: 0;
+            }
+        }
+        @include breakpoint(0, 1023px) {
+            &__select {
+                flex: 1;
+            }
+        }
+    }
+
+    select {
+        @include breakpoint(1024px, 0) {
+            min-width: 140px;
+        }
+    }
+
+    @include breakpoint(0, 1023px) {
+        flex-wrap: wrap;
+        width: 100%;
+        .form-field {
+            &:nth-child(3),
+            &:nth-child(4) {
+                width: 50%;
+                order: 0;
+                margin: 0 0 10px;
+            }
+            &:nth-child(1) {
+                order: 1;
+                width: 130px;
+            }
+            &:nth-child(2) {
+                order: 2;
+                width: calc(100% - 130px);
+            }
+
+            // Spacing
+            &:nth-child(4) {
+                padding-left: 25px;
+            }
+        }
+    }
+    @include breakpoint(0, 500px) {
+        .form-field {
+            &:nth-child(4) {
+                padding-left: 10px;
+            }
+        }
+    }
+}
+
+.leads-filters-toggle {
+    background: $dark;
+    border-radius: 0;
+    padding: 0 28px 6px;
+    margin: 0 0 -6px auto;
+    min-width: 150px;
+    color: $f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include font-size(13);
+
+    @include breakpoint(1024px, 0) {
+        border-radius: 3px 3px 0 0;
+    }
+
+    &:before {
+        display: block;
+        content: '';
+        margin: 0 11px 0 0;
+        width: 7px;
+        height: 7px;
+        border: 2px solid $yellow;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg) translate(-1px,-1px);
+        transition: transform $timing linear;
+    }
+
+
+    body.filters-open & {
+        &:before {
+            transform: rotate(225deg) translate(0px,-3px);
+        }
+    }
+
+    @include breakpoint(0, 1500px) {
+        min-width: 135px;
+        padding: 0 18px 6px;
+    }
+    @include breakpoint(0, 1023px) {
+        margin: 0 -20px;
+        width: calc(100% + 40px);
+        padding: 14px 0 8px;
+    }
+    @include breakpoint(0, 500px) {
+        margin: 0 -20px;
+        width: calc(100% + 40px);
+    }
+}
+
+// Primary Leads Filters
+.leads-filters {
+    padding: 6px 0 0;
+    @include breakpoint(1201px, 0) {
+        border-radius: 3px 3px 0 0;
+    }
+
+    &__inner {
+        max-height: 0;
+        // overflow: hidden;
+        display: flex;
+        transition: max-height 0.5s $ease-io-slow;
+
+        body.filters-open & {
+            @include breakpoint(1301px, 0) {
+                max-height: 150px;
+            }
+            @include breakpoint(0, 1300px) {
+                max-height: none;
+            }
+        }
+    }
+    &__contents {
+        padding: 11px 40px 15px;
+
+        @include breakpoint(0, 1430px) {
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        @include breakpoint(0, 1300px) {
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        @include breakpoint(0, 400px) {
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .form-field {
+        @include breakpoint(1301px, 0) {
+            margin-right: 10px;
+        }
+        @include breakpoint(1501px, 0) {
+            margin-right: 20px;
+        }
+        @include breakpoint(0, 1500px) {
+            flex: 1;
+        }
+        &--wide {
+            @include breakpoint(0, 1500px) {
+                flex: 1.5;
+            }
+        }
+        > .form-field__label {
+            color: $light-2;
+        }
+        @include breakpoint(901px, 1300px) {
+            flex: none;
+            width: calc(33.333% - 10px) !important;
+            &:nth-child(n + 4) {
+                margin-top: 10px;
+            }
+        }
+        @include breakpoint(601px, 900px) {
+            flex: none;
+            width: calc(50% - 10px) !important;
+            &:nth-child(n + 3) {
+                margin-top: 10px;
+            }
+        }
+        @include breakpoint(0, 600px) {
+            flex: none;
+            width: 100%;
+            &:nth-child(n + 2) {
+                margin-top: 10px;
+            }
+            .form-field__input-stack .form-field__input-stack__item {
+                width: 50%;
+            }
+        }
+    }
+
+    .form-field__input-stack {
+        input,
+        select {
+            padding-top: 8px;
+        }
+        input[type="date"] {
+            &::-webkit-inner-spin-button {
+                margin-top: 4px;
+            }
+        }
+        @include breakpoint(0, 400px) {
+            .form-field__input-stack__item {
+                width: 160px !important;
+            }
+            input[type="date"] {
+                width: 160px;
+            }
+        }
+    }
+    input,
+    select {
+        padding-left: 10px;
+        padding-right: 10px;;
+        // @include breakpoint(1501px, 0) {
+        //     width: 150px;
+        // }
+    }
+    .form-field {
+        @include breakpoint(0, 400px) {
+            width: 320px;
+        }
+    }
+}
+
+
+.desktop .leads-filters {
+    input,
+    select {
+        @include font-size(13);
+    }
+}

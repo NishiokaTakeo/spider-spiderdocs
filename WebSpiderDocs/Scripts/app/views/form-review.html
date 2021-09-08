@@ -1,0 +1,123 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">{{title}} <span ng-show="isOverdueReview()" class="notice">(OVER DUE)</span><span ng-show="isArchived()" class="notice">(ARCHIVED)</span></h3>
+</div>
+<div class="modal-body" id="modal-body">
+
+	<div class="review-header">
+		<div >ID: {{doc.id}}</div>
+		<div >Name: {{doc.title}}</div>
+		<div >Folder:  {{doc.name_folder}}</div>
+		<div >Version:  {{doc.version}}</div>
+	</div>
+
+	<ul class="tab">
+		<li class="{{ tab == 1 ? 'active' : '' }}"><a ng-click="tab = 1">Review</a></li>
+		<li class="{{ tab == 2 ? 'active' : '' }}"><a ng-click="tab = 2">Log</a></li>
+	</ul>
+
+	<div ng-show="tab==1" class="review-tab">
+		<div class="review-tab__left">
+
+			<div class="form-field form-field--small">
+				<label for="" class="form-field__label"></label>
+				<div class="form-field__select--blue">
+					<button type="button" class="btn btn--blue width--90" ng-click="download()" >Download to read</button>
+				</div>
+			</div>
+
+			<div class="form-field form-field--small">
+				<label for="" class="form-field__label"></label>
+				<div class="form-field__select--blue">
+					<button type="button" class="btn btn--blue width--90" ng-click="checkoutInReview()" ng-disabled="! hasPermission2Checout() ">Check out</button>
+				</div>
+			</div>
+
+			<div class="form-field width--90" ng-show="hasNotReviewed()" >
+				<label for="owner_comment" class="form-field__label">Owner Comment ({{model.owner_review}})</label>
+				<textarea type="text" name="owner_comment" id="owner_comment" ng-model="model.owner_comment" autocomplete="off" disabled>{{model.owner_comment}}</textarea>
+			</div>
+		</div>
+		<div class="review-tab__right">
+			<h3>
+				Action
+			</h3>
+
+			<div class="form-field form-field--radio">
+				<input type="radio" name="action" id="finish"  value="finish" ng-model="model.action" ng-disabled="true">
+				<label for="finish" class="form-field__label" >Finish this review</label>
+			</div>
+			<div></div>
+			<div class="form-field form-field--radio">
+				<input type="radio" name="action" id="start" value="start" ng-model="model.action" ng-disabled="true">
+				<label for="start" class="form-field__label" >Start Review </label>
+			</div>
+
+			<div>
+				<ng-multi-combo tk-title="User(s)" ng-model="model.reviewers" on-changed="validateTogo();" ng-disabled="model.action !== 'start' || isArchived()"></ng-multi-combo>
+
+				<h3>Deadline</h3>
+				<div class="form-field">
+					<label for="deadline-date" class="form-field__label">Date</label>
+					<input type="date" name="deadlineDate" id="deadline-date" ng-model="model.deadline" ng-disabled="model.action !== 'start' || isArchived()">
+				</div>
+				<div class="form-field">
+					<label for="deadline-time" class="form-field__label">Time</label>
+					<input type="time" name="deadlineTime" id="deadline-time" ng-model="model.deadline" ng-disabled="model.action !== 'start' || isArchived()" step="300">
+				</div>
+
+				<div class="form-field form-field--checkbox">
+					<label>
+						<input type="checkbox" name="allowCheckout" id="allow_checkout" ng-model="model.allow_checkout" ng-change="validateTogo();" ng-disabled="model.action !== 'start' || isArchived()">
+						<span for="allow_checkout" class="form-field__label" ng-disabled="model.action !== 'start' || isArchived()">Allow selected users to check out</span>
+					</label>
+				</div>
+
+			</div>
+			<h3>Enter your comment</h3>
+			<div class="form-field" >
+				<label for="comment" class="form-field__label"><span ng-show="!checklength()">At least {{10 - model.comment.length }} characters.</span> <span  ng-show="checklength()">OK</span></label>
+
+				<textarea type="text" name="comment" id="comment" ng-model="model.comment" autocomplete="off" ng-change="validateTogo();" ng-disabled="!(model.action === 'start' || isReviewer() && ! finishMyReview() ) || isArchived()" ></textarea>
+			</div>
+
+		</div>
+	</div>
+
+	<div ng-show="tab==2"  class="review-tab">
+		<div  class="review-tab__left">
+			<div class="review__log-header-row">
+				<div class="review__log-col">No.</div>
+				<div class="review__log-col">Name</div>
+				<div class="review__log-col">Action</div>
+			</div>
+
+			<div class="review__log-row" ng-click="comment(history.comment)" ng-repeat="history in model.review_history">
+				<div class="review__log-col">{{$index + 1}}</div>
+				<div class="review__log-col">{{history.name}}</div>
+				<div class="review__log-col">{{history.note}}</div>
+			</div>
+		</div>
+		<div  class="review-tab__right review__log-comment" >
+			{{currentComment}}
+		</div>
+
+<!--
+		<table class="modal-body-table">
+			<tr>
+				<th>No.</th>
+				<th>Name</th>
+				<th>Action</th>
+			</tr>
+			<tr ng-repeat="evt in events">
+				<td class="td--centre">{{}}</td>
+				<td>{{}}</td>
+				<td>{{}}</td>
+			</tr>
+		</table> -->
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="ok()" ng-disabled="! canGo">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

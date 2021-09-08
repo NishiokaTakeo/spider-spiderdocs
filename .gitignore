@@ -1,0 +1,52 @@
+obj
+bin
+logs
+Spdier Docs - App Client Installer ( NSIS )/Spider Docs
+Spdier Docs - App Client Installer ( NSIS )/Spider Docs AddIns
+Spdier Docs - App Client Installer ( NSIS )/setup.exe
+Spdier Docs - App Client Installer ( NSIS )/*.zip
+packages
+temp
+DVD-5
+#ignore thumbnails created by windows
+yarn.lock
+Thumbs.db
+#Ignore files build by Visual Studio
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+SpiderBox
+*.laccdb
+*/SpiderDocs.nsi
+*.csproj.user
+Spider Docs - WebBase/
+node_modules/
+compilerconfig.json*
+package-lock.json
+*.map
+build/
+dest/
+settings.json
+OfficeToolsForVS2012RTW.zip

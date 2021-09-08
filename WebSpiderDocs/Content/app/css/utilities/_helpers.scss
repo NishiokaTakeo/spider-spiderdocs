@@ -1,0 +1,236 @@
+.hidden { @include hide; } // Visually hide
+.hide { display: none; } // Display none
+.relative { position: relative; }
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+} // Reset all navigational lists
+
+.flex {
+    display: flex;
+    &--between { justify-content: space-between; }
+    &--center { align-items: center; }
+    &--h-center { justify-content: center; }
+    &--h-end { justify-content: flex-end; }
+    &--top { align-items: flex-start; }
+    &--end { align-items: flex-end; }
+    &--grow { flex: 1; }
+    &--grow-2 { flex: 2; }
+    &--wrap { flex-wrap: wrap; }
+    &--column { flex-direction: column; }
+    &--column-reverse { flex-direction: column-reverse; }
+    &--row-reverse { flex-direction: row-reverse; }
+    &--none { flex: none; }
+}
+
+.rounded {
+    border-radius: $br;
+}
+
+.video-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    margin: -60px 0 0 -60px;
+    border-radius: 50%;
+    padding: 2px 0 0 3px;
+    background: $f;
+    svg {
+        display: block;
+        width: 29px;
+        height: 33px;
+        fill: $b;
+    }
+}
+
+
+// Utility size and spacing classes
+$sizes: ( 200,170,150,100,90,80,70,60,50,40,30,25,20,15,10,5,0 );
+
+.width {
+    @each $size in $sizes {
+        $val: $size * 1%;
+        &--#{$size} {
+            width: $val;
+        }
+    }
+}
+.width-px {
+    @each $size in $sizes {
+        $val: $size * 1px;
+        &--#{$size} {
+            width: $val;
+        }
+    }
+}
+.height {
+    @each $size in $sizes {
+        $val: $size * 1%;
+        &--#{$size} {
+            height: $val;
+        }
+    }
+}
+.height-px {
+    @each $size in $sizes {
+        $val: $size * 1px;
+        &--#{$size} {
+            height: $val;
+        }
+    }
+}
+.margin {
+    &-top {
+        @each $size in $sizes {
+            $val: $size * 1px;
+            &--#{$size} {
+                margin-top: $val;
+            }
+        }
+    }
+    &-bottom {
+        @each $size in $sizes {
+            $val: $size * 1px;
+            &--#{$size} {
+                margin-bottom: $val;
+            }
+        }
+    }
+    &-left {
+        @each $size in $sizes {
+            $val: $size * 1px;
+            &--#{$size} {
+                margin-left: $val;
+            }
+        }
+    }
+    &-right {
+        @each $size in $sizes {
+            $val: $size * 1px;
+            &--#{$size} {
+                margin-right: $val;
+            }
+        }
+    }
+}
+.padding {
+    &-left {
+        @each $size in $sizes {
+            $val: $size * 1px;
+            &--#{$size} {
+                padding-left: $val;
+            }
+        }
+    }
+    &-right {
+        @each $size in $sizes {
+            $val: $size * 1px;
+            &--#{$size} {
+                padding-right: $val;
+            }
+        }
+    }
+    &-top {
+        @each $size in $sizes {
+            $val: $size * 1px;
+            &--#{$size} {
+                padding-top: $val;
+            }
+        }
+    }
+    &-bottom {
+        @each $size in $sizes {
+            $val: $size * 1px;
+            &--#{$size} {
+                padding-bottom: $val;
+            }
+        }
+    }
+}
+
+
+// Show hide Mobile
+.show-upper-mid {
+    @include breakpoint(961px, 0) {
+        display: none !important;
+    }
+}
+.hide-upper-mid {
+    display: none;
+    @include breakpoint(0, 960px) {
+        display: block;
+    }
+}
+.show-mobile {
+    @include breakpoint(768px, 0) {
+        display: none;
+    }
+}
+.hide-mobile {
+    @include breakpoint(0, 767px) {
+        display: none !important;
+    }
+}
+
+.zindex {
+    @for $i from 1 through 20 {
+        &--#{$i} {
+            z-index: $i;
+        }
+    }
+}
+
+// .top {
+//     &-top {
+//         @each $size in $sizes {
+//             $val: $size * 1px;
+//             &--#{$size} {
+//                 margin-top: $val;
+//             }
+//         }
+//     }
+//     &-bottom {
+//         @each $size in $sizes {
+//             $val: $size * 1px;
+//             &--#{$size} {
+//                 margin-bottom: $val;
+//             }
+//         }
+//     }
+//     &-left {
+//         @each $size in $sizes {
+//             $val: $size * 1px;
+//             &--#{$size} {
+//                 margin-left: $val;
+//             }
+//         }
+//     }
+//     &-right {
+//         @each $size in $sizes {
+//             $val: $size * 1px;
+//             &--#{$size} {
+//                 margin-right: $val;
+//             }
+//         }
+//     }
+// }
+
+.float
+{
+	&--right
+	{
+		float:right;
+	}
+
+	&--left
+	{
+		float:left;
+	}	
+}

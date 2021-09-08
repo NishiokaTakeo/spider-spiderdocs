@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html>
+	<head>
+		@* <meta name='viewport' content='width=device-width,initial-scale=1.0' /> *@
+
+		@Scripts.Render("~/bundles/shared-js")
+		@*<script type="text/javascript" src="@Url.Content("~/Scripts/Spider.js")"></script>
+		<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui.min.js")"></script>
+		<script type="text/javascript" src="@Url.Content("~/Scripts/ModalDialog.js")"></script>
+		<script type="text/javascript" src="@Url.Content("~/Scripts/SearchPanel.js")"></script>*@
+		@RenderSection("JavaScript", required: false)
+
+		@* <script type="text/javascript">
+			$(function() {
+				SetDatePicker();
+			});
+
+			function SetDatePicker()
+			{
+				$('.datepicker').datepicker({ dateFormat: 'dd/mm/yy' });
+			}
+		</script> *@
+
+		@Styles.Render("~/bundles/shared-css")
+		@*<link rel="stylesheet" href="@Url.Content("~/Content/style.css")" />*@
+		@RenderSection("Styles", required: false)
+		@*<style>
+			.modal-content
+			{
+				margin: 30px auto !important;
+				overflow: auto;
+			}
+		</style>*@
+
+		<title>@ViewBag.Title</title>
+	</head>
+
+	<body>
+
+		@RenderBody()
+
+		<div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-content">
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,123 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">{{view.titlePrefix}} View</h3>
+</div>
+<div class="modal-body" id="modal-body">
+
+	<div class="form-field text-align--right">
+		<button type="button" class="btn btn--secondary btn--yellow" ng-click="$ctrl.manageNewSource()" ng-show="$ctrl.isadmin()">{{$ctrl.view.text.manageDataLocation}}</button>
+		<button type="button" class="btn btn--secondary btn--yellow" ng-click="$ctrl.updateSource()" ng-show="$ctrl.isadmin()">New Data Location</button>
+	</div>
+
+
+
+
+	<div class="checkin-table  panel--white panel--border" ng-show="$ctrl.view.managingDataLocation" style="width:100%">
+
+		<div class="checkin-table__header">
+			<div class="checkin-table__col checkin-col--currentname" style="flex: 4;">
+				<button type="button"
+						class="btn-sort">
+					<span>Location</span>
+				</button>
+			</div>
+			<!-- btn-sort--desc -->
+			<div class="checkin-table__col checkin-col--currentname" style="flex: 4;">
+				<button type="button" class="btn-sort" >
+					<span>
+						Connection String
+					</span>
+				</button>
+			</div>
+			<div class="checkin-table__col checkin-col--currentname" style="flex: 4;">
+				<button type="button" class="btn-sort" >
+					<span>
+						Vendor
+					</span>
+				</button>
+			</div>
+			<div class="checkin-table__col checkin-col--currentname" style="flex: 2;">
+				<button type="button" class="btn-sort" >
+					<span>
+
+					</span>
+				</button>
+			</div>
+
+		</div>
+
+
+		<div class="checkin-table__row {{doc.selected ? 'checkin-table__row--checked':''}}" ng-repeat="source in $ctrl.view.data.sources | datasourceFilter" >
+			<div class="checkin-table__col checkin-col--currentname" style="flex: 4;">
+				<div class="form-field ">
+					<label for="source-name" class="checkin-table__col-header">Location</label>
+					<input type="text" name="source-name" id="source-name" ng-model="source.name" autocomplete="off" class="checkin-table__trim" ng-change="$ctrl.updateSource(source);">
+
+
+				</div>
+			</div>
+
+			<div class="checkin-table__col checkin-col--currentname" style="flex: 4;">
+				<div class="form-field ">
+					<label for="source-data-source" class="checkin-table__col-header">Connection String</label>
+					<input type="text" name="source-data-source" id="source-data-source" ng-model="source.data_source" autocomplete="off" class="checkin-table__trim"  ng-change="$ctrl.updateSource(source);">
+				</div>
+			</div>
+
+			<div class="checkin-table__col checkin-col--currentname" style="flex: 4;" >
+				<div class="form-field ">
+					<label for="source-vendor" class="checkin-table__col-header">Vendor</label>
+					<div class="form-field__select form-field__select--blue">
+
+					<select name="lead-filter-rep" id="lead-filter-rep" ng-model="source.vendor" ng-init="source.vendor=$ctrl.vendorBy( source.sql_mode )" ng-change="$ctrl.updateSource(source);" ng-options="opt.name for opt in $ctrl.view.data.vendors track by opt.id" ng-show="source.data_source != ''"></select>
+					</div>
+				</div>
+			</div>
+
+			<div class="checkin-table__col checkin-col--currentname" style="flex: 2;">
+				<div class="form-field ">
+					<button type="button" class="btn btn--secondary btn--yellow" ng-click="$ctrl.deleteSource(source)">Delete</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+	<div class="form-field ">
+		<label for="lead-filter-id" class="form-field__label">View Name</label>
+		<input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.view.models.name" ng-change="$ctrl.nameOK(); $ctrl.validateTogo();" autocomplete="off" ui-keypress="{13:'searchby()'}" class="ng-pristine ng-valid ng-empty ng-touched"  ng-disabled="$ctrl.checkout">
+	</div>
+
+
+	<div class="form-field">
+		<label for="lead-filter-rep" class="form-field__label">Location</label>
+		<div class="form-field__select form-field__select--blue">
+			<select name="lead-filter-rep" id="lead-filter-rep" ng-model="$ctrl.view.models.source" ng-change="$ctrl.sourceOK(); $ctrl.validateTogo();" ng-options="opt.name for opt in $ctrl.view.data.sources track by opt.id"></select>
+		</div>
+	</div>
+
+	<!-- <div class="form-field">
+		<label for="lead-filter-rep" class="form-field__label">DB Source</label>
+		<div class="form-field__select form-field__select--blue">
+			<select name="lead-filter-rep" id="lead-filter-rep" ng-model="$ctrl.view.models.dbsources" ng-change="$ctrl.validateTogo()" ng-options="opt.name for opt in $ctrl.view.data.dbsources track by opt.id"></select>
+		</div>
+	</div> -->
+
+	<div class="form-field ">
+		<label for="lead-filter-id" class="form-field__label">Description</label>
+		<input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.view.models.description" ng-change="$ctrl.descriptionOK(); $ctrl.validateTogo();" autocomplete="off" ui-keypress="{13:'searchby()'}" class="ng-pristine ng-valid ng-empty ng-touched"  ng-disabled="$ctrl.checkout">
+	</div>
+
+
+</div>
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()" ng-disabled="! $ctrl.canGo">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>

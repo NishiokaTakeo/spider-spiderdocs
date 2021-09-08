@@ -1,0 +1,220 @@
+<div class="modal-header">
+	<h3 class="modal-title" id="modal-title">{{$ctrl.title}}</h3>
+</div>
+<div class="modal-body" id="modal-body">
+
+	<div class="container--checkin-newver container--edge container--full" ng-controller="formSaveVerCtrl as verCtrl" ng-show="ctrl.tab==2">
+
+		<div class="checkin-table  panel--white panel--border">
+
+			<div class="checkin-table__header">
+
+				<div class="checkin-table__col checkin-col--currentname">
+					<button type="button"
+							class="btn-sort" ng-click="sort('id_version')">
+						<span>File</span>
+					</button>
+				</div>
+				<div class="checkin-table__col checkin-col--currentname">
+					<button type="button"
+							class="btn-sort" ng-click="sort('id_version')">
+						<span>ID</span>
+					</button>
+				</div>
+				<div class="checkin-table__col checkin-col--newname">
+					<button type="button" class="btn-sort" ng-click="sort('filename');">
+						<span>
+							Name
+						</span>
+					</button>
+				</div>
+				<div class="checkin-table__col checkin-col--newname">
+					<button type="button" class="btn-sort" ng-click="sort('filename');">
+						<span>
+							Folder
+						</span>
+					</button>
+				</div>
+			</div>
+
+			<div id="{{'item_'+$index}}" class="checkin-table__row {{doc.selected ? 'checkin-table__row--checked':''}}" ng-repeat="doc in $ctrl.docs">
+
+				<div class="form-field form-field--shadow form-field--checkbox row-hover hidden">
+					<label>
+						<input type="checkbox" ng-model="doc.selected" class="">
+						<span class="form-field__label">
+							<span class="hidden">Select Row</span>
+						</span>
+					</label>
+				</div>
+
+				<!-- <div class="checkin-table__col lead-col--id">
+					<div class="checkin-table__col-header ">ID</div>
+					{{doc.id}}
+				</div> -->
+				<div class="checkin-table__col checkin-col--currentname margin-top--5">
+					<div class="checkin-table__col-header ">File</div>
+					<div class="checkin-table__trim">
+						<a href="" target="blank">{{doc.title}}</a>
+					</div>
+				</div>
+				<div class="checkin-table__col checkin-col--id margin-top--5">
+					<div class="checkin-table__col-header ">ID</div>
+					<div class="checkin-table__trim">
+						<a href="" target="blank">{{doc.id_to}}</a>
+					</div>
+				</div>
+				<div class="checkin-table__col checkin-col--newname">
+					<div class="form-field ">
+						<label for="lead-filter-id" class="checkin-table__col-header">Name</label>
+						<input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="doc.title_to" ng-init="doc.title_withoutExt = doc.title.split('.').slice(0, -1).join('.')" autocomplete="off" class="checkin-table__trim" >
+					</div>
+				</div>
+				<div class="checkin-table__col checkin-col--id margin-top--5">
+					<div class="checkin-table__col-header ">Folder</div>
+					<div class="checkin-table__trim">
+						<a href="" target="blank">{{doc.folderName_to}}</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="checkin-table-zero" ng-show="docs.length == 0">
+				You do not have any local files.
+			</div>
+		</div>
+
+		<div class='attribute-panel--checkin'>
+
+			<div class="form-field ">
+				<label for="lead-filter-id" class="form-field__label">ID</label>
+
+				<input type="button" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.search.id" ng-init="" autocomplete="off">
+
+			</div>
+
+			<div class="form-field ">
+				<label for="lead-filter-id" class="form-field__label">Name</label>
+
+				<input type="button" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.search.name" ng-init="" autocomplete="off">
+
+			</div>
+
+
+			<div class="form-field ">
+				<label for="lead-filter-id" class="form-field__label">Folder</label>
+				<!-- <input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.name_folder" ng-init="" autocomplete="off" readonly onclick="$ctrl.folderclicked()"> -->
+
+				<input type="button" name="lead-filter-id" id="lead-filter-id" ng-model="$ctrl.search.name_folder" ng-init="" autocomplete="off" ng-click="$ctrl.folderclicked()" value="{{$ctrl.name_folder || 'Please Select'}}" >
+
+			</div>
+
+
+			<div class="form-field hidden">
+				<label for="lead-filter-rep" class="form-field__label">Type</label>
+				<div class="form-field__select form-field__select--blue">
+					<select name="lead-filter-rep" id="lead-filter-rep" ng-model="$ctrl.search.docTypes" ng-options="opt.type for opt in data.docTypes track by opt.id"></select>
+				</div>
+			</div>
+
+
+			<div class="checkin-table  panel--white panel--border">
+
+				<div class="checkin-table__header">
+
+					<div class="checkin-table__col checkin-col--currentname">
+						<button type="button"
+								class="btn-sort" ng-click="sort('id_version')">
+							<span>File</span>
+						</button>
+					</div>
+					<div class="checkin-table__col checkin-col--currentname">
+						<button type="button"
+								class="btn-sort" ng-click="sort('id_version')">
+							<span>ID</span>
+						</button>
+					</div>
+					<div class="checkin-table__col checkin-col--newname">
+						<button type="button" class="btn-sort" ng-click="sort('filename');">
+							<span>
+								Name
+							</span>
+						</button>
+					</div>
+					<div class="checkin-table__col checkin-col--newname">
+						<button type="button" class="btn-sort" ng-click="sort('filename');">
+							<span>
+								Folder
+							</span>
+						</button>
+					</div>
+				</div>
+
+				<div id="{{'item_'+$index}}" class="checkin-table__row {{doc.selected ? 'checkin-table__row--checked':''}}" ng-repeat="doc in $ctrl.docs">
+
+					<div class="form-field form-field--shadow form-field--checkbox row-hover hidden">
+						<label>
+							<input type="checkbox" ng-model="doc.selected" class="">
+							<span class="form-field__label">
+								<span class="hidden">Select Row</span>
+							</span>
+						</label>
+					</div>
+
+					<!-- <div class="checkin-table__col lead-col--id">
+						<div class="checkin-table__col-header ">ID</div>
+						{{doc.id}}
+					</div> -->
+					<div class="checkin-table__col checkin-col--currentname margin-top--5">
+						<div class="checkin-table__col-header ">File</div>
+						<div class="checkin-table__trim">
+							<a href="" target="blank">{{doc.title}}</a>
+						</div>
+					</div>
+					<div class="checkin-table__col checkin-col--id margin-top--5">
+						<div class="checkin-table__col-header ">ID</div>
+						<div class="checkin-table__trim">
+							<a href="" target="blank">{{doc.id_to}}</a>
+						</div>
+					</div>
+					<div class="checkin-table__col checkin-col--newname">
+						<div class="form-field ">
+							<label for="lead-filter-id" class="checkin-table__col-header">Name</label>
+							<input type="text" name="lead-filter-id" id="lead-filter-id" ng-model="doc.title_to" ng-init="doc.title_withoutExt = doc.title.split('.').slice(0, -1).join('.')" autocomplete="off" class="checkin-table__trim" >
+						</div>
+					</div>
+					<div class="checkin-table__col checkin-col--id margin-top--5">
+						<div class="checkin-table__col-header ">Folder</div>
+						<div class="checkin-table__trim">
+							<a href="" target="blank">{{doc.folderName_to}}</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="checkin-table-zero" ng-show="docs.length == 0">
+					You do not have any local files.
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" ng-click="$ctrl.ok()" ng-disabled="! $ctrl.canGo">OK</button>
+	<button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>
